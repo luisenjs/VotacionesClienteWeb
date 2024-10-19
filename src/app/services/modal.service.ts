@@ -1,0 +1,20 @@
+import { Injectable } from '@angular/core';
+import { BehaviorSubject } from 'rxjs';
+
+@Injectable({
+  providedIn: 'root'
+})
+export class ModalService {
+  private modalVisibleSubject = new BehaviorSubject<boolean>(false);
+  modalVisible$ = this.modalVisibleSubject.asObservable();
+
+  constructor() { }
+
+  openModal() {
+    this.modalVisibleSubject.next(true);
+  }
+
+  closeModal() {
+    this.modalVisibleSubject.next(false);
+  }
+}

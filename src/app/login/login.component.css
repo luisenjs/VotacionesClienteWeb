@@ -1,0 +1,98 @@
+.login-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.login-form {
+    background: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    width: 350px;
+}
+
+.login-form div {
+    padding: 10px 0;
+    width: wrap;
+}
+
+h2 {
+    text-align: center;
+    color: #18599d;
+}
+
+label {
+    color: #18599d;
+    font-weight: bold;
+    display: block;
+    margin-bottom: 5px;
+}
+
+input {
+    color: black;
+    width: calc(100% - 20px);
+    padding: 10px;
+    border: 1px solid #9ab4d1;
+    border-radius: 4px;
+}
+
+div #recuperarcontraseña {
+    padding-bottom: 10px;
+}
+
+.check {
+    width: 15px;
+    height: 15px;
+}
+
+p {
+    margin: 0;
+}
+
+input.invalid {
+    border-color: red;
+}
+
+button {
+    width: 100%;
+    padding: 10px;
+    background-color: #18599d;
+    border: none;
+    color: white;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    font-weight: 600;
+}
+
+button:hover {
+    background-color: #0063ce;
+}
+
+button:disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
+}
+
+.error-message {
+    color: red;
+    font-size: 0.85em;
+}
+
+#recuperarcontraseña {
+    padding: 0;
+    font-size: small;
+}
+
+a {
+    text-decoration: none;
+    font-style: italic;
+    color: #18599d;
+}
+
+a:hover {
+    color: #0063ce;
+    text-decoration: underline;
+}

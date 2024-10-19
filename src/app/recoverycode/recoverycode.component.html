@@ -1,0 +1,21 @@
+<div class="recoverycode-wrapper">
+    <form [formGroup]="recoverycodeForm" (ngSubmit)="onSubmit()">
+        <div id="atras">
+            <button (click)="goback()">
+                <i class="fa-solid fa-chevron-left"></i>
+            </button>
+            <h2>Cambiar de contraseña</h2>
+        </div>
+        <p>A continuación, ingrese el código de seis dígitos enviado a su correo para continuar.</p>
+        <div>
+            <label for="code">Código de recuperación</label>
+            <input type="text" id="code" formControlName="code" maxlength="6" placeholder="Ingresa tu código" [class.invalid]="recoverycodeForm.get('code')?.invalid && recoverycodeForm.get('code')?.touched">
+            <div class="error-message" *ngIf="recoverycodeForm.get('code')?.invalid && recoverycodeForm.get('code')?.touched">
+                <small>Ingresa tu código de seis dígitos.</small>
+            </div>
+        </div>
+        <div id="boton">
+            <button type="submit" [disabled]="recoverycodeForm.invalid">Enviar enlace de recuperación</button>
+        </div>
+    </form>
+</div>
