@@ -1,0 +1,94 @@
+<div class="signup-wrapper">
+    <form [formGroup]="signupForm" (ngSubmit)="onSubmit()" class="signup-form">
+        <h2>Registro</h2>
+        <div>
+            <label for="id">Cédula</label>
+            <input id="id" formControlName="id" type="int" placeholder="Ingresa tu cédula"
+                [class.invalid]="signupForm.get('id')?.invalid && signupForm.get('id')?.touched" />
+            <div class="error-message" *ngIf="signupForm.get('id')?.invalid && signupForm.get('id')?.touched">
+                <small>La cédula es requerido.</small>
+            </div>
+        </div>
+
+        <div>
+            <label for="fullname">Nombre completo</label>
+            <input id="fullname" formControlName="fullname" type="fullname" placeholder="Ingresa tu contraseña"
+                [class.invalid]="signupForm.get('fullname')?.invalid && signupForm.get('fullname')?.touched" />
+            <div class="error-message"
+                *ngIf="signupForm.get('fullname')?.invalid && signupForm.get('fullname')?.touched">
+                <small>Debes ingresar tu nombre completo</small>
+            </div>
+        </div>
+
+        <div>
+            <label for="gender">Selecciona tú género</label>
+            <select id="gender" formControlName="gender">
+                <option value="">--Seleccione una opción--</option>
+                <option value="femenino">Femenino</option>
+                <option value="masculino">Masculino</option>
+                <option value="otros">Otros</option>
+            </select>
+            <div class="error-message" *ngIf="signupForm.get('gender')?.invalid && signupForm.get('gender')?.touched">
+                <small>Seleccione una opción</small>
+            </div>
+        </div>
+
+        <div>
+            <label for="provincia">Provincia:</label>
+            <select id="provincia" formControlName="provincia">
+                <option value="">--Seleccione una provincia--</option>
+                <option *ngFor="let provincia of provincias" [value]="provincia.nombre">{{ provincia.nombre }}</option>
+            </select>
+        </div>
+
+        <div *ngIf="cantones.length > 0">
+            <label for="canton">Cantón:</label>
+            <select id="canton" formControlName="canton">
+                <option value="">--Seleccione un cantón--</option>
+                <option *ngFor="let canton of cantones" [value]="canton.nombre">{{ canton.nombre }}</option>
+            </select>
+        </div>
+
+        <div *ngIf="ciudades.length > 0">
+            <label for="ciudad">Ciudad:</label>
+            <select id="ciudad" formControlName="ciudad">
+                <option value="">--Seleccione una ciudad--</option>
+                <option *ngFor="let ciudad of ciudades" [value]="ciudad.nombre">{{ ciudad.nombre }}</option>
+            </select>
+        </div>
+
+        <div *ngIf="recintos.length > 0">
+            <label for="recinto">Recinto:</label>
+            <select id="recinto" formControlName="recinto">
+                <option value="">--Seleccione un recinto--</option>
+                <option *ngFor="let recinto of recintos" [value]="recinto">{{ recinto }}</option>
+            </select>
+        </div>
+
+        <div>
+            <label for="telephone1">Teléfono principal:</label>
+            <input id="telephone1" formControlName="telephone1" type="tel" placeholder="012-345-6789"
+                [class.invalid]="signupForm.get('telephone1')?.invalid && signupForm.get('telephone1')?.touched">
+            <div class="error-message"
+                *ngIf="signupForm.get('telephone1')?.invalid && signupForm.get('telephone1')?.touched">
+                <small>Ingrese su número de teléfono</small>
+            </div>
+        </div>
+
+        <div>
+            <label for="telephone2">Teléfono auxiliar:</label>
+            <input id="telephone2" formControlName="telephone2" type="tel" placeholder="012-345-6789">
+        </div>
+
+        <div>
+            <label class="acceptTerms">
+                <input class="check" type="checkbox" formControlName="acceptTerms" />
+                <p>Acepto las <a href="#" (click)="showPolices($event)">políticas de privacidad</a></p>
+            </label>
+        </div>
+
+        <button type="submit" [disabled]="signupForm.invalid">Enviar solicitud de registro</button>
+    </form>
+</div>
+
+<app-policies></app-policies>

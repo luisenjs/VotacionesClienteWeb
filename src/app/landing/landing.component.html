@@ -1,0 +1,173 @@
+<div class="landing-bg">
+    <nav class="navbar" [ngClass]="{'scrolled': isScrolled}">
+        <div class="container">
+            <div class="navbar-logo">
+                <img src="/assets/images/logo.png" alt="Logo" />
+            </div>
+            <ul class="navbar-menu">
+                <li><a routerLink="/signup" routerLinkActive="active">Regístrate</a></li>
+                <li><a routerLink="/login" routerLinkActive="active">Inicia sesión</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <header class="header">
+        <div class="container">
+            <h1>Sistema de control electoral</h1>
+            <p>Este sistema informático de control electoral está diseñado para asistir a los partidos políticos durante
+                el
+                proceso electoral. Proporciona una gestión precisa y en tiempo real de los datos electorales, mejorando
+                la
+                eficiencia y transparencia del proceso. Su implementación promete optimizar la coordicación y el
+                monitoreo
+                en el día de las elecciones.</p>
+        </div>
+    </header>
+
+    <section class="features" id="features">
+        <div class="container">
+            <div class="features-left">
+                <h2>Objetivos del Sistema</h2>
+                <div class="objective-elements">
+                    <div class="objective">
+                        <div class="icon-container">
+                            <i class="fa-solid fa-lightbulb"></i>
+                        </div>
+                        <div class="objective-bg"></div>
+                        <div class="objective-text">
+                            <h3>Gestión precisa de datos</h3>
+                            <p>Registro y seguimiento en tiempo real</p>
+                        </div>
+                    </div>
+                    
+                    <div class="objective">
+                        <div class="icon-container">
+                            <i class="fa-solid fa-rocket"></i>
+                        </div>
+                        <div class="objective-bg"></div>
+                        <div class="objective-text">
+                            <h3>Coordicación eficiente</h3>
+                            <p>Optimización de la comunicación entre equipos</p>
+                        </div>
+                    </div>
+                    
+                    <div class="objective">
+                        <div class="icon-container">
+                            <i class="fa-solid fa-newspaper"></i>
+                        </div>
+                        <div class="objective-bg"></div>
+                        <div class="objective-text">
+                            <h3>Decisiones informadas</h3>
+                            <p>Herramientas analíticas para una toma de decisiones</p>
+                        </div>
+                    </div>
+                    
+                    <div class="objective">
+                        <div class="icon-container">
+                            <i class="fa-solid fa-user-tie"></i>
+                        </div>
+                        <div class="objective-bg"></div>
+                        <div class="objective-text">
+                            <h3>Transparencia mejorada</h3>
+                            <p>Monitoreo continuo y generación de informes</p>
+                        </div>
+                    </div>
+                    
+                    <div class="objective">
+                        <div class="icon-container">
+                            <i class="fa-solid fa-bug-slash"></i>
+                        </div>
+                        <div class="objective-bg"></div>
+                        <div class="objective-text">
+                            <h3>Reducción de errores</h3>
+                            <p>Automatización para minimizar errores y retrasos</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="features-right">
+                <h2>Tecnologías Usadas</h2>
+                <div class="technology-elements">
+                    <div class="technology">
+                        <div class="icon-container">
+                            <i class="fa-brands fa-aws"></i>
+                        </div>
+                        <div class="technology-name">
+                            <h3>AWS</h3>
+                        </div>
+                    </div>
+
+                    <div class="technology">
+                        <div class="icon-container">
+                            <i class="fa fa-database"></i>
+                        </div>
+                        <div class="technology-name">
+                            <h3>ORACLE</h3>
+                        </div>
+                    </div>
+
+                    <div class="technology">
+                        <div class="icon-container">
+                            <i class="fa-brands fa-angular"></i>
+                        </div>
+                        <div class="technology-name">
+                            <h3>ANGULAR</h3>
+                        </div>
+                    </div>
+
+                    <div class="technology">
+                        <div class="icon-container">
+                            <i class="fa-brands fa-flutter"></i>
+                        </div>
+                        <div class="technology-name">
+                            <h3>FLUTTER</h3>
+                        </div>
+                    </div>
+
+                    <div class="technology">
+                        <div class="icon-container">
+                            <i class="fa-brands fa-node-js"></i>
+                        </div>
+                        <div class="technology-name">
+                            <h3>NODE JS</h3>
+                        </div>
+                    </div>
+
+                    <div class="technology">
+                        <div class="icon-container">
+                            <i class="fa-brands fa-docker"></i>
+                        </div>
+                        <div class="technology-name">
+                            <h3>DOCKER</h3>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="results-section">
+        <h2>Resultados Esperados</h2>
+
+        <div class="carousel-container">
+            <div class="carousel-slide" [ngStyle]="{'transform': 'translateX(-' + (currentSlide * 100) + '%)'}">
+                <div class="result-card" *ngFor="let testimonial of testimonials; let i = index"
+                    [ngClass]="{'active': currentSlide === i}">
+                    <i [class]="testimonial.icon"></i>
+                    <h3>{{ testimonial.title }}</h3>
+                    <p>{{ testimonial.text }}</p>
+                </div>
+            </div>
+
+            <button class="prev" (click)="prevSlide()">&#10094;</button>
+            <button class="next" (click)="nextSlide()">&#10095;</button>
+
+        </div>
+
+        <div class="carousel-dots">
+            <span *ngFor="let testimonial of testimonials; let i = index" (click)="setSlide(i)"
+                [ngClass]="{'active-dot': currentSlide === i}"></span>
+        </div>
+    </section>
+</div>
