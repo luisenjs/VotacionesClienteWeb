@@ -1,25 +1,26 @@
+/* Contenedor principal como grid */
 .container {
-    display: flex;
+    display: grid;
+    grid-template-columns: 1fr 5fr;
+    grid-template-rows: auto 1fr;
+    grid-template-areas:
+        "sidebar header"
+        "sidebar content-area";
     height: 100vh;
-    flex-direction: row;
 }
 
 .sidebar {
-    width: 270px;
-}
-
-.content {
-    display: flex;
-    flex-direction: column;
-    flex-grow: 1;
+    grid-area: sidebar;
+    background-color: #f4f4f4;
 }
 
 .header {
-    flex-shrink: 0;
+    grid-area: header;
+    background-color: #ddd;
 }
 
 .content-area {
-    padding: 20px;
+    grid-area: content-area;
+    background-color: #fff;
     overflow-y: auto;
-    flex-grow: 1;
 }

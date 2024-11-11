@@ -1,0 +1,33 @@
+.filter-container {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    justify-content: space-between;
+    padding: 16px;
+    overflow-x: auto;
+  }
+
+.filter-item {
+    flex-grow: 1;
+    min-width: 150px;
+}
+
+.filter-item select {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    background-color: white;
+    font-size: 1rem;
+    transition: border-color 0.3s ease;
+}
+
+.filter-item select:hover {
+    border-color: #18599d;
+}
+
+.filter-item select:focus {
+    outline: none;
+    border-color: #18599d;
+    box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+}

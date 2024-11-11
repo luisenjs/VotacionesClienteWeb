@@ -1,1 +1,18 @@
-<app-undermaintenance></app-undermaintenance>
+<div class="content">
+    <h3>Control de usuarios</h3>
+    <div class="control-usuario">
+        <app-filter [filterIds]="filterIds"></app-filter>
+        <app-undermaintenance></app-undermaintenance>
+        <div class="footer">
+            <app-filter [filterIds]="filterCantidad"></app-filter>
+        </div>
+    </div>
+    <h3>Control de actas</h3>
+    <div class="control-actas">
+        <app-filter [filterIds]="filterControl"></app-filter>
+        <app-undermaintenance></app-undermaintenance>
+        <div class="footer">
+            <app-filter [filterIds]="filterCantidad"></app-filter>
+        </div>
+    </div>
+</div>
