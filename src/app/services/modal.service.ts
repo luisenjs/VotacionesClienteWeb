@@ -8,8 +8,6 @@ export class ModalService {
   private modalVisibleSubject = new BehaviorSubject<boolean>(false);
   modalVisible$ = this.modalVisibleSubject.asObservable();
 
-  constructor() { }
-
   openModal() {
     this.modalVisibleSubject.next(true);
   }

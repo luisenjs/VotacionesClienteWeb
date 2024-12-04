@@ -20,6 +20,7 @@ export class ForgotpasswordComponent {
 
   onSubmit() {
     const email = this.forgorpswdForm.get('email')?.value;
+    console.log(email);
     //Enviar el correo y eso
     this.router.navigate(['/recoverycode'])
   }

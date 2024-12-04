@@ -11,7 +11,7 @@ import { CommonModule } from '@angular/common';
 })
 export class LandingComponent {
   isScrolled = false;
-  currentSlide: number = 0;
+  currentSlide = 0;
 
   testimonials = [
     {

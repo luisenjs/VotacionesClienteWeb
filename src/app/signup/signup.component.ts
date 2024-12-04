@@ -4,6 +4,7 @@ import { CommonModule } from '@angular/common';
 import { Router } from '@angular/router';
 import { ModalService } from '../services/modal.service';
 import { PoliciesComponent } from '../policies/policies.component';
+import { Provincia, Canton, Ciudad } from '../interface/location';
 
 @Component({
   selector: 'app-signup',
@@ -15,7 +16,7 @@ import { PoliciesComponent } from '../policies/policies.component';
 
 export class SignupComponent {
   signupForm: FormGroup;
-  provincias = [
+  provincias: Provincia[] = [
     {
       nombre: 'Provincia 1',
       cantones: [
@@ -58,9 +59,10 @@ export class SignupComponent {
       ]
     }
   ];
-  cantones: any[] = [];
-  ciudades: any[] = [];
-  recintos: string[] = [];
+  
+  cantones: Canton[] = [];
+  ciudades: Ciudad[] = [];
+  recintos: string[] = [];  
   constructor(private formBuilder: FormBuilder, private route: Router, private modal: ModalService) {
     this.signupForm = this.formBuilder.group({
       id: ['', [Validators.required, Validators.pattern(/^\d{10}$/)]],

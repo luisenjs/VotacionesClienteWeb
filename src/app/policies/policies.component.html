@@ -1,6 +1,6 @@
 <div class="modal" *ngIf="isVisible">
     <div class="modal-content">
-        <span class="close" (click)="close()">&times;</span>
+        <span class="close" (click)="close()" (keydown.enter)="close()" tabindex="0">&times;</span>
         <h2>Términos y Condiciones</h2>
         <p>Última actualización: [Fecha]</p>
 

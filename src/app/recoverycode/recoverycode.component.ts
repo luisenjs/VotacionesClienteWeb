@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { FormBuilder, FormGroup, Validator, ReactiveFormsModule, Form, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { Router } from '@angular/router';
 
@@ -20,6 +20,7 @@ export class RecoverycodeComponent {
 
   onSubmit(){
     const code = this.recoverycodeForm.get("code")?.value;
+    console.log(code)
     //lógica de verificación
     this.router.navigate(['/changepassword'])
   }

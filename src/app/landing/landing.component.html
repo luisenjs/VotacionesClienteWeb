@@ -166,7 +166,7 @@
         </div>
 
         <div class="carousel-dots">
-            <span *ngFor="let testimonial of testimonials; let i = index" (click)="setSlide(i)"
+            <span *ngFor="let testimonial of testimonials; let i = index" (click)="setSlide(i)" (keydown.enter)="setSlide(i)" tabindex="0"
                 [ngClass]="{'active-dot': currentSlide === i}"></span>
         </div>
     </section>
