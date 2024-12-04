@@ -1,0 +1,39 @@
+.content {
+    padding: 10px;
+}
+
+.resumen-votos {
+    padding: 10px;
+    display: grid;
+    grid-template-columns: 2fr 2fr 3fr;
+    grid-template-rows: 2fr 2fr;
+    grid-template-areas:
+        "partido votosvalidos chart"
+        "votosblancos votosnulos chart";
+    gap: 25px;
+}
+
+.partido, .votosvalidos, .votosblancos, .votosnulos, .chart{
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+}
+
+.partido {
+    grid-area: partido;
+}
+
+.votosvalidos {
+    grid-area: votosvalidos;
+}
+
+.votosblancos{
+    grid-area: votosblancos;
+}
+
+.votosnulos{
+    grid-area: votosnulos;
+}
+
+.chart{
+    grid-area: chart;
+}

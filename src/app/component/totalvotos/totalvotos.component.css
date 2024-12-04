@@ -1,0 +1,34 @@
+.content {
+    padding: 10px;
+    display: grid;
+    grid-template-columns: 3fr 2fr;
+    grid-template-rows: auto;
+    grid-template-areas:
+        "nombre icon"
+        "tipo icon"
+        "cantidad icon";
+}
+
+#nombre {
+    grid-area: nombre;
+    margin: 0;
+}
+
+#tipo {
+    grid-area: tipo;
+    margin: 0;
+}
+
+#cantidad {
+    grid-area: cantidad;
+    margin: 0;
+    border-top: 2px dashed #18599d;
+}
+
+i {
+    grid-area: icon;
+    font-size: 80px;
+    display: flex;
+    justify-content: center;
+    color: #e6e7e7;
+}

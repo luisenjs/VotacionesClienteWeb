@@ -1,8 +1,10 @@
 .login-wrapper {
+    background-image: url('/assets/images/aaabstract.webp');
+    background-size: cover;
+    height: 100vh;
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100vh;
 }
 
 .login-form {

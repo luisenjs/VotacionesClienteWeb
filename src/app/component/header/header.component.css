@@ -13,7 +13,16 @@
     margin-left: auto;
 }
 
-.icon {
-    height: 50px;
+.header-icons i {
+    font-size: 42px;
+    width: 50px;
     cursor: pointer;
+}
+
+.fa-solid.fa-bell {
+    color: #ffd245;
+}
+
+.fa-solid.fa-circle-user {
+    color: #f43195;
 }

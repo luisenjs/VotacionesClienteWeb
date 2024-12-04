@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { UndermaintenanceComponent } from '../undermaintenance/undermaintenance.component';
-import { PAGE_FILTERS } from '../interface/filter';
-import { FilterComponent } from "../component/filter/filter.component";
+import { PAGE_FILTERS } from '../../interface/filter';
+import { FilterComponent } from "../../component/filter/filter.component";
 
 @Component({
   selector: 'app-controlelectoral',

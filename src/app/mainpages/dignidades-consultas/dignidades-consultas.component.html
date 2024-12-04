@@ -1,0 +1,78 @@
+<div class="content">
+    <div class="header">
+        <h3>Gestionando dignidades y consultas</h3>
+        <div class="archive-button">
+            <i class="fa-solid fa-box-archive"></i>
+            <a routerLink="/dignidades-consultas" routerLinkActive="active">Ver archivados</a>
+        </div>
+    </div>
+    <div class="gestion-binomio">
+        <div class="header">
+            <h3>Gestionando binomio presidencial</h3>
+            <div class="add-button">
+                <i class="fa-regular fa-square-plus"></i>
+                <a routerLink="/dignidades-consultas" routerLinkActive="active">Agregar elemento</a>
+            </div>
+        </div>
+        <table>
+            <thead>
+                <tr>
+                    <th>
+                        <h3>Lista</h3>
+                    </th>
+                    <th>
+                        <h3>Candidato</h3>
+                    </th>
+                    <th>
+                        <h3>Acción</h3>
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let item of items">
+                    <td>
+                        <p>{{ item.lista }}</p>
+                    </td>
+                    <td>
+                        <p>{{ item.candidato }}</p>
+                    </td>
+                    <td>
+                        <p>
+                            <i class="fa fa-edit" (click)="onEdit(item)"></i>
+                            <i class="fa fa-trash" (click)="onDelete(item)"></i>
+                        </p>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <div class="footer">
+            <app-filter [filterIds]="filterCantidad"></app-filter>
+        </div>
+    </div>
+    <div class="gestion-organizaciones">
+        <div class="header">
+            <h3>Gestionando organizaciones políticas</h3>
+            <div class="add-button">
+                <i class="fa-regular fa-square-plus"></i>
+                <a routerLink="/dignidades-consultas" routerLinkActive="active">Agregar elemento</a>
+            </div>
+        </div>
+        <app-undermaintenance></app-undermaintenance>
+        <div class="footer">
+            <app-filter [filterIds]="filterCantidad"></app-filter>
+        </div>
+    </div>
+    <div class="gestion-consultas">
+        <div class="header">
+            <h3>Gestionando consultas</h3>
+            <div class="add-button">
+                <i class="fa-regular fa-square-plus"></i>
+                <a routerLink="/dignidades-consultas" routerLinkActive="active">Agregar elemento</a>
+            </div>
+        </div>
+        <app-undermaintenance></app-undermaintenance>
+        <div class="footer">
+            <app-filter [filterIds]="filterCantidad"></app-filter>
+        </div>
+    </div>
+</div>

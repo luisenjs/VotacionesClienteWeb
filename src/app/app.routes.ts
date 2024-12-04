@@ -1,14 +1,15 @@
 import { Routes } from '@angular/router';
-import { LoginComponent } from './login/login.component';
-import { ForgotpasswordComponent } from './forgotpassword/forgotpassword.component';
-import { RecoverycodeComponent } from './recoverycode/recoverycode.component';
-import { ChangepasswordComponent } from './changepassword/changepassword.component';
-import { MainpageComponent } from './mainpage/mainpage.component';
-import { ControlelectoralComponent } from './controlelectoral/controlelectoral.component';
-import { DashboardComponent } from './dashboard/dashboard.component';
-import { UndermaintenanceComponent } from './undermaintenance/undermaintenance.component';
-import { LandingComponent } from './landing/landing.component';
-import { SignupComponent } from './signup/signup.component';
+import { LoginComponent } from './sessionpages/login/login.component';
+import { ForgotpasswordComponent } from './sessionpages/forgotpassword/forgotpassword.component';
+import { RecoverycodeComponent } from './sessionpages/recoverycode/recoverycode.component';
+import { ChangepasswordComponent } from './sessionpages/changepassword/changepassword.component';
+import { MainpageComponent } from './mainpages/mainpage/mainpage.component';
+import { ControlelectoralComponent } from './mainpages/controlelectoral/controlelectoral.component';
+import { DashboardComponent } from './mainpages/dashboard/dashboard.component';
+import { UndermaintenanceComponent } from './mainpages/undermaintenance/undermaintenance.component';
+import { LandingComponent } from './sessionpages/landing/landing.component';
+import { SignupComponent } from './sessionpages/signup/signup.component';
+import { DignidadesConsultasComponent } from './mainpages/dignidades-consultas/dignidades-consultas.component';
 
 export const routes: Routes = [
     { path: '', component: LandingComponent},
@@ -22,6 +23,7 @@ export const routes: Routes = [
         children: [
             { path: 'controlelectoral', component: ControlelectoralComponent },
             { path: 'dashboard', component: DashboardComponent },
+            { path: 'dignidades-consultas', component: DignidadesConsultasComponent},
             { path: 'bajomantenimiento', component: UndermaintenanceComponent},
             { path: '', redirectTo: '/controlelectoral', pathMatch: 'full'}
         ]

@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
-import { NavigationbarComponent } from '../component/navigationbar/navigationbar.component';
-import { HeaderComponent } from '../component/header/header.component';
+import { NavigationbarComponent } from '../../component/navigationbar/navigationbar.component';
+import { HeaderComponent } from '../../component/header/header.component';
 
 @Component({
   selector: 'app-mainpage',

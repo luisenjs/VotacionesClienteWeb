@@ -8,6 +8,10 @@ body {
     margin: 0;
 }
 
-p {
+p, h4 {
     color: #9ab4d1;
+}
+
+h3 {
+    color: #18599d;
 }
