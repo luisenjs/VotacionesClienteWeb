@@ -15,8 +15,10 @@
     margin: 15% auto;
     padding: 20px;
     width: 80%;
+    height: 60%;
     border-radius: 8px;
     border: 1px solid #ddd;
+    overflow-y: auto;
 }
 
 .close {

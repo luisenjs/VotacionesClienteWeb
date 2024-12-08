@@ -1,0 +1,25 @@
+.content {
+    padding: 10px;
+}
+
+.header {
+    display: flex;
+    flex-direction: row;
+}
+
+.header h3 {
+    flex-grow: 1;
+}
+
+.header a {
+    margin: auto;
+}
+
+.papeletas {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    column-gap: 40px;
+    row-gap: 30px;
+    justify-content: center;
+}

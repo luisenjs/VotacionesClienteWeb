@@ -9,7 +9,7 @@ import { Provincia, Canton, Ciudad } from '../../interface/location';
 @Component({
   selector: 'app-signup',
   standalone: true,
-  imports: [ReactiveFormsModule, CommonModule,PoliciesComponent],
+  imports: [ReactiveFormsModule, CommonModule, PoliciesComponent],
   templateUrl: './signup.component.html',
   styleUrl: './signup.component.css'
 })
@@ -59,10 +59,10 @@ export class SignupComponent {
       ]
     }
   ];
-  
+
   cantones: Canton[] = [];
   ciudades: Ciudad[] = [];
-  recintos: string[] = [];  
+  recintos: string[] = [];
   constructor(private formBuilder: FormBuilder, private route: Router, private modal: ModalService) {
     this.signupForm = this.formBuilder.group({
       id: ['', [Validators.required, Validators.pattern(/^\d{10}$/)]],

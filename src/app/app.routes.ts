@@ -10,10 +10,11 @@ import { UndermaintenanceComponent } from './mainpages/undermaintenance/undermai
 import { LandingComponent } from './sessionpages/landing/landing.component';
 import { SignupComponent } from './sessionpages/signup/signup.component';
 import { DignidadesConsultasComponent } from './mainpages/dignidades-consultas/dignidades-consultas.component';
+import { PapeletasComponent } from './mainpages/papeletas/papeletas.component';
 
 export const routes: Routes = [
-    { path: '', component: LandingComponent},
-    { path: 'signup', component: SignupComponent},
+    { path: '', component: LandingComponent },
+    { path: 'signup', component: SignupComponent },
     { path: 'login', component: LoginComponent },
     { path: 'forgotpassword', component: ForgotpasswordComponent },
     { path: 'recoverycode', component: RecoverycodeComponent },
@@ -23,9 +24,10 @@ export const routes: Routes = [
         children: [
             { path: 'controlelectoral', component: ControlelectoralComponent },
             { path: 'dashboard', component: DashboardComponent },
-            { path: 'dignidades-consultas', component: DignidadesConsultasComponent},
-            { path: 'bajomantenimiento', component: UndermaintenanceComponent},
-            { path: '', redirectTo: '/controlelectoral', pathMatch: 'full'}
+            { path: 'papeletas', component: PapeletasComponent },
+            { path: 'dignidades-consultas', component: DignidadesConsultasComponent },
+            { path: 'bajomantenimiento', component: UndermaintenanceComponent },
+            { path: '', redirectTo: '/controlelectoral', pathMatch: 'full' }
         ]
     }
 ];

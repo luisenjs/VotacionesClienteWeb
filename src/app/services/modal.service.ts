@@ -9,10 +9,12 @@ export class ModalService {
   modalVisible$ = this.modalVisibleSubject.asObservable();
 
   openModal() {
+    console.log("abro");
     this.modalVisibleSubject.next(true);
   }
 
   closeModal() {
+    console.log("cierro");
     this.modalVisibleSubject.next(false);
   }
 }
