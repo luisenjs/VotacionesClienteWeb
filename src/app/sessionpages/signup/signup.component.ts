@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators, ReactiveFormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { Router } from '@angular/router';
-import { ModalService } from '../../services/modal.service';
+import { ModalService } from '../../services/modal/modal.service';
 import { PoliciesComponent } from '../../component/policies/policies.component';
 import { Provincia, Canton, Ciudad } from '../../interface/location';
 
@@ -106,6 +106,6 @@ export class SignupComponent {
 
   showPolices(event: Event) {
     event.preventDefault();
-    this.modal.openModal();
+    this.modal.openModal('policies');
   }
 }

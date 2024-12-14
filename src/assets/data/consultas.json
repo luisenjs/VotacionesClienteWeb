@@ -1,0 +1,52 @@
+[
+    {
+        "id": 1,
+        "nombre": "A - REFERÉNDUM - PREGUNTA 1",
+        "pregunta": "¿Lorem ipsum dolor sit amet, consectetur adipiscing elit?"
+    },
+    {
+        "id": 2,
+        "nombre": "B - REFERÉNDUM - PREGUNTA 2",
+        "pregunta": "¿Lorem ipsum dolor sit amet, consectetur adipiscing elit?"
+    },
+    {
+        "id": 3,
+        "nombre": "C - REFERÉNDUM - PREGUNTA 3",
+        "pregunta": "¿Lorem ipsum dolor sit amet, consectetur adipiscing elit?"
+    },
+    {
+        "id": 4,
+        "nombre": "D - REFERÉNDUM - PREGUNTA 4",
+        "pregunta": "¿Lorem ipsum dolor sit amet, consectetur adipiscing elit?"
+    },
+    {
+        "id": 5,
+        "nombre": "E - REFERÉNDUM - PREGUNTA 5",
+        "pregunta": "¿Lorem ipsum dolor sit amet, consectetur adipiscing elit?"
+    },
+    {
+        "id": 6,
+        "nombre": "F - CONSULTA POPULAR - PREGUNTA 6",
+        "pregunta": "¿Lorem ipsum dolor sit amet, consectetur adipiscing elit?"
+    },
+    {
+        "id": 7,
+        "nombre": "G - CONSULTA POPULAR - PREGUNTA 7",
+        "pregunta": "¿Lorem ipsum dolor sit amet, consectetur adipiscing elit?"
+    },
+    {
+        "id": 8,
+        "nombre": "H - CONSULTA POPULAR - PREGUNTA 8",
+        "pregunta": "¿Lorem ipsum dolor sit amet, consectetur adipiscing elit?"
+    },
+    {
+        "id": 9,
+        "nombre": "I - CONSULTA POPULAR - PREGUNTA 9",
+        "pregunta": "¿Lorem ipsum dolor sit amet, consectetur adipiscing elit?"
+    },
+    {
+        "id": 10,
+        "nombre": "J - CONSULTA POPULAR - PREGUNTA 10",
+        "pregunta": "¿Lorem ipsum dolor sit amet, consectetur adipiscing elit?"
+    }
+]

@@ -1,4 +1,30 @@
 <div class="add" *ngIf="isVisible">
-    <span class="close" (click)="close()" (keydown.enter)="close()" tabindex="0">&times;</span>
-    <p>Agregando elemento</p>
+    <div class="content">
+        <span class="close" (click)="close()" tabindex="0">&times;</span>
+        <h2>{{titulo}}</h2>
+        <form [formGroup]="elemetform" (ngSubmit)="onSubmit($event)">
+            <div class="form-group">
+                <label for="elemento1">{{campo1}}</label>
+                <input id="elemento1" type="text" formControlName="elemento1" />
+                <div *ngIf="elemetform.get('elemento1')?.invalid && elemetform.get('elemento1')?.touched">
+                    <small class="error">Este campo es requerido.</small>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="elemento2">{{campo2}}</label>
+                <input id="elemento2" type="text" formControlName="elemento2" />
+                <div *ngIf="elemetform.get('elemento2')?.invalid && elemetform.get('elemento2')?.touched">
+                    <small class="error">Este campo es requerido.</small>
+                </div>
+            </div>
+
+            <div class="actions">
+                <button class="cancelar" (click)="close()">Cancelar</button>
+                <button class="guardar" type="submit" [disabled]="elemetform.invalid">Guardar</button>
+            </div>
+        </form>
+    </div>
 </div>
+
+<app-confirmation [tipo]="tipoElemento" (confirm)="confirmation($event)"></app-confirmation>

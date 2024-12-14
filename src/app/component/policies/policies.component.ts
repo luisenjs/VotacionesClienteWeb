@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { ModalService } from '../../services/modal.service';
+import { ModalService } from '../../services/modal/modal.service';
 
 @Component({
   selector: 'app-policies',
@@ -13,12 +13,12 @@ export class PoliciesComponent implements OnInit {
   isVisible = false;
   constructor(private modal: ModalService) { }
   ngOnInit(): void {
-    this.modal.modalVisible$.subscribe(visible => {
+    this.modal.isModalVisible('policies')?.subscribe(visible => {
       this.isVisible = visible;
     })
   }
 
   close() {
-    this.modal.closeModal();
+    this.modal.closeModal('policies');
   }
 }

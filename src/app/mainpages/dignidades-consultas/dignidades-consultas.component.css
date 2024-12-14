@@ -61,10 +61,6 @@
     }
 }
 
-app-undermaintenance {
-    flex-grow: 1;
-}
-
 .footer {
     position: bottom;
     width: fit-content;

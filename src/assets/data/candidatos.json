@@ -1,0 +1,27 @@
+[
+    {
+        "id": 1,
+        "lista": "Lista 1",
+        "candidato": "Candidato A"
+    },
+    {
+        "id": 2,
+        "lista": "Lista 2",
+        "candidato": "Candidato B"
+    },
+    {
+        "id": 3,
+        "lista": "Lista 3",
+        "candidato": "Candidato C"
+    },
+    {
+        "id": 4,
+        "lista": "Lista 4",
+        "candidato": "Candidato D"
+    },
+    {
+        "id": 5,
+        "lista": "Lista 5",
+        "candidato": "Candidato E"
+    }
+]
