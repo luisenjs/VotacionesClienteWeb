@@ -23,5 +23,14 @@
         "id": 5,
         "lista": "Lista 5",
         "candidato": "Candidato E"
+    }, {
+        "id": 6,
+        "lista": "Lista 6",
+        "candidato": "Candidato F"
+    },
+    {
+        "id": 7,
+        "lista": "Lista 7",
+        "candidato": "Candidato G"
     }
 ]

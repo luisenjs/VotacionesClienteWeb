@@ -11,6 +11,7 @@ import { LandingComponent } from './sessionpages/landing/landing.component';
 import { SignupComponent } from './sessionpages/signup/signup.component';
 import { DignidadesConsultasComponent } from './mainpages/dignidades-consultas/dignidades-consultas.component';
 import { PapeletasComponent } from './mainpages/papeletas/papeletas.component';
+import { CrearPapeletaComponent } from './component/crear-papeleta/crear-papeleta.component';
 
 export const routes: Routes = [
     { path: '', component: LandingComponent },
@@ -25,6 +26,7 @@ export const routes: Routes = [
             { path: 'controlelectoral', component: ControlelectoralComponent },
             { path: 'dashboard', component: DashboardComponent },
             { path: 'papeletas', component: PapeletasComponent },
+            { path: 'papeletas/agregar', component: CrearPapeletaComponent },
             { path: 'dignidades-consultas', component: DignidadesConsultasComponent },
             { path: 'bajomantenimiento', component: UndermaintenanceComponent },
             { path: '', redirectTo: '/controlelectoral', pathMatch: 'full' }

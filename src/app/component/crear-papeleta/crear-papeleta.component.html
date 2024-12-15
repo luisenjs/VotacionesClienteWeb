@@ -1,1 +1,31 @@
-<p>crear-papeleta works!</p>
+<div class="add" *ngIf="isVisible">
+    <div class="content">
+        <span class="close" (click)="close()" tabindex="0">&times;</span>
+        <h2>Creación de la papeleta</h2>
+        <form [formGroup]="papeletaform" (ngSubmit)="onSubmit($event)">
+            <div class="form-group">
+                <label for="elemento1">Nombre</label>
+                <input id="elemento1" type="text" formControlName="elemento1" />
+                <div *ngIf="papeletaform.get('elemento1')?.invalid && papeletaform.get('elemento1')?.touched">
+                    <small class="error">Este campo es requerido.</small>
+                </div>
+            </div>
+
+            <div *ngFor="let selector of selectors; let i = index" class="selector-container">
+                <select [(ngModel)]="selectors[i].id">
+                  <option *ngFor="let option of getFilteredOptions(i)" [value]="option.id">
+                    {{ option.name }}
+                  </option>
+                </select>
+                <button *ngIf="selectors.length > 1" (click)="removeSelector(i)">❌</button>
+              </div>
+              
+              <button (click)="addSelector()">➕ Agregar selector</button>
+
+            <div class="actions">
+                <button class="cancelar" (click)="close()">Cancelar</button>
+                <button class="guardar" type="submit" [disabled]="papeletaform.invalid">Guardar</button>
+            </div>
+        </form>
+    </div>
+</div>

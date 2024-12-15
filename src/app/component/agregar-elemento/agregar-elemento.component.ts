@@ -1,4 +1,4 @@
-import { Component, ViewChild, Input, OnChanges, OnInit, SimpleChanges} from '@angular/core';
+import { Component, Input, OnChanges, OnInit, SimpleChanges } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ModalService } from '../../services/modal/modal.service';
 import { FormBuilder, FormGroup, Validators, ReactiveFormsModule } from '@angular/forms';
@@ -11,13 +11,13 @@ import { ConfirmationComponent } from "../confirmation/confirmation.component";
   templateUrl: './agregar-elemento.component.html',
   styleUrl: './agregar-elemento.component.css'
 })
-export class AgregarElementoComponent implements OnChanges, OnInit{
+export class AgregarElementoComponent implements OnChanges, OnInit {
 
   isVisible = false;
   elemetform: FormGroup;
 
-  @ViewChild("app-confirmation") confirmacion!: any;
   @Input() tipoElemento: string = "";
+  @Input() id!: string;
 
   titulo = "";
   campo1 = "";
@@ -59,29 +59,35 @@ export class AgregarElementoComponent implements OnChanges, OnInit{
   }
 
   ngOnInit(): void {
-    this.modal.isModalVisible('agregar-elemento')?.subscribe(visible => {
-      this.isVisible = visible;
-    });
+    this.modal.add(this);
+  }
+
+  ngOnDestroy(): void {
+    this.modal.remove(this.id);
+  }
+
+  open() {
+    this.isVisible = true;
   }
 
   close() {
-    this.modal.closeModal('agregar-elemento');
+    this.isVisible = false;
   }
 
   onSubmit(event: Event) {
     event.preventDefault();
     if (this.elemetform.valid) {
       this.pendingElement = this.elemetform.value;
-      this.modal.openModal("confirmacion");
+      this.modal.open("agregar");
     }
   }
 
-  confirmation(confirmacion: boolean){
+  confirmation(confirmacion: boolean) {
     if (confirmacion) {
       console.log('Nuevo elemento:', this.pendingElement);
     }
     this.elemetform.reset();
     this.pendingElement = null;
   }
-  
+
 }

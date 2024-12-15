@@ -9,9 +9,9 @@ export class DataService {
 
   constructor(private http: HttpClient) { }
 
-  getData<T>(url: string): Observable<T> {
-    console.log("getting data")
-    return this.http.get<T>(url);
+  getData<T>(archivo: string): Observable<T> {
+    const filepath = 'assets/data/${archivo}.json'
+    return this.http.get<T>(archivo);
   }
 
 }

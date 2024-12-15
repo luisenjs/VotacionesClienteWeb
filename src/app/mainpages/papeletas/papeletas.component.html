@@ -1,7 +1,8 @@
 <div class="content">
     <div class="header">
         <h3>Gestionando papeletas</h3>
-        <a class="add-button" href="#">Agregar nueva papeleta</a>
+        <a class="add-button" href="#" (click)="seleccionarPapeleta($event)"><i class="fa-regular fa-square-plus"></i>
+            Agregar elemento</a>
     </div>
     <div class="papeletas">
         <app-papeleta></app-papeleta>
@@ -13,3 +14,7 @@
         <app-papeleta></app-papeleta>
     </div>
 </div>
+
+<app-seleccion-papeleta [id]="'seleccion'" (tipo)="crearPapeleta($event)"></app-seleccion-papeleta>
+
+<app-crear-papeleta [id]="'creacion'" [tipo]="tipo"></app-crear-papeleta>

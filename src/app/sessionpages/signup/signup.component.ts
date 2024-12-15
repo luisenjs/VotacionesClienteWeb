@@ -15,6 +15,7 @@ import { Provincia, Canton, Ciudad } from '../../interface/location';
 })
 
 export class SignupComponent {
+
   signupForm: FormGroup;
   provincias: Provincia[] = [
     {
@@ -106,6 +107,6 @@ export class SignupComponent {
 
   showPolices(event: Event) {
     event.preventDefault();
-    this.modal.openModal('policies');
+    this.modal.open("polices");
   }
 }

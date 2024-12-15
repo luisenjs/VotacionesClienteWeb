@@ -128,4 +128,10 @@
     </div>
 </div>
 
-<app-agregar-elemento [tipoElemento]="tipoelemento"></app-agregar-elemento>
+<app-agregar-elemento [id]="'binomio'" [tipoElemento]="tipoelemento"></app-agregar-elemento>
+
+<app-agregar-elemento [id]="'organizacion'" [tipoElemento]="tipoelemento"></app-agregar-elemento>
+
+<app-agregar-elemento [id]="'consulta'" [tipoElemento]="tipoelemento"></app-agregar-elemento>
+
+<app-confirmation [id]="'eliminar'" [tipo]="'eliminar'" (confirm)="confirmDelete($event)"></app-confirmation>

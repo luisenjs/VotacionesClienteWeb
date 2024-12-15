@@ -1,0 +1,11 @@
+<div class="modal" *ngIf="isVisible">
+    <div class="content">
+        <span class="close" (click)="close()" tabindex="0">&times;</span>
+        <h2>Seleccione una opción</h2>
+        <div class="options">
+            <button class="binomio" (click)="setBinomio()">Binomio Presidencial</button>
+            <button class="organizacion" (click)="setOrganizacion()">Organizacion Política</button>
+            <button class="consulta" (click)="setConsulta()">Consultas</button>
+        </div>
+    </div>
+</div>

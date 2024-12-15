@@ -5,23 +5,24 @@ import { BehaviorSubject } from 'rxjs';
   providedIn: 'root'
 })
 export class ModalService {
-  private modalVisibilityMap = new Map<string, BehaviorSubject<boolean>>();
+  private modals: any[] = [];
 
-  openModal(id: string) {
-    if (!this.modalVisibilityMap.has(id)) {
-      this.modalVisibilityMap.set(id, new BehaviorSubject<boolean>(false));
-    }
-    this.modalVisibilityMap.get(id)?.next(true);
+  add(modal: any) {
+    this.modals.push(modal);
   }
 
-  closeModal(id: string) {
-    this.modalVisibilityMap.get(id)?.next(false);
+  remove(id: string) {
+    this.modals = this.modals.filter(x => x.id != id);
   }
 
-  isModalVisible(id: string) {
-    if (!this.modalVisibilityMap.has(id)) {
-      this.modalVisibilityMap.set(id, new BehaviorSubject<boolean>(false));
-    }
-    return this.modalVisibilityMap.get(id)?.asObservable();
+  open(id: string) {
+    const modal = this.modals.find(x => x.id === id);
+    modal.open();
   }
+
+  close(id: string) {
+    const modal = this.modals.find(x => x.id === id);
+    modal.close();
+  }
+
 }
