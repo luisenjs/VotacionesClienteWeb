@@ -53,6 +53,10 @@ export class ConfirmationComponent implements OnInit, OnChanges {
           this.pregunta = "¿Estás seguro que deseas modificar este elemento?";
           this.descripcion = "Este elemento se modificará y el cambio se verá reflejado en todas las papeletas.";
           break;
+        case "papeleta":
+          this.pregunta = "¿Estás seguro que desea agregar esta papeleta al la base de datos?";
+          this.descripcion = "Esta papeleta se agregará, revise si todo está en orden antes de proceder";
+          break;
       }
     }
   }

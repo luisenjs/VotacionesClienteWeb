@@ -1,14 +1,14 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, SimpleChanges } from '@angular/core';
 import { ModalService } from '../../services/modal/modal.service';
-import { FormGroup, FormBuilder, Validators, ReactiveFormsModule, FormsModule } from '@angular/forms';
+import { FormGroup, FormBuilder, Validators, ReactiveFormsModule, FormsModule, FormArray } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { DataService } from '../../services/data/data.service';
-import { Lista } from '../../interface/data';
+import { ConfirmationComponent } from '../confirmation/confirmation.component';
 
 @Component({
   selector: 'app-crear-papeleta',
   standalone: true,
-  imports: [ReactiveFormsModule, CommonModule, FormsModule],
+  imports: [ReactiveFormsModule, CommonModule, FormsModule, ConfirmationComponent],
   templateUrl: './crear-papeleta.component.html',
   styleUrl: './crear-papeleta.component.css'
 })
@@ -20,22 +20,57 @@ export class CrearPapeletaComponent {
   isVisible = false;
 
   papeletaform: FormGroup;
-  listas: Lista[] = [];
-  selectors: { id: string | null }[] = [{ id: null }];
+
+  papeleta = "";
+
+  nombreelementos = "";
+
+  elementos: any = [];
+
+  pendingElement: any = null;
 
   constructor(private modal: ModalService, private fb: FormBuilder, private data: DataService) {
     this.papeletaform = this.fb.group({
-      elemento1: ['', Validators.required]
+      elemento1: ['', Validators.required],
+      selectors: this.fb.array([])
     })
+  }
+
+  get selectors() {
+    return this.papeletaform.get('selectors') as FormArray;
+  }
+
+  loadElementos() {
+    this.data.getElementos(this.tipo).subscribe(element => {
+      this.elementos = element;
+      switch (this.tipo) {
+        case "binomio":
+          this.papeleta = "Creación de papeleta sobre binomio presidencial"
+          this.nombreelementos = "Candidatos";
+          break;
+        case "organizacion":
+          this.papeleta = "Creación de papeleta sobre organizaciones públicas";
+          this.nombreelementos = "Organizaciones";
+
+          break;
+        case "consulta":
+          this.papeleta = "Creación de papeleta sobre consultas";
+          this.nombreelementos = "Consultas";
+          break;
+      }
+      this.initArray();
+    });
+  }
+
+  ngOnChanges(changes: SimpleChanges): void {
+    if (changes['tipo'] && changes['tipo'].currentValue) {
+      this.loadElementos();
+    }
   }
 
   ngOnInit(): void {
     this.modal.add(this);
-
-    this.data.getData<Lista[]>('assets/data/binomio.json').subscribe((data) => {
-      this.listas = data;
-    });
-
+    this.loadElementos();
   }
 
   ngOnDestroy(): void {
@@ -44,34 +79,60 @@ export class CrearPapeletaComponent {
 
   open() {
     this.isVisible = true;
+    this.initArray();
   }
 
   close() {
     this.isVisible = false;
+    this.papeletaform.reset();
+    this.selectors.clear();
   }
 
-  addSelector(): void {
-    this.selectors.push({ id: null });
+  initArray() {
+    this.selectors.clear();
+    if (this.tipo === 'binomio') {
+      for (let i = 0; i < this.elementos.length; i++) {
+        const selector = this.fb.group({
+          option: [this.elementos[i].candidato, Validators.required]
+        });
+        this.selectors.push(selector);
+      }
+    } else {
+      this.addSelector();
+      this.addSelector();
+    }
   }
 
-  removeSelector(index: number): void {
-    this.selectors.splice(index, 1);
+  addSelector() {
+    const selector = this.fb.group({
+      option: ['', Validators.required]
+    });
+    this.selectors.push(selector);
   }
 
-  getFilteredOptions(selectedIndex: number): any[] {
-    const selectedIds = this.selectors
-      .map((selector) => selector.id)
-      .filter((id) => id !== null);
-
-    return this.listas.filter(
-      (option) =>
-        !selectedIds.includes(option.id) || 
-        this.selectors[selectedIndex].id === option.id
-    );
+  removeSelector(index: number) {
+    if (this.selectors.length > 2) {
+      this.selectors.removeAt(index);
+    }
   }
 
   onSubmit(event: Event) {
     event.preventDefault();
+    if (this.papeletaform.valid) {
+      this.pendingElement = this.papeletaform.value;
+      this.modal.open("agregar");
+    }
+  }
+
+  confirmation(confirmacion: boolean) {
+    if (confirmacion) {
+      console.log('Nuevo elemento:', this.pendingElement);
+      this.close();
+    }
+    this.papeletaform.reset();
+    this.selectors.clear();
+    this.initArray();
+    this.pendingElement = null;
   }
 
 }

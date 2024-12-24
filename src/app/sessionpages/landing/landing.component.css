@@ -1,7 +1,7 @@
 .landing-bg {
-    background-image:
-        linear-gradient(to bottom, rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0) 900%, rgba(0, 0, 0, 0) 1000%, rgba(0, 0, 0, 0.7)),
-        url('/assets/images/fondo2.jpg');
+    background-image: url('/assets/images/fondo3.jpg');
+    background-size: contain;
+    background-repeat: repeat;
 }
 
 .navbar {
@@ -81,13 +81,15 @@
     margin-top: 10px;
 }
 
+.features {
+    background-color: black;
+}
+
 .features .container {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
     padding: 50px 0;
-    background: rgb(0, 12, 191);
-    background: linear-gradient(180deg, rgba(0, 12, 191, 0.03545168067226889) 0%, rgba(0, 12, 191, 0.738532913165266) 50%, rgba(0, 12, 191, 0.04385504201680668) 100%);
     flex-wrap: wrap;
 }
 
@@ -228,93 +230,116 @@
     width: 100px;
 }
 
-.results-section {
-    text-align: center;
-    padding: 60px 20px;
+.footer {
+    background-color: black;
+    width: auto;
+    height: fit-content;
+    padding: 50px;
+
+    img {
+        height: 80px;
+    }
 }
 
-.results-section h2 {
-    font-size: 2.5em;
-    margin-bottom: 30px;
-    color: white;
-}
-
-.carousel-container {
-    overflow: hidden;
-    max-width: 800px;
-    margin: 0 auto;
-    position: relative;
-    border-radius: 10px;
-}
-
-.carousel-slide {
+.footer-content {
     display: flex;
-    transition: transform 0.8s cubic-bezier(1, 0.75, 0.75, 1);
-}
-
-.result-card {
-    flex: 1 0 100%;
-    box-sizing: border-box;
-    background-color: rgba(0, 0, 0, 0.7);
-    padding: 20px;
-    text-align: center;
-}
-
-.result-card i {
-    font-size: 2em;
-    color: #4CAF50;
-    margin-bottom: 15px;
-}
-
-.result-card h3 {
-    font-size: 1.5em;
-    color: white;
-    margin-bottom: 10px;
-}
-
-.result-card p {
-    color: white;
-    font-size: 1em;
-}
-
-.prev,
-.next {
-    position: absolute;
-    top: 40%;
-    background-color: rgba(255, 255, 255, 1);
-    border: none;
-    cursor: pointer;
-    padding: 10px;
-    font-size: 18px;
-    border-radius: 50%;
-    z-index: 10;
-    width: 45px;
-    height: 45px;
-}
-
-.prev {
-    left: 2%;
-}
-
-.next {
-    right: 2%;
-}
-
-.carousel-dots {
-    display: flex;
+    flex-direction: column;
     justify-content: center;
-    gap: 10px;
-    margin-top: 15px;
+    align-items: center;
 }
 
-.carousel-dots span {
-    width: 12px;
-    height: 12px;
-    background-color: #ddd;
-    border-radius: 50%;
-    cursor: pointer;
+.links {
+    display: flex;
+    flex-direction: row;
+    gap: 30px;
+    padding: 10px;
+
+    a {
+        color: white !important;
+        text-decoration: none;
+        transition: color 0.3s;
+    }
+
+    a:hover {
+        color: rgb(182, 182, 182) !important;
+    }
 }
 
-.carousel-dots .active-dot {
-    background-color: #333;
+.separator {
+    padding: 20px;
+    width: 70%;
+}
+
+.cc p {
+    color: white !important;
+}
+
+.testimonials {
+    margin: auto;
+    padding: 50px;
+    justify-content: center;
+    text-align: center;
+}
+
+.testimonial-content {
+    margin: auto;
+    width: 100%;
+
+    .carousel {
+        display: flex;
+        overflow: hidden;
+        width: 100%;
+        position: relative;
+    }
+
+    .carousel-item {
+        padding: 20px 0;
+        flex: 0 0 auto;
+        height: 130px;
+        width: 50%;
+        background-color: #e6e6e6;
+        border-radius: 10px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        text-align: center;
+        transition: transform 0.5s ease-in-out, opacity 0.5s ease-in-out;
+        opacity: 0;
+        position: absolute;
+        left: 25%;
+        transform: translateX(-50%);
+
+        .elementos {
+            font-size: 20px;
+            padding: 10px 20px;
+            margin: auto;
+        }
+
+        .icon i{
+            color: rgb(41, 79, 129);
+        }
+
+        .title {
+            color: rgb(70, 123, 192);
+            font-weight: bold;
+        }
+
+        .description {
+            color: black;
+        }
+    }
+
+    .carousel-item.active {
+        opacity: 1;
+        position: relative;
+        transform: translateX(0);
+    }
+
+    .carousel-controls {
+        display: flex;
+        justify-content: center;
+        margin-top: 10px;
+    }
+
+    button {
+        margin: 0 5px;
+    }
 }

@@ -1,0 +1,102 @@
+[
+    {
+        "id": 1,
+        "fecha": "01/01/24 08:15:00",
+        "provincia": "Pichincha",
+        "canton": "Quito",
+        "parroquia": "Centro Histórico",
+        "zona": "Zona 1",
+        "recinto": "Unidad Educativa Central",
+        "papeleta": "Presidente y Vicepresidente"
+    },
+    {
+        "id": 2,
+        "fecha": "01/01/24 08:30:00",
+        "provincia": "Guayas",
+        "canton": "Guayaquil",
+        "parroquia": "Tarqui",
+        "zona": "Zona 2",
+        "recinto": "Colegio Nacional Norte",
+        "papeleta": "Asambleístas Nacionales"
+    },
+    {
+        "id": 3,
+        "fecha": "01/01/24 09:00:00",
+        "provincia": "Azuay",
+        "canton": "Cuenca",
+        "parroquia": "El Batán",
+        "zona": "Zona 3",
+        "recinto": "Escuela Gran Colombia",
+        "papeleta": "Asambleístas Provinciales"
+    },
+    {
+        "id": 4,
+        "fecha": "01/01/24 09:15:00",
+        "provincia": "Manabí",
+        "canton": "Portoviejo",
+        "parroquia": "San Pablo",
+        "zona": "Zona 4",
+        "recinto": "Instituto Portoviejo",
+        "papeleta": "Representantes del Exterior"
+    },
+    {
+        "id": 5,
+        "fecha": "01/01/24 09:45:00",
+        "provincia": "Imbabura",
+        "canton": "Ibarra",
+        "parroquia": "Caranqui",
+        "zona": "Zona 5",
+        "recinto": "Unidad Educativa Andina",
+        "papeleta": "Presidente y Vicepresidente"
+    },
+    {
+        "id": 6,
+        "fecha": "01/01/24 10:00:00",
+        "provincia": "Loja",
+        "canton": "Loja",
+        "parroquia": "San Sebastián",
+        "zona": "Zona 6",
+        "recinto": "Escuela Central Loja",
+        "papeleta": "Asambleístas Nacionales"
+    },
+    {
+        "id": 7,
+        "fecha": "01/01/24 10:30:00",
+        "provincia": "Esmeraldas",
+        "canton": "Esmeraldas",
+        "parroquia": "5 de Agosto",
+        "zona": "Zona 7",
+        "recinto": "Colegio Esmeraldas",
+        "papeleta": "Asambleístas Provinciales"
+    },
+    {
+        "id": 8,
+        "fecha": "01/01/24 11:00:00",
+        "provincia": "Tungurahua",
+        "canton": "Ambato",
+        "parroquia": "Atahualpa",
+        "zona": "Zona 8",
+        "recinto": "Unidad Educativa Bolívar",
+        "papeleta": "Presidente y Vicepresidente"
+    },
+    {
+        "id": 9,
+        "fecha": "01/01/24 11:15:00",
+        "provincia": "Santa Elena",
+        "canton": "Salinas",
+        "parroquia": "Santa Rosa",
+        "zona": "Zona 9",
+        "recinto": "Escuela Salinas",
+        "papeleta": "Representantes del Exterior"
+    },
+    {
+        "id": 10,
+        "fecha": "01/01/24 11:30:00",
+        "provincia": "Carchi",
+        "canton": "Tulcán",
+        "parroquia": "González Suárez",
+        "zona": "Zona 10",
+        "recinto": "Colegio Tulcán",
+        "papeleta": "Asambleístas Nacionales"
+    }
+]

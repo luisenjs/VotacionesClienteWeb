@@ -43,3 +43,7 @@ h6 {
     color: #18599d;
     font-weight: bold;
 }
+
+a[routerLink^="/none"] {
+    cursor: not-allowed;
+}

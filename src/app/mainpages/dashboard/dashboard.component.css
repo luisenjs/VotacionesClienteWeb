@@ -5,7 +5,7 @@
 .resumen-votos {
     padding: 10px;
     display: grid;
-    grid-template-columns: 2fr 2fr 3fr;
+    grid-template-columns: 1fr 1fr 3fr;
     grid-template-rows: 2fr 2fr;
     grid-template-areas:
         "partido votosvalidos chart"
@@ -13,10 +13,14 @@
     gap: 25px;
 }
 
-.partido, .votosvalidos, .votosblancos, .votosnulos, .chart{
+.partido,
+.votosvalidos,
+.votosblancos,
+.votosnulos,
+.chart {
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
     border-radius: 10px;
-    background-color:#fff;
+    background-color: #fff;
 }
 
 .partido {
@@ -27,14 +31,29 @@
     grid-area: votosvalidos;
 }
 
-.votosblancos{
+.votosblancos {
     grid-area: votosblancos;
 }
 
-.votosnulos{
+.votosnulos {
     grid-area: votosnulos;
 }
 
-.chart{
+.chart {
     grid-area: chart;
+    overflow-x: auto;
+    overflow-y: hidden;
+}
+
+.barra-votos {
+    margin: 10px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    background-color: #fff;
+
+    .barra {
+        padding: 10px;
+        overflow-x: auto;
+        overflow-y: hidden;
+    }
 }

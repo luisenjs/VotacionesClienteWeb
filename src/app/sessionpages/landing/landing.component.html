@@ -39,7 +39,7 @@
                             <p>Registro y seguimiento en tiempo real</p>
                         </div>
                     </div>
-                    
+
                     <div class="objective">
                         <div class="icon-container">
                             <i class="fa-solid fa-rocket"></i>
@@ -50,7 +50,7 @@
                             <p>Optimización de la comunicación entre equipos</p>
                         </div>
                     </div>
-                    
+
                     <div class="objective">
                         <div class="icon-container">
                             <i class="fa-solid fa-newspaper"></i>
@@ -61,7 +61,7 @@
                             <p>Herramientas analíticas para una toma de decisiones</p>
                         </div>
                     </div>
-                    
+
                     <div class="objective">
                         <div class="icon-container">
                             <i class="fa-solid fa-user-tie"></i>
@@ -72,7 +72,7 @@
                             <p>Monitoreo continuo y generación de informes</p>
                         </div>
                     </div>
-                    
+
                     <div class="objective">
                         <div class="icon-container">
                             <i class="fa-solid fa-bug-slash"></i>
@@ -147,27 +147,42 @@
         </div>
     </section>
 
-    <section class="results-section">
-        <h2>Resultados Esperados</h2>
-
-        <div class="carousel-container">
-            <div class="carousel-slide" [ngStyle]="{'transform': 'translateX(-' + (currentSlide * 100) + '%)'}">
-                <div class="result-card" *ngFor="let testimonial of testimonials; let i = index"
-                    [ngClass]="{'active': currentSlide === i}">
-                    <i [class]="testimonial.icon"></i>
-                    <h3>{{ testimonial.title }}</h3>
-                    <p>{{ testimonial.text }}</p>
+    <section class="testimonials">
+        <div class="testimonial-content">
+            <div class="titulo">
+                <h2>Resultados esperados</h2>
+            </div>
+            <div class="carousel">
+                <div class="carousel-item" *ngFor="let item of items; let i = index"
+                    [class.active]="i === currentIndex">
+                    <div class="elementos">
+                        <div class="icon"><i class="{{item.icon}}"></i></div>
+                        <div class="title">{{item.title}}</div>
+                        <div class="description">{{ item.text }}</div>
+                    </div>
                 </div>
             </div>
-
-            <button class="prev" (click)="prevSlide()">&#10094;</button>
-            <button class="next" (click)="nextSlide()">&#10095;</button>
-
+            <div class="carousel-controls">
+                <button (click)="prev()" (mouseenter)="stopAutoScroll()" (mouseleave)="startAutoScroll()">Prev</button>
+                <button (click)="next()" (mouseenter)="stopAutoScroll()" (mouseleave)="startAutoScroll()">Next</button>
+            </div>
         </div>
+    </section>
 
-        <div class="carousel-dots">
-            <span *ngFor="let testimonial of testimonials; let i = index" (click)="setSlide(i)" (keydown.enter)="setSlide(i)" tabindex="0"
-                [ngClass]="{'active-dot': currentSlide === i}"></span>
+    <section class="footer">
+        <div class="footer-content">
+            <div class="logo"><img src="/assets/images/logo.png" alt="Logo" /></div>
+            <div class="links">
+                <a routerLink="/" routerLinkActive="active">Equipo</a>
+                <a routerLink="/" routerLinkActive="active">Documentación</a>
+                <a routerLink="/" routerLinkActive="active">Hangaroa</a>
+            </div>
+            <div class="separator">
+                <hr>
+            </div>
+            <div class="cc">
+                <p>© COPYRIGHT 2024</p>
+            </div>
         </div>
     </section>
 </div>

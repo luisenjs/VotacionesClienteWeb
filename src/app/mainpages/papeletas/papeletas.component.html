@@ -2,16 +2,10 @@
     <div class="header">
         <h3>Gestionando papeletas</h3>
         <a class="add-button" href="#" (click)="seleccionarPapeleta($event)"><i class="fa-regular fa-square-plus"></i>
-            Agregar elemento</a>
+            Crear papeleta</a>
     </div>
     <div class="papeletas">
-        <app-papeleta></app-papeleta>
-        <app-papeleta></app-papeleta>
-        <app-papeleta></app-papeleta>
-        <app-papeleta></app-papeleta>
-        <app-papeleta></app-papeleta>
-        <app-papeleta></app-papeleta>
-        <app-papeleta></app-papeleta>
+        <app-papeleta *ngFor="let papeleta of papeletas" [nombre]="papeleta.nombre"></app-papeleta>
     </div>
 </div>
 

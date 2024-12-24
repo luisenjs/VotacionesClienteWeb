@@ -1,36 +1,41 @@
 [
     {
         "id": 1,
-        "lista": "Lista 1",
-        "candidato": "Candidato A"
+        "lista": "2-17-20|UP/PSE/DSI",
+        "candidato": "YAKU PEREZ"
     },
     {
         "id": 2,
-        "lista": "Lista 2",
-        "candidato": "Candidato B"
+        "lista": "4-35|PID/MOVER",
+        "candidato": "ANIEL NOBOA AZIN"
     },
     {
         "id": 3,
-        "lista": "Lista 3",
-        "candidato": "Candidato C"
+        "lista": "5|RC",
+        "candidato": "LUISA GONZALEZ"
     },
     {
         "id": 4,
-        "lista": "Lista 4",
-        "candidato": "Candidato D"
+        "lista": "6-3-1|PSC/PSP/CD",
+        "candidato": "JAN TOPIC"
     },
     {
         "id": 5,
-        "lista": "Lista 5",
-        "candidato": "Candidato E"
+        "lista": "8-23|AVANZA/SUMA",
+        "candidato": "OTTO SONNENHOLZNER"
     }, {
         "id": 6,
-        "lista": "Lista 6",
-        "candidato": "Candidato F"
+        "lista": "16|AMIGO",
+        "candidato": "BOLIVAR ARMIJOS"
     },
     {
         "id": 7,
-        "lista": "Lista 7",
-        "candidato": "Candidato G"
+        "lista": "25|CONSTRUYE",
+        "candidato": "FERNANDO VILLAVICENCIO"
+    },
+    {
+        "id": 8,
+        "lista": "33|RETO",
+        "candidato": "XAVIER HERVAS"
     }
 ]

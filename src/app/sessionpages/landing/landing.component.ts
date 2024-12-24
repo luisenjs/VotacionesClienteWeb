@@ -10,10 +10,10 @@ import { CommonModule } from '@angular/common';
   styleUrl: './landing.component.css'
 })
 export class LandingComponent {
-  isScrolled = false;
-  currentSlide = 0;
 
-  testimonials = [
+  isScrolled = false;
+
+  items = [
     {
       icon: 'fa fa-rocket',
       title: 'Datos precisos y actualizados',
@@ -38,24 +38,27 @@ export class LandingComponent {
       icon: 'fa fa-cogs',
       title: 'Decisiones basadas en datos',
       text: 'Análisis detallado que apoya decisiones informales durante las elecciones.',
-    },
+    }
   ];
 
-  nextSlide() {
-    this.currentSlide = (this.currentSlide + 1) % this.testimonials.length;
-  }
+  currentIndex = 0;
+  intervalId: any;
 
-  prevSlide() {
-    this.currentSlide = (this.currentSlide - 1 + this.testimonials.length) % this.testimonials.length;
-  }
-
-  setSlide(index: number) {
-    this.currentSlide = index;
+  ngOnInit(): void {
+    this.startAutoScroll();
   }
 
   @HostListener('window:scroll', [])
   onWindowScroll() {
     this.isScrolled = window.scrollY > 0;
   }
+
+  startAutoScroll() { this.intervalId = setInterval(() => this.next(), 3000); }
+
+  stopAutoScroll() { clearInterval(this.intervalId); }
+
+  next() { this.currentIndex = (this.currentIndex + 1) % this.items.length; }
+
+  prev() { this.currentIndex = (this.currentIndex - 1 + this.items.length) % this.items.length; }
 
 }

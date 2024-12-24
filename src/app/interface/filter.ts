@@ -22,10 +22,11 @@ export const ALL_FILTER: Filter[] = [
 
 export const PAGE_FILTERS = {
     "General": ["provincia", "circunscripción", "cantón", "parroquia", "zona", "recinto"],
+    "territorio": ["provincia", "circunscripción", "cantón", "parroquia", "zona", "recinto", "junta", "estadoJunta"],
     "actasGeneral": ["papeleta", "provincia", "circunscripción", "cantón", "parroquia", "zona", "recinto"],
-    "actasContol": ["provincia", "circunscripción", "cantón", "parroquia", "zona", "recinto", "estadoActa"],
+    "actasContol": ["papeleta", "provincia", "circunscripción", "cantón", "parroquia", "zona", "recinto", "estadoActa"],
     "usuaiosControl": ["ordenar", "género", "rol", "provincia", "circunscripción", "cantón", "parroquia", "zona", "recinto", "estatus"],
+    "usuariosGeneral": ["ordenar", "género", "rol", "provincia", "cantón", "parroquia", "recinto"],
     "incripcionesUsuarios": ["ordenar", "género", "provincia", "cantón", "parroquia", "recinto"],
-    "territorios": ["estadoJunta"],
     "cantidad": ["mostrar"]
 }

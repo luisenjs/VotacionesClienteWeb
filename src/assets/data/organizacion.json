@@ -1,52 +1,77 @@
 [
     {
         "id": 1,
-        "lista": "Lista 1",
-        "organizacion": "ADN"
+        "lista": "2-17-20|UP/PSE/DSI",
+        "organizacion": "CLARO QUE SE PUEDE"
     },
     {
         "id": 2,
-        "lista": "Lista 2",
-        "organizacion": "ADN"
+        "lista": "3|PSP",
+        "organizacion": "PARTIDO SOCIEDAD PATRIÓTICA 21 DE ENERO"
     },
     {
         "id": 3,
-        "lista": "Lista 4",
-        "organizacion": "ADN"
+        "lista": "4-35|PID/MOVER",
+        "organizacion": "ACCIÓN DEMOCRÁTICA NACIONAL, ADN"
     },
     {
         "id": 4,
-        "lista": "Lista 6",
-        "organizacion": "ADN"
+        "lista": "5|RC",
+        "organizacion": "MOVIMIENTO POLÍTICO REVOLUCIÓN CIUDADANA"
     },
     {
         "id": 5,
-        "lista": "Lista 6-7",
-        "organizacion": "ADN"
+        "lista": "6|PSC",
+        "organizacion": "PARTIDO SOCIAL CRISTIANO"
     },
     {
         "id": 6,
-        "lista": "Lista 9",
-        "organizacion": "ADN"
+        "lista": "8-23|AVANZA/SUMA",
+        "organizacion": "ACTUEMOS"
     },
     {
         "id": 7,
-        "lista": "Lista 10",
-        "organizacion": "ADN"
+        "lista": "16|AMIGO",
+        "organizacion": "MOVIMIENTO AMIGO, ACCIÓN MOVILIZADORA INDEPENDIENTE GENERANDO OPORTUNIDADES"
     },
     {
         "id": 8,
-        "lista": "Lista 13",
-        "organizacion": "ADN"
+        "lista": "25|CONSTRUYE",
+        "organizacion": "MOVIMIENTO CONSTRUYE"
     },
     {
         "id": 9,
-        "lista": "Lista 14-17",
-        "organizacion": "ADN"
+        "lista": "33|RETO",
+        "organizacion": "MOVIMIENTO RENOVACIÓN TOTAL, RETO"
     },
     {
         "id": 10,
-        "lista": "Lista 19",
-        "organizacion": "ADN"
+        "lista": "1-16|CD/AMIGO",
+        "organizacion": "FUTURO Y ESPERANZA"
+    },
+    {
+        "id": 11,
+        "lista": "6-100|PSC/SIN SIGLAS",
+        "organizacion": "AZUAY SIN MIEDO"
+    },
+    {
+        "id": 12,
+        "lista": "12-62-82|ID/SIN SIGLAS/SIN SIGLAS",
+        "organizacion": "UNIDOS POR EL AZUAY"
+    },
+    {
+        "id": 13,
+        "lista": "18|MUPP",
+        "organizacion": "MOVIMIENTO DE UNIDAD PLURINACIONAL PACHAKUTIK"
+    },
+    {
+        "id": 14,
+        "lista": "6-61|PSC/SIN SIGLAS",
+        "organizacion": "PSC-TC"
+    },
+    {
+        "id": 15,
+        "lista": "62|MCAT",
+        "organizacion": "MOVIMIENTO CÍVICO POR AMBATO Y TUNGURAHUA"
     }
 ]

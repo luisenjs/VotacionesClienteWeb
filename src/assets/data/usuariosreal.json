@@ -1,0 +1,93 @@
+[
+    {
+        "id": 1,
+        "nombre": "JUANITO ALEXANDER PEREZ MARTINEZ",
+        "genero": "Masculino",
+        "rol": "Delegado",
+        "provincia": "Pichincha",
+        "circunscripcion": "1",
+        "canton": "Quito",
+        "parroquia": "Centro Histórico",
+        "zona": "Zona 1",
+        "recinto": "Unidad Educativa Central",
+        "estatus": "Presente"
+    },
+    {
+        "id": 2,
+        "nombre": "MARIA JOSEFA LOPEZ CASTRO",
+        "genero": "Femenino",
+        "rol": "Delegado",
+        "provincia": "Guayas",
+        "circunscripcion": "2",
+        "canton": "Guayaquil",
+        "parroquia": "Tarqui",
+        "zona": "Zona 3",
+        "recinto": "Unidad Educativa del Norte",
+        "estatus": "Presente"
+    },
+    {
+        "id": 3,
+        "nombre": "LUIS EDUARDO CHICAIZA TORRES",
+        "genero": "Masculino",
+        "rol": "Delegado",
+        "provincia": "Manabí",
+        "circunscripcion": "1",
+        "canton": "Portoviejo",
+        "parroquia": "San Pablo",
+        "zona": "Zona 5",
+        "recinto": "Instituto Técnico Portoviejo",
+        "estatus": "Ausente"
+    },
+    {
+        "id": 4,
+        "nombre": "ANA PATRICIA VEGA ROMERO",
+        "genero": "Femenino",
+        "rol": "Delegado",
+        "provincia": "Azuay",
+        "circunscripcion": null,
+        "canton": "Cuenca",
+        "parroquia": "El Batán",
+        "zona": "Zona 7",
+        "recinto": "Escuela Gran Colombia",
+        "estatus": "Presente"
+    },
+    {
+        "id": 5,
+        "nombre": "CARLOS ALBERTO SÁNCHEZ MORALES",
+        "genero": "Masculino",
+        "rol": "Delegado",
+        "provincia": "Loja",
+        "circunscripcion": null,
+        "canton": "Loja",
+        "parroquia": "San Sebastián",
+        "zona": "Zona 8",
+        "recinto": "Escuela Central Loja",
+        "estatus": "Ausente"
+    },
+    {
+        "id": 6,
+        "nombre": "SOFIA ELENA ALMEIDA PÉREZ",
+        "genero": "Femenino",
+        "rol": "Delegado",
+        "provincia": "Esmeraldas",
+        "circunscripcion": null,
+        "canton": "Esmeraldas",
+        "parroquia": "5 de Agosto",
+        "zona": "Zona 9",
+        "recinto": "Colegio Esmeraldas",
+        "estatus": "Presente"
+    },
+    {
+        "id": 7,
+        "nombre": "JULIO CESAR PÉREZ CARRIÓN",
+        "genero": "Masculino",
+        "rol": "Delegado",
+        "provincia": "Tungurahua",
+        "circunscripcion": null,
+        "canton": "Ambato",
+        "parroquia": "Atahualpa",
+        "zona": "Zona 10",
+        "recinto": "Unidad Educativa Bolívar",
+        "estatus": "Ausente"
+    }
+]

@@ -1,0 +1,72 @@
+[
+    {
+        "provincia": "Pichincha",
+        "circunscripcion": "1",
+        "canton": "Quito",
+        "parroquia": "La Floresta",
+        "zona": "Zona 1",
+        "recinto": "Unidad Educativa Nacional",
+        "junta": "Junta 1",
+        "estado": "Controlado"
+    },
+    {
+        "provincia": "Guayas",
+        "circunscripcion": "2",
+        "canton": "Guayaquil",
+        "parroquia": "Urdesa",
+        "zona": "Zona 3",
+        "recinto": "Colegio Técnico Industrial",
+        "junta": "Junta 2",
+        "estado": "Faltante"
+    },
+    {
+        "provincia": "Manabí",
+        "circunscripcion": "1",
+        "canton": "Manta",
+        "parroquia": "Tarqui",
+        "zona": "Zona 4",
+        "recinto": "Unidad Educativa del Pacífico",
+        "junta": "Junta 3",
+        "estado": "Controlado"
+    },
+    {
+        "provincia": "Azuay",
+        "circunscripcion": "1",
+        "canton": "Cuenca",
+        "parroquia": "El Sagrario",
+        "zona": "Zona 5",
+        "recinto": "Instituto Tecnológico Cuenca",
+        "junta": "Junta 4",
+        "estado": "Faltante"
+    },
+    {
+        "provincia": "Loja",
+        "circunscripcion": "1",
+        "canton": "Loja",
+        "parroquia": "Valle",
+        "zona": "Zona 6",
+        "recinto": "Unidad Educativa San Sebastián",
+        "junta": "Junta 5",
+        "estado": "Controlado"
+    },
+    {
+        "provincia": "Esmeraldas",
+        "circunscripcion": "1",
+        "canton": "Esmeraldas",
+        "parroquia": "5 de Agosto",
+        "zona": "Zona 7",
+        "recinto": "Colegio Nacional Esmeraldas",
+        "junta": "Junta 6",
+        "estado": "Faltante"
+    },
+    {
+        "provincia": "Tungurahua",
+        "circunscripcion": "1",
+        "canton": "Ambato",
+        "parroquia": "Atocha",
+        "zona": "Zona 8",
+        "recinto": "Escuela Superior Bolívar",
+        "junta": "Junta 7",
+        "estado": "Controlado"
+    }
+]

@@ -12,17 +12,20 @@
 #nombre {
     grid-area: nombre;
     margin: 0;
+    font-size: 16px;
 }
 
 #tipo {
     grid-area: tipo;
     margin: 0;
+    font-size: 18px;
 }
 
 #cantidad {
     grid-area: cantidad;
     margin: 0;
     border-top: 2px dashed #18599d;
+    font-size: 24px;
 }
 
 i {

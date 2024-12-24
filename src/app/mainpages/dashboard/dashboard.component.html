@@ -2,13 +2,13 @@
     <h3>Dashboard</h3>
     <app-filter [filterIds]="filterIds"></app-filter>
     <div class="resumen-votos">
-        <app-totalvotos class="partido"></app-totalvotos>
-        <app-totalvotos class="votosvalidos"></app-totalvotos>
-        <app-totalvotos class="votosblancos"></app-totalvotos>
-        <app-totalvotos class="votosnulos"></app-totalvotos>
-        <app-totalvotos class="chart"></app-totalvotos>
+        <app-totalvotos [tipo]="'lider'" [cantidad]="cantidadlider" class="partido"></app-totalvotos>
+        <app-totalvotos [tipo]="'valido'" [cantidad]="cantidadvalido" class="votosvalidos"></app-totalvotos>
+        <app-totalvotos [tipo]="'blanco'" [cantidad]="cantidadblanco" class="votosblancos"></app-totalvotos>
+        <app-totalvotos [tipo]="'nulo'" [cantidad]="cantidadnulo" class="votosnulos"></app-totalvotos>
+        <app-votostotales-chart class="chart"></app-votostotales-chart>
     </div>
     <div class="barra-votos">
-
+        <app-votoscandidatos-chart class="barra"></app-votoscandidatos-chart>
     </div>
 </div>

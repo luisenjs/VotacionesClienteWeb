@@ -14,4 +14,22 @@ export class DataService {
     return this.http.get<T>(archivo);
   }
 
+  getElementos(tipo: string): Observable<any[]> {
+    let url = '';
+
+    switch (tipo) {
+      case 'binomio':
+        url = 'assets/data/binomio.json';
+        break;
+      case 'organizacion':
+        url = 'assets/data/organizacion.json';
+        break;
+      case 'consulta':
+        url = 'assets/data/consulta.json';
+        break;
+    }
+
+    return this.http.get<any[]>(url);
+  }
+
 }

@@ -1,0 +1,452 @@
+    {
+      "provincias": [
+        {
+          "nombre": "Guayas",
+          "circunscripciones": [
+            {
+              "nombre": "Circunscripción 1",
+              "cantones": [
+                {
+                  "nombre": "Guayaquil",
+                  "ciudades": [
+                    {
+                      "nombre": "Guayaquil",
+                      "parroquias": [
+                        {
+                          "nombre": "Tarqui",
+                          "zonas": [
+                            {
+                              "nombre": "Zona 1",
+                              "recintos": [
+                                "Colegio Tarqui",
+                                "Escuela Guayas"
+                              ]
+                            },
+                            {
+                              "nombre": "Zona 2",
+                              "recintos": [
+                                "Unidad Educativa Centro",
+                                "Escuela Modelo"
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "nombre": "Daule",
+                  "ciudades": [
+                    {
+                      "nombre": "Daule",
+                      "parroquias": [
+                        {
+                          "nombre": "La Aurora",
+                          "zonas": [
+                            {
+                              "nombre": "Zona 1",
+                              "recintos": [
+                                "Colegio Aurora",
+                                "Unidad Educativa Norte"
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "nombre": "Samborondón",
+                  "ciudades": [
+                    {
+                      "nombre": "Samborondón",
+                      "parroquias": [
+                        {
+                          "nombre": "La Puntilla",
+                          "zonas": [
+                            {
+                              "nombre": "Zona 1",
+                              "recintos": [
+                                "Colegio Samborondón",
+                                "Unidad Educativa Delta"
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "nombre": "Manabí",
+          "circunscripciones": [
+            {
+              "nombre": "Circunscripción 1",
+              "cantones": [
+                {
+                  "nombre": "Portoviejo",
+                  "ciudades": [
+                    {
+                      "nombre": "Portoviejo",
+                      "parroquias": [
+                        {
+                          "nombre": "San Pablo",
+                          "zonas": [
+                            {
+                              "nombre": "Zona 1",
+                              "recintos": [
+                                "Colegio Portoviejo",
+                                "Unidad Educativa San Pablo"
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "nombre": "Manta",
+                  "ciudades": [
+                    {
+                      "nombre": "Manta",
+                      "parroquias": [
+                        {
+                          "nombre": "Tarqui",
+                          "zonas": [
+                            {
+                              "nombre": "Zona 1",
+                              "recintos": [
+                                "Colegio Tarqui",
+                                "Escuela Central Manta"
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "nombre": "Chone",
+                  "ciudades": [
+                    {
+                      "nombre": "Chone",
+                      "parroquias": [
+                        {
+                          "nombre": "San Cayetano",
+                          "zonas": [
+                            {
+                              "nombre": "Zona 1",
+                              "recintos": [
+                                "Colegio Chone",
+                                "Escuela San Cayetano"
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "nombre": "Pichincha",
+          "circunscripciones": [
+            {
+              "nombre": "Circunscripción 1",
+              "cantones": [
+                {
+                  "nombre": "Quito",
+                  "ciudades": [
+                    {
+                      "nombre": "Quito",
+                      "parroquias": [
+                        {
+                          "nombre": "Centro Histórico",
+                          "zonas": [
+                            {
+                              "nombre": "Zona 1",
+                              "recintos": [
+                                "Colegio Mejía",
+                                "Unidad Educativa San Francisco"
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "nombre": "Rumiñahui",
+                  "ciudades": [
+                    {
+                      "nombre": "Sangolquí",
+                      "parroquias": [
+                        {
+                          "nombre": "San Rafael",
+                          "zonas": [
+                            {
+                              "nombre": "Zona 1",
+                              "recintos": [
+                                "Colegio Rumiñahui",
+                                "Escuela San Rafael"
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "nombre": "Cayambe",
+                  "ciudades": [
+                    {
+                      "nombre": "Cayambe",
+                      "parroquias": [
+                        {
+                          "nombre": "Olmedo",
+                          "zonas": [
+                            {
+                              "nombre": "Zona 1",
+                              "recintos": [
+                                "Escuela Cayambe",
+                                "Colegio Olmedo"
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "nombre": "Azuay",
+          "cantones": [
+            {
+              "nombre": "Cuenca",
+              "ciudades": [
+                {
+                  "nombre": "Cuenca",
+                  "parroquias": [
+                    {
+                      "nombre": "El Batán",
+                      "zonas": [
+                        {
+                          "nombre": "Zona 1",
+                          "recintos": [
+                            "Colegio Cuenca",
+                            "Unidad Educativa El Batán"
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "nombre": "Gualaceo",
+              "ciudades": [
+                {
+                  "nombre": "Gualaceo",
+                  "parroquias": [
+                    {
+                      "nombre": "San José",
+                      "zonas": [
+                        {
+                          "nombre": "Zona 1",
+                          "recintos": [
+                            "Escuela Gualaceo",
+                            "Colegio San José"
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "nombre": "Paute",
+              "ciudades": [
+                {
+                  "nombre": "Paute",
+                  "parroquias": [
+                    {
+                      "nombre": "Guachapala",
+                      "zonas": [
+                        {
+                          "nombre": "Zona 1",
+                          "recintos": [
+                            "Escuela Paute",
+                            "Colegio de Artes"
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "nombre": "Loja",
+          "cantones": [
+            {
+              "nombre": "Loja",
+              "ciudades": [
+                {
+                  "nombre": "Loja",
+                  "parroquias": [
+                    {
+                      "nombre": "San Sebastián",
+                      "zonas": [
+                        {
+                          "nombre": "Zona 1",
+                          "recintos": [
+                            "Unidad Educativa Loja",
+                            "Escuela San Sebastián"
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "nombre": "Catamayo",
+              "ciudades": [
+                {
+                  "nombre": "Catamayo",
+                  "parroquias": [
+                    {
+                      "nombre": "La Toma",
+                      "zonas": [
+                        {
+                          "nombre": "Zona 1",
+                          "recintos": [
+                            "Colegio Catamayo",
+                            "Unidad Educativa del Sur"
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "nombre": "Macará",
+              "ciudades": [
+                {
+                  "nombre": "Macará",
+                  "parroquias": [
+                    {
+                      "nombre": "General Eloy Alfaro",
+                      "zonas": [
+                        {
+                          "nombre": "Zona 1",
+                          "recintos": [
+                            "Unidad Educativa Eloy Alfaro",
+                            "Colegio Macará"
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "nombre": "Tungurahua",
+          "cantones": [
+            {
+              "nombre": "Ambato",
+              "ciudades": [
+                {
+                  "nombre": "Ambato",
+                  "parroquias": [
+                    {
+                      "nombre": "Huachi Chico",
+                      "zonas": [
+                        {
+                          "nombre": "Zona 1",
+                          "recintos": [
+                            "Colegio Ambato",
+                            "Unidad Educativa Huachi"
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "nombre": "Baños",
+              "ciudades": [
+                {
+                  "nombre": "Baños",
+                  "parroquias": [
+                    {
+                      "nombre": "San Vicente",
+                      "zonas": [
+                        {
+                          "nombre": "Zona 1",
+                          "recintos": [
+                            "Escuela San Vicente",
+                            "Colegio Baños"
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "nombre": "Pelileo",
+              "ciudades": [
+                {
+                  "nombre": "Pelileo",
+                  "parroquias": [
+                    {
+                      "nombre": "Pelileo Grande",
+                      "zonas": [
+                        {
+                          "nombre": "Zona 1",
+                          "recintos": [
+                            "Colegio Pelileo",
+                            "Unidad Educativa Centro"
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }

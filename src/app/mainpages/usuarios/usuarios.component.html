@@ -1,0 +1,72 @@
+<div class="content">
+    <h3>Inscripciones de delegados</h3>
+    <div class="control-actas">
+        <app-filter [filterIds]="filterControl"></app-filter>
+        <table>
+            <thead>
+                <tr>
+                    <th>
+                        <h3>Nombre</h3>
+                    </th>
+                    <th>
+                        <h3>Género</h3>
+                    </th>
+                    <th>
+                        <h3>Rol</h3>
+                    </th>
+                    <th>
+                        <h3>Provincia</h3>
+                    </th>
+                    <th>
+                        <h3>Cantón</h3>
+                    </th>
+                    <th>
+                        <h3>Parroquia</h3>
+                    </th>
+                    <th>
+                        <h3>Recinto</h3>
+                    </th>
+                    <th>
+                        <h3>Acciones</h3>
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let item of usuarios">
+                    <td>
+                        <p>{{item.nombre}}</p>
+                    </td>
+                    <td>
+                        <p>{{item.genero}}</p>
+                    </td>
+                    <td>
+                        <p>{{item.rol}}</p>
+                    </td>
+                    <td>
+                        <p>{{item.provincia}}</p>
+                    </td>
+                    <td>
+                        <p>{{item.canton}}</p>
+                    </td>
+                    <td>
+                        <p>{{item.parroquia}}</p>
+                    </td>
+                    <td>
+                        <p>{{item.recinto}}</p>
+                    </td>
+                    <td>
+                        <p>
+                            <i class="fa-solid fa-list-check"></i>
+                            <i class="fa-solid fa-eye"></i>
+                            <i class="fa-solid fa-pen-to-square"></i>
+                            <i class="fa-solid fa-ban"></i>
+                        </p>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <div class="footer">
+            <app-filter [filterIds]="filterCantidad"></app-filter>
+        </div>
+    </div>
+</div>

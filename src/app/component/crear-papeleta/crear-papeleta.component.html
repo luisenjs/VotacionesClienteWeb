@@ -1,7 +1,7 @@
 <div class="add" *ngIf="isVisible">
     <div class="content">
         <span class="close" (click)="close()" tabindex="0">&times;</span>
-        <h2>Creación de la papeleta</h2>
+        <h2>{{papeleta}}</h2>
         <form [formGroup]="papeletaform" (ngSubmit)="onSubmit($event)">
             <div class="form-group">
                 <label for="elemento1">Nombre</label>
@@ -11,16 +11,78 @@
                 </div>
             </div>
 
-            <div *ngFor="let selector of selectors; let i = index" class="selector-container">
-                <select [(ngModel)]="selectors[i].id">
-                  <option *ngFor="let option of getFilteredOptions(i)" [value]="option.id">
-                    {{ option.name }}
-                  </option>
-                </select>
-                <button *ngIf="selectors.length > 1" (click)="removeSelector(i)">❌</button>
-              </div>
-              
-              <button (click)="addSelector()">➕ Agregar selector</button>
+            <div *ngIf="tipo === 'binomio'">
+                <label for="elemtento2">Cantidadtos</label>
+
+                <div formArrayName="selectors">
+                    <div *ngFor="let selector of selectors.controls; let i = index">
+                        <div class="org" [formGroupName]="i">
+                            <select formControlName="option">
+                                <option [value]="selector.get('option')?.value">{{selector.get('option')?.value}}
+                                </option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div *ngIf="tipo === 'organizacion'">
+                <label for="elemtento2">Organizaciones</label>
+                <div formArrayName="selectors">
+                    <div *ngFor="let selector of selectors.controls; let i = index">
+                        <div class="org" [formGroupName]="i">
+                            <select formControlName="option">
+                                <option value="">Seleccione una opción</option>
+                                <option *ngFor="let e of elementos" [value]="e.organizacion">{{e.organizacion}}</option>
+                            </select>
+                            <i *ngIf="selectors.length > 2" class="fa-solid fa-trash" (click)="removeSelector(i)"></i>
+                        </div>
+                    </div>
+                </div>
+                <div id="separador">
+                    <hr>
+                    <i class="fa-solid fa-circle-plus" (click)="addSelector()"></i>
+                    <hr>
+                </div>
+                <div class="mostrar a">
+                    <label for="elemento3">Mostrar a</label>
+                    <select>
+                        <option>Provincia (Todos)</option>
+                    </select>
+                    <select>
+                        <option>Circunscripción (Todos)</option>
+                    </select>
+                </div>
+            </div>
+
+            <div *ngIf="tipo === 'consulta'">
+                <label for="elemtento2">Consultas</label>
+                <div formArrayName="selectors">
+                    <div *ngFor="let selector of selectors.controls; let i = index">
+                        <div class="org" [formGroupName]="i">
+                            <select formControlName="option">
+                                <option value="">Seleccione una opción</option>
+                                <option *ngFor="let e of elementos" [value]="e.pregunta">{{e.pregunta}}</option>
+                            </select>
+                            <i *ngIf="selectors.length > 2" class="fa-solid fa-trash" (click)="removeSelector(i)"></i>
+                        </div>
+                    </div>
+                </div>
+                <div id="separador">
+                    <hr>
+                    <i class="fa-solid fa-circle-plus" (click)="addSelector()"></i>
+                    <hr>
+                </div>
+                <div class="mostrar a">
+                    <label for="elemento3">Mostrar a</label>
+                    <select>
+                        <option>Provincia (Todos)</option>
+                    </select>
+                    <select>
+                        <option>Circunscripción (Todos)</option>
+                    </select>
+                </div>
+            </div>
 
             <div class="actions">
                 <button class="cancelar" (click)="close()">Cancelar</button>
@@ -29,3 +91,5 @@
         </form>
     </div>
 </div>
+
+<app-confirmation [id]="'agregar'" [tipo]="'papeleta'" (confirm)="confirmation($event)"></app-confirmation>

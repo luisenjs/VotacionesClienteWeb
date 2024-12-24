@@ -1,0 +1,38 @@
+.content {
+    padding: 10px;
+}
+
+.control-actas {
+    display: flex;
+    flex-direction: column;
+    height: fit-content;
+    margin: 10px;
+    border-radius: 8px;
+    border: 2px, dashed, #18599d;
+}
+
+.footer {
+    position: bottom;
+    width: fit-content;
+}
+
+table {
+    padding: 0 60px;
+}
+
+th,
+td {
+    border-bottom: 1px solid #18599d;
+    padding: 0 10px;
+    font-size: 18px !important;
+    text-align: left;
+}
+
+table i {
+    cursor: pointer;
+    margin-right: 8px;
+}
+
+table i:hover {
+    color: #18599d;
+}

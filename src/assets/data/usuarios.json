@@ -1,0 +1,72 @@
+[
+    {
+        "id": 1,
+        "nombre": "JUAN PABLO ANDRADE LÓPEZ",
+        "genero": "Masculino",
+        "rol": "Delegado",
+        "provincia": "Pichincha",
+        "canton": "Quito",
+        "parroquia": "La Floresta",
+        "recinto": "Unidad Educativa Nacional"
+    },
+    {
+        "id": 2,
+        "nombre": "MARÍA FERNANDA ALVAREZ PÉREZ",
+        "genero": "Femenino",
+        "rol": "Votante",
+        "provincia": "Guayas",
+        "canton": "Guayaquil",
+        "parroquia": "Urdesa",
+        "recinto": "Colegio Técnico Industrial"
+    },
+    {
+        "id": 3,
+        "nombre": "CARLOS ANDRÉS VERA CASTILLO",
+        "genero": "Masculino",
+        "rol": "Supervisor",
+        "provincia": "Manabí",
+        "canton": "Manta",
+        "parroquia": "Tarqui",
+        "recinto": "Unidad Educativa del Pacífico"
+    },
+    {
+        "id": 4,
+        "nombre": "SOFÍA ALEJANDRA RUIZ ORTIZ",
+        "genero": "Femenino",
+        "rol": "Votante",
+        "provincia": "Azuay",
+        "canton": "Cuenca",
+        "parroquia": "El Sagrario",
+        "recinto": "Instituto Tecnológico Cuenca"
+    },
+    {
+        "id": 5,
+        "nombre": "LUIS EDUARDO MORALES GÓMEZ",
+        "genero": "Masculino",
+        "rol": "Delegado",
+        "provincia": "Loja",
+        "canton": "Loja",
+        "parroquia": "Valle",
+        "recinto": "Unidad Educativa San Sebastián"
+    },
+    {
+        "id": 6,
+        "nombre": "ANDREA PATRICIA CHÁVEZ JIMÉNEZ",
+        "genero": "Femenino",
+        "rol": "Votante",
+        "provincia": "Esmeraldas",
+        "canton": "Esmeraldas",
+        "parroquia": "5 de Agosto",
+        "recinto": "Colegio Nacional Esmeraldas"
+    },
+    {
+        "id": 7,
+        "nombre": "JAVIER ALEJANDRO TORRES MEJÍA",
+        "genero": "Masculino",
+        "rol": "Supervisor",
+        "provincia": "Tungurahua",
+        "canton": "Ambato",
+        "parroquia": "Atocha",
+        "recinto": "Escuela Superior Bolívar"
+    }
+]
