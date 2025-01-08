@@ -1,0 +1,29 @@
+<div class="table-container">
+    <!-- Filtros por campo -->
+    <div *ngIf="isFilterable" class="filter-container">
+        <mat-form-field appearance="outline" *ngFor="let column of displayedColumns">
+            <mat-label>{{ column | titlecase }}</mat-label>
+            <mat-select [(ngModel)]="filters[column]" (selectionChange)="applyFilters()">
+                <mat-option value="">Todos</mat-option>
+                <mat-option *ngFor="let option of uniqueOptions(column)" [value]="option">
+                    {{ option }}
+                </mat-option>
+            </mat-select>
+        </mat-form-field>
+    </div>
+
+    <!-- Tabla -->
+    <table mat-table [dataSource]="pagedData">
+        <ng-container *ngFor="let column of displayedColumns" [matColumnDef]="column">
+            <th mat-header-cell *matHeaderCellDef> <h3>{{ column | titlecase }} </h3></th>
+            <td mat-cell *matCellDef="let element"> {{ element[column] }} </td>
+        </ng-container>
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table>
+
+    <!-- Paginador -->
+    <mat-paginator [length]="filteredData.length" [pageSize]="pageSize" [pageSizeOptions]="[5, 10, 15, 20]"
+        (page)="onPageChange($event)">
+    </mat-paginator>
+</div>

@@ -1,0 +1,48 @@
+.table-container {
+    background: inherit;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    height: fit-content;
+    margin: 10px;
+    border-radius: 8px;
+    border: 2px, dashed, #18599d;
+}
+
+.filter-container {
+    display: flex;
+    flex-direction: row;
+    
+    mat-form-field {
+        margin: 0 5px;
+        width: 100%;
+    }
+}
+
+table {
+    padding: 0 60px;
+    background: inherit;
+    overflow-x: auto;
+}
+
+th,
+td {
+    border-bottom: 1px solid #18599d;
+    padding: 0 10px;
+    font-size: 18px !important;
+    text-align: left;
+    color: #9ab4d1 !important;
+}
+
+td {
+    padding: 20px 10px;
+}
+
+th{
+    color: #18599d !important;
+}
+
+mat-paginator {
+    background: inherit;
+    color: #9ab4d1 !important
+}

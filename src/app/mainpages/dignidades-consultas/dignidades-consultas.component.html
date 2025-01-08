@@ -9,81 +9,19 @@
             <a class="add-button" href="#" (click)="agregarBinomio($event)"><i class="fa-regular fa-square-plus"></i>
                 Agregar elemento</a>
         </div>
-        <table>
-            <thead>
-                <tr>
-                    <th>
-                        <h3>Lista</h3>
-                    </th>
-                    <th>
-                        <h3>Candidato</h3>
-                    </th>
-                    <th>
-                        <h3>Acción</h3>
-                    </th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr *ngFor="let item of listas">
-                    <td>
-                        <p>{{ item.lista }}</p>
-                    </td>
-                    <td>
-                        <p>{{ item.candidato }}</p>
-                    </td>
-                    <td>
-                        <p>
-                            <i class="fa fa-edit" (click)="onEdit(item)"></i>
-                            <i class="fa fa-trash" (click)="onDelete(item)"></i>
-                        </p>
-                    </td>
-                </tr>
-            </tbody>
-        </table>
-        <div class="footer">
-            <app-filter [filterIds]="filterCantidad"></app-filter>
-        </div>
+        <app-tabla *ngIf="isDataLoaded" [displayedColumns]="listascampo" [originalData]="listas"
+            [filters]="listasfilter" [isFilterable]="false"></app-tabla>
     </div>
     <div class="gestion-organizaciones">
         <div class="header">
             <h3>Gestionando organizaciones políticas</h3>
-            <a class="add-button" href="#" (click)="agregarOrganizacion($event)"><i class="fa-regular fa-square-plus"></i>
+            <a class="add-button" href="#" (click)="agregarOrganizacion($event)"><i
+                    class="fa-regular fa-square-plus"></i>
                 Agregar elemento</a>
         </div>
-        <table>
-            <thead>
-                <tr>
-                    <th>
-                        <h3>Lista</h3>
-                    </th>
-                    <th>
-                        <h3>Organización</h3>
-                    </th>
-                    <th>
-                        <h3>Acción</h3>
-                    </th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr *ngFor="let item of organizaciones">
-                    <td>
-                        <p>{{ item.lista }}</p>
-                    </td>
-                    <td>
-                        <p>{{ item.organizacion }}</p>
-                    </td>
-                    <td>
-                        <p>
-                            <i class="fa fa-edit" (click)="onEdit(item)"></i>
-                            <i class="fa fa-trash" (click)="onDelete(item)"></i>
-                        </p>
-                    </td>
-                </tr>
-            </tbody>
-        </table>
-        <div class="footer">
-            <app-filter [filterIds]="filterCantidad"></app-filter>
-        </div>
+        <app-tabla *ngIf="isDataLoaded" [displayedColumns]="organizacionescampo" [originalData]="organizaciones"
+            [filters]="organizacionesfilter" [isFilterable]="false"></app-tabla>
+
     </div>
     <div class="gestion-consultas">
         <div class="header">
@@ -91,40 +29,9 @@
             <a class="add-button" href="#" (click)="agregarConsulta($event)"><i class="fa-regular fa-square-plus"></i>
                 Agregar elemento</a>
         </div>
-        <table>
-            <thead>
-                <tr>
-                    <th>
-                        <h3>Nombre</h3>
-                    </th>
-                    <th>
-                        <h3>Pregunta</h3>
-                    </th>
-                    <th>
-                        <h3>Acción</h3>
-                    </th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr *ngFor="let item of consultas">
-                    <td>
-                        <p>{{ item.nombre }}</p>
-                    </td>
-                    <td>
-                        <p>{{ item.pregunta }}</p>
-                    </td>
-                    <td>
-                        <p>
-                            <i class="fa fa-edit" (click)="onEdit(item)"></i>
-                            <i class="fa fa-trash" (click)="onDelete(item)"></i>
-                        </p>
-                    </td>
-                </tr>
-            </tbody>
-        </table>
-        <div class="footer">
-            <app-filter [filterIds]="filterCantidad"></app-filter>
-        </div>
+        <app-tabla *ngIf="isDataLoaded" [displayedColumns]="consultascampo" [originalData]="consultas"
+            [filters]="consultasfilter" [isFilterable]="false"></app-tabla>
+
     </div>
 </div>
 

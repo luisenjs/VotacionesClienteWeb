@@ -1,31 +1,37 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { PAGE_FILTERS } from '../../interface/filter';
-import { FilterComponent } from '../../component/filter/filter.component';
 import { ModalService } from '../../services/modal/modal.service';
 import { DataService } from '../../services/data/data.service';
+import { TablaComponent } from "../../component/tabla/tabla.component";
 
 @Component({
   selector: 'app-territorios',
   standalone: true,
-  imports: [FilterComponent, CommonModule],
+  imports: [CommonModule, TablaComponent],
   templateUrl: './territorios.component.html',
   styleUrl: './territorios.component.css'
 })
 export class TerritoriosComponent {
 
-  filterCantidad = PAGE_FILTERS['cantidad'];
+  juntascampo: any[] = ["provincia", "circunscripcion", "canton", "parroquia", "zona", "recinto", "junta", "estado"];
+  juntas: any[] = [];
+  juntasfilter: any = {provincia: '', circunscripcion: '', canton: '', parroquia: '', zona: '', recinto: '', junta: '', estado: ''};
 
-  filterTerritorio = PAGE_FILTERS["territorio"];
-
-  juntas: any = [];
+  isDataLoaded: boolean = false;
 
   constructor(private modal: ModalService, private data: DataService) { }
 
   ngOnInit(): void {
-    this.data.getData('assets/data/juntas.json').subscribe((data) => {
+    this.data.getData<any[]>('assets/data/juntas.json').subscribe((data) => {
       this.juntas = data;
+      this.checkDataLoaded();
     });
+  }
+
+  checkDataLoaded() {
+    if (this.juntas.length > 0) {
+      this.isDataLoaded = true;
+    }
   }
 
 }
