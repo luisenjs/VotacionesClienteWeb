@@ -6,12 +6,17 @@ import { AgregarElementoComponent } from '../../component/agregar-elemento/agreg
 import { ConfirmationComponent } from '../../component/confirmation/confirmation.component';
 import { DataService } from '../../services/data/data.service';
 import { Lista, Organizacion, Consulta } from '../../interface/data';
-import { TablaComponent } from "../../component/tabla/tabla.component";
+import { MatPaginator } from '@angular/material/paginator';
+import { MatPaginatorIntl } from '@angular/material/paginator';
+import { getSpanishPaginatorIntl } from '../../shared/custom-paginator-intl';
 
 @Component({
   selector: 'app-dignidades-consultas',
   standalone: true,
-  imports: [CommonModule, RouterModule, AgregarElementoComponent, ConfirmationComponent, TablaComponent],
+  imports: [CommonModule, RouterModule, AgregarElementoComponent, ConfirmationComponent, MatPaginator],
+  providers: [
+    { provide: MatPaginatorIntl, useValue: getSpanishPaginatorIntl() }
+  ],
   templateUrl: './dignidades-consultas.component.html',
   styleUrl: './dignidades-consultas.component.css'
 })
@@ -19,19 +24,23 @@ export class DignidadesConsultasComponent implements OnInit {
 
   tipoelemento: string = "";
 
-  listascampo: any[] = ["lista", "candidato"];
   listas: Lista[] = [];
-  listasfilter: any = {lista: "", candidato: ""};
 
-  organizacionescampo: any[] = ["lista", "organizacion"];
   organizaciones: Organizacion[] = [];
-  organizacionesfilter: any = {lista: "", organizaciones: ""};
 
-  consultascampo: any[] = ["nombre", "pregunta"];
   consultas: Consulta[] = [];
-  consultasfilter: any = {nombre: "", pregunta: ""};
 
-  isDataLoaded: boolean = false;
+  pageSizeL = 5; // Número de elementos por página
+  currentPageL = 0; // Página actual
+  pagedListas = this.listas.slice(0, this.pageSizeL);
+
+  pageSizeO = 5; // Número de elementos por página
+  currentPageO = 0; // Página actual
+  pagedOrganizaciones = this.organizaciones.slice(0, this.pageSizeO);
+  
+  pageSizeC = 5; // Número de elementos por página
+  currentPageC = 0; // Página actual
+  pagedConsultas = this.consultas.slice(0, this.pageSizeC);
 
   elemento: any = null;
 
@@ -50,12 +59,57 @@ export class DignidadesConsultasComponent implements OnInit {
       this.consultas = data;
       this.checkDataLoaded();
     });
+    this.updatePagedData();
   }
 
   checkDataLoaded() {
     if (this.listas.length > 0 && this.organizaciones.length > 0 && this.consultas.length > 0) {
-      this.isDataLoaded = true;
+      this.updatePagedData();
     }
+  }
+
+  // Actualiza los datos mostrados según la página seleccionada
+  updatePagedData() {
+    this.updatePagedListas();
+    this.updatePagedOrganizaciones();
+    this.updatePagedConsultas();
+  }
+
+  updatePagedListas() {
+    const startIndex = this.currentPageL * this.pageSizeL;
+    const endIndex = startIndex + this.pageSizeL;
+    this.pagedListas = this.listas.slice(startIndex, endIndex);
+  }
+
+  updatePagedOrganizaciones() {
+    const startIndex = this.currentPageO * this.pageSizeO;
+    const endIndex = startIndex + this.pageSizeO;
+    this.pagedOrganizaciones = this.organizaciones.slice(startIndex, endIndex);
+  }
+
+  updatePagedConsultas() {
+    const startIndex = this.currentPageC * this.pageSizeC;
+    const endIndex = startIndex + this.pageSizeC;
+    this.pagedConsultas = this.consultas.slice(startIndex, endIndex);
+  }
+
+  // Cambia de página
+  onPageChangeL(event: any) {
+    this.currentPageL = event.pageIndex;
+    this.pageSizeL = event.pageSize;
+    this.updatePagedListas();
+  }
+
+  onPageChangeO(event: any) {
+    this.currentPageO = event.pageIndex;
+    this.pageSizeO = event.pageSize;
+    this.updatePagedOrganizaciones();
+  }
+
+  onPageChangeC(event: any) {
+    this.currentPageC = event.pageIndex;
+    this.pageSizeC = event.pageSize;
+    this.updatePagedConsultas();
   }
 
   agregarBinomio(event: Event) {

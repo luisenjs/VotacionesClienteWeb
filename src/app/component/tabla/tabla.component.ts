@@ -6,7 +6,7 @@ import { MatPaginatorIntl, MatPaginatorModule } from '@angular/material/paginato
 import { FormsModule } from '@angular/forms';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatOptionModule } from '@angular/material/core';
-import { getSpanishPaginatorIntl } from './custom-paginator-intl';
+import { getSpanishPaginatorIntl } from '../../shared/custom-paginator-intl';
 
 @Component({
   selector: 'app-tabla',
@@ -24,18 +24,16 @@ export class TablaComponent implements OnInit {
   @Input() originalData: any[] = [];
   @Input() filters: any = {};
   @Input() isFilterable = true;
+  @Input() actions: any[] = [];
 
   filteredData = [...this.originalData];
   pagedData: any[] = []; // Datos mostrados en la tabla paginada
 
-  pageSize = 5; // Tamaño inicial de la página
+  pageSize = 10; // Tamaño inicial de la página
   currentPage = 0; // Página actual
 
   ngOnInit() {
-    this.applyFilters(); // Inicializa la tabla con los filtros por defecto
-    console.log(this.displayedColumns);
-    console.log(this.originalData);
-    console.log(this.filters);
+    this.applyFilters();
   }
 
   applyFilters() {
@@ -67,6 +65,18 @@ export class TablaComponent implements OnInit {
 
   uniqueOptions(column: string): string[] {
     return [...new Set(this.originalData.map((item) => item[column]))];
+  }
+
+  verElemento(element: any) {
+    console.log('Ver elemento:', element);
+  }
+
+  editarElemento(element: any) {
+    console.log('Editar elemento:', element);
+  }
+
+  eliminarElemento(element: any) {
+    console.log('Eliminar elemento:', element);
   }
 
 }

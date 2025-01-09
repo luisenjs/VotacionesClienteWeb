@@ -9,8 +9,40 @@
             <a class="add-button" href="#" (click)="agregarBinomio($event)"><i class="fa-regular fa-square-plus"></i>
                 Agregar elemento</a>
         </div>
-        <app-tabla *ngIf="isDataLoaded" [displayedColumns]="listascampo" [originalData]="listas"
-            [filters]="listasfilter" [isFilterable]="false"></app-tabla>
+        <table>
+            <thead>
+                <tr>
+                    <th>
+                        <h3>Lista</h3>
+                    </th>
+                    <th>
+                        <h3>Candidato</h3>
+                    </th>
+                    <th>
+                        <h3>Acción</h3>
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let item of pagedListas">
+                    <td>
+                        <p>{{ item.lista }}</p>
+                    </td>
+                    <td>
+                        <p>{{ item.candidato }}</p>
+                    </td>
+                    <td>
+                        <p>
+                            <i class="fa fa-edit" (click)="onEdit(item)"></i>
+                            <i class="fa fa-trash" (click)="onDelete(item)"></i>
+                        </p>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <mat-paginator [length]="listas.length" [pageSize]="pageSizeL" [pageSizeOptions]="[5, 10, 15]"
+            (page)="onPageChangeL($event)">
+        </mat-paginator>
     </div>
     <div class="gestion-organizaciones">
         <div class="header">
@@ -19,9 +51,40 @@
                     class="fa-regular fa-square-plus"></i>
                 Agregar elemento</a>
         </div>
-        <app-tabla *ngIf="isDataLoaded" [displayedColumns]="organizacionescampo" [originalData]="organizaciones"
-            [filters]="organizacionesfilter" [isFilterable]="false"></app-tabla>
-
+        <table>
+            <thead>
+                <tr>
+                    <th>
+                        <h3>Lista</h3>
+                    </th>
+                    <th>
+                        <h3>Organización</h3>
+                    </th>
+                    <th>
+                        <h3>Acción</h3>
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let item of pagedOrganizaciones">
+                    <td>
+                        <p>{{ item.lista }}</p>
+                    </td>
+                    <td>
+                        <p>{{ item.organizacion }}</p>
+                    </td>
+                    <td>
+                        <p>
+                            <i class="fa fa-edit" (click)="onEdit(item)"></i>
+                            <i class="fa fa-trash" (click)="onDelete(item)"></i>
+                        </p>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <mat-paginator [length]="organizaciones.length" [pageSize]="pageSizeO" [pageSizeOptions]="[5, 10, 15]"
+            (page)="onPageChangeO($event)">
+        </mat-paginator>
     </div>
     <div class="gestion-consultas">
         <div class="header">
@@ -29,9 +92,40 @@
             <a class="add-button" href="#" (click)="agregarConsulta($event)"><i class="fa-regular fa-square-plus"></i>
                 Agregar elemento</a>
         </div>
-        <app-tabla *ngIf="isDataLoaded" [displayedColumns]="consultascampo" [originalData]="consultas"
-            [filters]="consultasfilter" [isFilterable]="false"></app-tabla>
-
+        <table>
+            <thead>
+                <tr>
+                    <th>
+                        <h3>Nombre</h3>
+                    </th>
+                    <th>
+                        <h3>Pregunta</h3>
+                    </th>
+                    <th>
+                        <h3>Acción</h3>
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let item of pagedConsultas">
+                    <td>
+                        <p>{{ item.nombre }}</p>
+                    </td>
+                    <td>
+                        <p>{{ item.pregunta }}</p>
+                    </td>
+                    <td>
+                        <p>
+                            <i class="fa fa-edit" (click)="onEdit(item)"></i>
+                            <i class="fa fa-trash" (click)="onDelete(item)"></i>
+                        </p>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <mat-paginator [length]="consultas.length" [pageSize]="pageSizeC" [pageSizeOptions]="[5, 10, 15]"
+            (page)="onPageChangeC($event)">
+        </mat-paginator>
     </div>
 </div>
 
