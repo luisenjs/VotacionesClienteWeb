@@ -7,11 +7,12 @@ import { FormsModule } from '@angular/forms';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatOptionModule } from '@angular/material/core';
 import { getSpanishPaginatorIntl } from '../../shared/custom-paginator-intl';
+import { MatInputModule } from '@angular/material/input';
 
 @Component({
   selector: 'app-tabla',
   standalone: true,
-  imports: [MatPaginatorModule, MatTableModule, MatSelectModule, MatFormFieldModule, FormsModule, MatOptionModule, MatSelectModule, CommonModule],
+  imports: [MatPaginatorModule, MatTableModule, MatSelectModule, MatInputModule, MatFormFieldModule, FormsModule, MatOptionModule, MatSelectModule, CommonModule],
   providers: [
     { provide: MatPaginatorIntl, useValue: getSpanishPaginatorIntl() }
   ],
@@ -31,6 +32,7 @@ export class TablaComponent implements OnInit {
 
   pageSize = 10; // Tamaño inicial de la página
   currentPage = 0; // Página actual
+  selectedField: string | null = "";
 
   ngOnInit() {
     this.applyFilters();
@@ -39,10 +41,8 @@ export class TablaComponent implements OnInit {
   applyFilters() {
     // Aplica los filtros y actualiza la tabla
     const filtered = this.originalData.filter((item) => {
-      for (const key in this.filters) {
-        if (this.filters[key] && item[key] !== this.filters[key]) {
-          return false;
-        }
+      if (this.selectedField && this.filters[this.selectedField]) {
+        return item[this.selectedField]?.toString().toLowerCase().includes(this.filters[this.selectedField].toLowerCase());
       }
       return true;
     });
@@ -63,20 +63,10 @@ export class TablaComponent implements OnInit {
     this.updateTable();
   }
 
-  uniqueOptions(column: string): string[] {
-    return [...new Set(this.originalData.map((item) => item[column]))];
-  }
-
-  verElemento(element: any) {
-    console.log('Ver elemento:', element);
-  }
-
-  editarElemento(element: any) {
-    console.log('Editar elemento:', element);
-  }
-
-  eliminarElemento(element: any) {
-    console.log('Eliminar elemento:', element);
+  onFieldChange() {
+    if (this.selectedField) {
+      this.filters[this.selectedField] = ''; // Reinicia el filtro
+    }
   }
 
 }

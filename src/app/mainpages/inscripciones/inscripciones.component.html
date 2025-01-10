@@ -1,4 +1,9 @@
 <div class="content">
     <h3>Inscripciones de delegados</h3>
-    <app-tabla *ngIf="isDataLoaded" [displayedColumns]="inscripcioncampo" [originalData]="inscripcion" [filters]="inscripcionfilter"></app-tabla>
+    <app-tabla *ngIf="isDataLoaded" [displayedColumns]="inscripcioncampo" [originalData]="inscripcion"
+        [filters]="inscripcionfilter" [actions]="inscripcionacciones"></app-tabla>
 </div>
+
+<app-confirmation [id]="'agregar'" [tipo]="'agregar'" (confirm)="confirmation($event)"></app-confirmation>
+
+<app-confirmation [id]="'rechazar'" [tipo]="'rechazar'" (confirm)="delete($event)"></app-confirmation>

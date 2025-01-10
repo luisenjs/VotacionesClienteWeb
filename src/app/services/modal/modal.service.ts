@@ -5,6 +5,9 @@ import { BehaviorSubject } from 'rxjs';
   providedIn: 'root'
 })
 export class ModalService {
+  showModal(arg0: string, arg1: string, arg2: string, arg3: string, arg4: (result: any) => void) {
+    throw new Error('Method not implemented.');
+  }
   private modals: any[] = [];
 
   add(modal: any) {

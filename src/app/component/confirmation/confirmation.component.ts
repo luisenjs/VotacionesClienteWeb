@@ -57,6 +57,18 @@ export class ConfirmationComponent implements OnInit, OnChanges {
           this.pregunta = "¿Estás seguro que desea agregar esta papeleta al la base de datos?";
           this.descripcion = "Esta papeleta se agregará, revise si todo está en orden antes de proceder";
           break;
+        case "agregar":
+          this.pregunta = "¿Estás seguro que deseas agregar a este usuario al sistema?";
+          this.descripcion = "Este usuario se agregará a la base de datos y podrá acceder al sistema.";
+          break;
+        case "rechazar":
+          this.pregunta = "¿Estás seguro que deseas rechazar esta inscripción?";
+          this.descripcion = "Esta inscripción será rechazada y no podrá ser recuperada.";
+          break;
+        case "inhabilitar":
+          this.pregunta = "¿Estás seguro que deseas inhabilitar a este usuario?";
+          this.descripcion = "Este usuario no podrá acceder al sistema hasta que se habilite nuevamente.";
+          break
       }
     }
   }

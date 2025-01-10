@@ -1,4 +1,7 @@
 <div class="content">
     <h3>Usuarios del sistema</h3>
-    <app-tabla *ngIf="isDataLoaded" [displayedColumns]="usuarioscampo" [originalData]="usuarios" [filters]="usuariosfilter"></app-tabla>
+    <app-tabla *ngIf="isDataLoaded" [displayedColumns]="usuarioscampo" [originalData]="usuarios"
+        [filters]="usuariosfilter" [actions]="usuariosacciones"></app-tabla>
 </div>
+
+<app-confirmation [id]="'inhabilitar'" [tipo]="'inhabilitar'" (confirm)="inhabilitar($event)"></app-confirmation>

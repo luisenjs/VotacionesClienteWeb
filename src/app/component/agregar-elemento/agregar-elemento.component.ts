@@ -18,6 +18,8 @@ export class AgregarElementoComponent implements OnChanges, OnInit {
 
   @Input() tipoElemento: string = "";
   @Input() id!: string;
+  @Input() mod: boolean = false;
+  @Input() elemento: any = null;
 
   titulo = "";
   campo1 = "";
@@ -26,10 +28,17 @@ export class AgregarElementoComponent implements OnChanges, OnInit {
   pendingElement: any = null;
 
   constructor(private modal: ModalService, private fb: FormBuilder) {
-    this.elemetform = this.fb.group({
-      elemento1: ['', Validators.required],
-      elemento2: ['', Validators.required]
-    });
+    if (this.mod) {
+      this.elemetform = this.fb.group({
+        elemento1: [this.elemento.nombre, Validators.required],
+        elemento2: [this.elemento.candidato, Validators.required]
+      });
+    } else {
+      this.elemetform = this.fb.group({
+        elemento1: ['', Validators.required],
+        elemento2: ['', Validators.required]
+      });
+    }
   }
 
   ngOnChanges(changes: SimpleChanges): void {
@@ -52,6 +61,21 @@ export class AgregarElementoComponent implements OnChanges, OnInit {
         break;
       case "consulta":
         this.titulo = "CREANDO CONSULTAS";
+        this.campo1 = "Nombre de la consulta";
+        this.campo2 = "Pregunta";
+        break;
+      case "modbinomio":
+        this.titulo = "MODIFICANDO BINOMIO PRESIDENCIAL";
+        this.campo1 = "Nombre de la lista";
+        this.campo2 = "Nombre del candidato";
+        break;
+      case "modorganizacion":
+        this.titulo = "MODIFICANDO ORGANIZACION POLÍTICA";
+        this.campo1 = "Nombre de la lista";
+        this.campo2 = "Nombre de la organización";
+        break;
+      case "modconsulta":
+        this.titulo = "MODIFICANDO CONSULTAS";
         this.campo1 = "Nombre de la consulta";
         this.campo2 = "Pregunta";
         break;

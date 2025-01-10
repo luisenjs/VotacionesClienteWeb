@@ -130,8 +130,22 @@ export class DignidadesConsultasComponent implements OnInit {
     this.modal.open("consulta");
   }
 
-  onEdit(item: any) {
-    console.log('Editar:', item);
+  onEditBinomio(item: any) {
+    this.elemento = item;
+    this.tipoelemento = "modbinomio";
+    this.modal.open("modbinomio");
+  }
+
+  onEditOrganizacion(item: any) {
+    this.elemento = item;
+    this.tipoelemento = "modorganizacion";
+    this.modal.open("modorganizacion");
+  }
+
+  onEditConsulta(item: any) {
+    this.elemento = item;
+    this.tipoelemento = "modconsulta";
+    this.modal.open("modconsulta");
   }
 
   onDelete(item: any) {

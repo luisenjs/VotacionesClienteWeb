@@ -3,21 +3,25 @@ import { ModalService } from '../../services/modal/modal.service';
 import { DataService } from '../../services/data/data.service';
 import { CommonModule } from '@angular/common';
 import { TablaComponent } from "../../component/tabla/tabla.component";
+import { ConfirmationComponent } from '../../component/confirmation/confirmation.component';
 
 @Component({
   selector: 'app-usuarios',
   standalone: true,
-  imports: [CommonModule, TablaComponent],
+  imports: [CommonModule, TablaComponent, ConfirmationComponent],
   templateUrl: './usuarios.component.html',
   styleUrl: './usuarios.component.css'
 })
 export class UsuariosComponent {
 
-  usuarioscampo: any[] = ["nombre", "genero", "rol", "provincia", "canton", "parroquia", "recinto"];
+  usuarioscampo: any[] = ["nombre", "genero", "rol", "provincia", "canton", "parroquia", "recinto", "acciones"];
+  usuariosacciones: any[] = [{icon: "fa-solid fa-eye", callback:(row: any)=>this.verInfo(row)}, {icon: "fa-solid fa-ban", callback:(row: any)=>this.inhabilitarUsuario(row)}];
   usuarios: any[] = [];
   usuariosfilter: any = {nombre: "", genero: "", rol: "", provincia: "", canton: "", parroquia: "", recinto: ""};
 
   isDataLoaded: boolean = false;
+
+  pendingElement: any = null;
 
   constructor(private modal: ModalService, private data: DataService) { }
 
@@ -33,4 +37,21 @@ export class UsuariosComponent {
       this.isDataLoaded = true;
     }
   }
+
+  verInfo(row: any) {
+    alert("NO API TO CALL");
+  }
+
+  inhabilitarUsuario(row: any) {
+    this.pendingElement = row;
+    this.modal.open("inhabilitar");
+  }
+
+  inhabilitar(confirmacion: boolean) {
+    if (confirmacion) {
+      console.log('Usuario inhabilitado:', this.pendingElement);
+    }
+    this.pendingElement = null;
+  }
+
 }

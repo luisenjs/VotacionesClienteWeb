@@ -13,9 +13,10 @@ import { TablaComponent } from "../../component/tabla/tabla.component";
 })
 export class ActasComponent {
 
-  actascampo: any[] = ["fecha", "provincia", "canton", "parroquia", "zona", "recinto", "papeleta"];
+  actascampo: any[] = ["fecha", "provincia", "canton", "parroquia", "zona", "recinto", "papeleta", "acciones"];
+  accionesactas: any[] = [{ icon: "fa-solid fa-file fa-fade", callback: (row: any) => this.verActa(row) }];
   actas: any[] = [];
-  actasfilter: any = {fecha: "", provincia: "", canton: "", parroquia: "", zona: "", recinto: "", papeleta: ""};
+  actasfilter: any = { fecha: "", provincia: "", canton: "", parroquia: "", zona: "", recinto: "", papeleta: "" };
 
   isDataLoaded: boolean = false;
 
@@ -29,9 +30,14 @@ export class ActasComponent {
   }
 
   checkDataLoaded() {
-    if(this.actas.length > 0) {
+    if (this.actas.length > 0) {
       this.isDataLoaded = true;
     }
+  }
+
+  verActa(row: any) {
+    console.log("Ver acta", row);
+    alert("NO API TO CALL")
   }
 
 }

@@ -12,17 +12,20 @@
 .filter-container {
     display: flex;
     flex-direction: row;
-    
+
     mat-form-field {
         margin: 0 5px;
         width: 100%;
     }
 }
 
+.tabla-wrapper {
+    overflow-x: scroll;
+}
+
 table {
-    padding: 0 60px;
+    padding: 0 20px;
     background: inherit;
-    overflow-x: auto;
 }
 
 th,
@@ -38,11 +41,26 @@ td {
     padding: 20px 10px;
 }
 
-th{
+th {
     color: #18599d !important;
 }
 
 mat-paginator {
     background: inherit;
     color: #9ab4d1 !important
+}
+
+.action-container {
+    display: flex;
+    flex-direction: row;
+    gap: 8px;
+}
+
+i {
+    font-family: 'Font Awesome 5 Free', 'Material Icons', sans-serif !important;
+}
+
+i:hover {
+    cursor: pointer;
+    color: #18599d;
 }

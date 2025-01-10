@@ -1,4 +1,5 @@
 <div class="content">
     <h3>Resumen de actas</h3>
-    <app-tabla *ngIf="isDataLoaded" [displayedColumns]="actascampo" [originalData]="actas" [filters]="actasfilter"></app-tabla>
+    <app-tabla *ngIf="isDataLoaded" [displayedColumns]="actascampo" [originalData]="actas" [filters]="actasfilter"
+        [actions]="accionesactas" ></app-tabla>
 </div>

@@ -7,7 +7,7 @@
         <div class="header">
             <h3>Gestionando binomio presidencial</h3>
             <a class="add-button" href="#" (click)="agregarBinomio($event)"><i class="fa-regular fa-square-plus"></i>
-                Agregar elemento</a>
+                Agregar binomio</a>
         </div>
         <table>
             <thead>
@@ -33,7 +33,7 @@
                     </td>
                     <td>
                         <p>
-                            <i class="fa fa-edit" (click)="onEdit(item)"></i>
+                            <i class="fa fa-edit" (click)="onEditBinomio(item)"></i>
                             <i class="fa fa-trash" (click)="onDelete(item)"></i>
                         </p>
                     </td>
@@ -49,7 +49,7 @@
             <h3>Gestionando organizaciones políticas</h3>
             <a class="add-button" href="#" (click)="agregarOrganizacion($event)"><i
                     class="fa-regular fa-square-plus"></i>
-                Agregar elemento</a>
+                Agregar organización</a>
         </div>
         <table>
             <thead>
@@ -75,7 +75,7 @@
                     </td>
                     <td>
                         <p>
-                            <i class="fa fa-edit" (click)="onEdit(item)"></i>
+                            <i class="fa fa-edit" (click)="onEditOrganizacion(item)"></i>
                             <i class="fa fa-trash" (click)="onDelete(item)"></i>
                         </p>
                     </td>
@@ -90,7 +90,7 @@
         <div class="header">
             <h3>Gestionando consultas</h3>
             <a class="add-button" href="#" (click)="agregarConsulta($event)"><i class="fa-regular fa-square-plus"></i>
-                Agregar elemento</a>
+                Agregar consultas</a>
         </div>
         <table>
             <thead>
@@ -116,7 +116,7 @@
                     </td>
                     <td>
                         <p>
-                            <i class="fa fa-edit" (click)="onEdit(item)"></i>
+                            <i class="fa fa-edit" (click)="onEditConsulta(item)"></i>
                             <i class="fa fa-trash" (click)="onDelete(item)"></i>
                         </p>
                     </td>
@@ -134,5 +134,11 @@
 <app-agregar-elemento [id]="'organizacion'" [tipoElemento]="tipoelemento"></app-agregar-elemento>
 
 <app-agregar-elemento [id]="'consulta'" [tipoElemento]="tipoelemento"></app-agregar-elemento>
+
+<app-agregar-elemento [id]="'modbinomio'" [tipoElemento]="tipoelemento" [mod]="true" [elemento]="elemento"></app-agregar-elemento>
+
+<app-agregar-elemento [id]="'modorganizacion'" [tipoElemento]="tipoelemento" [mod]="true" [elemento]="elemento"></app-agregar-elemento>
+
+<app-agregar-elemento [id]="'modconsulta'" [tipoElemento]="tipoelemento" [mod]="true" [elemento]="elemento"></app-agregar-elemento>
 
 <app-confirmation [id]="'eliminar'" [tipo]="'eliminar'" (confirm)="confirmDelete($event)"></app-confirmation>
