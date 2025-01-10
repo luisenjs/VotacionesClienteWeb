@@ -4,11 +4,12 @@ import { DataService } from '../../services/data/data.service';
 import { CommonModule } from '@angular/common';
 import { TablaComponent } from "../../component/tabla/tabla.component";
 import { ConfirmationComponent } from '../../component/confirmation/confirmation.component';
+import { MasinformacionComponent } from '../../component/masinformacion/masinformacion.component';
 
 @Component({
   selector: 'app-usuarios',
   standalone: true,
-  imports: [CommonModule, TablaComponent, ConfirmationComponent],
+  imports: [CommonModule, TablaComponent, ConfirmationComponent, MasinformacionComponent],
   templateUrl: './usuarios.component.html',
   styleUrl: './usuarios.component.css'
 })
@@ -39,7 +40,8 @@ export class UsuariosComponent {
   }
 
   verInfo(row: any) {
-    alert("NO API TO CALL");
+    this.pendingElement = row;
+    this.modal.open("info");
   }
 
   inhabilitarUsuario(row: any) {
@@ -49,7 +51,7 @@ export class UsuariosComponent {
 
   inhabilitar(confirmacion: boolean) {
     if (confirmacion) {
-      console.log('Usuario inhabilitado:', this.pendingElement);
+      alert("NO API TO CALL\nINHABILITANDO:\n" + JSON.stringify(this.pendingElement, null, 2));
     }
     this.pendingElement = null;
   }

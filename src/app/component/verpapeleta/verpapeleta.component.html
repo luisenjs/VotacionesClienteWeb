@@ -1,0 +1,14 @@
+<div class="papeleta-container" *ngIf="isVisible">
+    <div class="content">
+        <span class="close" (click)="close()" (keydown.enter)="close()" tabindex="0">&times;</span>
+        <h2>Mostrando papeleta de {{element.nombre}}</h2>
+        <div class="datos">
+            <ng-container *ngFor="let key of objectKeys(element)"> 
+                <mat-form-field appearance="outline" class="form-field">
+                    <mat-label>{{key | titlecase }}</mat-label>
+                    <input matInput [value]="element[key]" readonly />
+                </mat-form-field>
+            </ng-container>
+        </div>
+    </div>
+</div>

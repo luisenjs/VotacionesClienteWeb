@@ -4,4 +4,6 @@
         [filters]="usuariosfilter" [actions]="usuariosacciones"></app-tabla>
 </div>
 
+<app-masinformacion [id]="'info'" [element]="pendingElement"></app-masinformacion>
+
 <app-confirmation [id]="'inhabilitar'" [tipo]="'inhabilitar'" (confirm)="inhabilitar($event)"></app-confirmation>

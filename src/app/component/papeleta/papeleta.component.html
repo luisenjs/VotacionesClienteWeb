@@ -1,9 +1,13 @@
 <div class="content">
     <i class="fa-solid fa-box"></i>
-    <h3>{{nombre}}</h3>
+    <h3>{{elemento.nombre}}</h3>
     <hr>
     <div class="buttons">
-        <a class="ver" href="">Ver</a>
-        <a class="archivar" href="">Archivar</a>
+        <a class="ver" href="#" (click)="verPapeleta($event)">Ver</a>
+        <a class="archivar" href="#" (click)="archivarPapeleta($event)">Archivar</a>
     </div>
 </div>
+
+<app-verpapeleta [id]="'ver'" [element]="elemento"></app-verpapeleta>
+
+<app-confirmation [id]="'archivar'" [tipo]="'archivarPapeleta'" (confirm)="confirmarArchivado($event)"></app-confirmation>

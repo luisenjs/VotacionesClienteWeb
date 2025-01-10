@@ -68,7 +68,19 @@ export class ConfirmationComponent implements OnInit, OnChanges {
         case "inhabilitar":
           this.pregunta = "¿Estás seguro que deseas inhabilitar a este usuario?";
           this.descripcion = "Este usuario no podrá acceder al sistema hasta que se habilite nuevamente.";
-          break
+          break;
+        case "habilitar":
+          this.pregunta = "¿Estás seguro que deseas habilitar a este usuario?";
+          this.descripcion = "Este usuario podrá acceder al sistema nuevamente.";
+          break;
+        case "archivarPapeleta":
+          this.pregunta = "¿Estás seguro que deseas archivar esta papeleta?";
+          this.descripcion = "Esta papeleta se archivará y no se presentará para las elecciones.";
+          break;
+        case "archivarElemento":
+          this.pregunta = "¿Estás seguro que deseas archivar este elemento?";
+          this.descripcion = "Este elemento se archivará y no se presentará para las elecciones.";
+          break;
       }
     }
   }

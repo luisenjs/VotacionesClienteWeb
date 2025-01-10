@@ -4,18 +4,19 @@ import { ModalService } from '../../services/modal/modal.service';
 import { DataService } from '../../services/data/data.service';
 import { TablaComponent } from "../../component/tabla/tabla.component";
 import { ConfirmationComponent } from '../../component/confirmation/confirmation.component';
+import { MasinformacionComponent } from '../../component/masinformacion/masinformacion.component';
 
 @Component({
   selector: 'app-inscripciones',
   standalone: true,
-  imports: [CommonModule, TablaComponent, ConfirmationComponent],
+  imports: [CommonModule, TablaComponent, ConfirmationComponent, MasinformacionComponent],
   templateUrl: './inscripciones.component.html',
   styleUrl: './inscripciones.component.css'
 })
 export class InscripcionesComponent {
 
   inscripcioncampo: any[] = ["nombre", "genero", "fecha", "provincia", "canton", "parroquia", "recinto", "acciones"];
-  inscripcionacciones: any[] = [{icon: "fa-regular fa-circle-check", callback:(row: any)=>this.aceptarInscripcion(row)}, {icon: "fa-regular fa-circle-xmark", callback:(row: any)=>this.rechazarInscripcion(row)}];
+  inscripcionacciones: any[] = [{icon: "fa-solid fa-eye", callback:(row: any)=>this.verInfo(row)}, {icon: "fa-regular fa-circle-check", callback:(row: any)=>this.aceptarInscripcion(row)}, {icon: "fa-regular fa-circle-xmark", callback:(row: any)=>this.rechazarInscripcion(row)}];
   inscripcion: any[] = [];
   inscripcionfilter: any = {nombre: "", genero: "", fecha: "", provincia: "", canton: "", parroquia: "", recinto: ""};
   
@@ -36,6 +37,11 @@ export class InscripcionesComponent {
     this.isDataLoaded = this.inscripcion.length > 0;
   }
 
+  verInfo(row: any) {
+    this.pendingElement = row;
+    this.modal.open("info");
+  }
+
   aceptarInscripcion(row: any) {
     this.pendingElement = row;
     this.modal.open("agregar");
@@ -48,14 +54,14 @@ export class InscripcionesComponent {
 
   confirmation(confirmacion: boolean) {
     if (confirmacion) {
-      console.log('Nuevo elemento:', this.pendingElement);
+      alert("NO API TO CALL\nACEPTANDO:\n" + JSON.stringify(this.pendingElement, null, 2));
     }
     this.pendingElement = null;
   }
-
+  
   delete(confirmacion: boolean) {
     if (confirmacion) {
-      console.log('Elemento eliminado:', this.pendingElement);
+      alert("NO API TO CALL\nRECHAZANDO:\n" + JSON.stringify(this.pendingElement, null, 2));
     }
     this.pendingElement = null;
   }

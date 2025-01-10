@@ -20,7 +20,7 @@
 }
 
 .tabla-wrapper {
-    overflow-x: scroll;
+    overflow-x: auto;
 }
 
 table {

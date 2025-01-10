@@ -15,11 +15,11 @@ import { CrearPapeletaComponent } from '../../component/crear-papeleta/crear-pap
 })
 export class PapeletasComponent {
 
-  papeletas: any = [
-    { id: 2, nombre: 'Asambleistas Nacionales' },
-    { id: 3, nombre: 'Asambleistas Provinciales - Guayas' },
-    { id: 4, nombre: 'Consulta Popular' }
-  ]
+  papeletas: any[] = [
+    { id: 2, nombre: 'Asambleistas Nacionales', lista: ["Candidato 1", "Candidato 2", "Candidato 3"] },
+    { id: 3, nombre: 'Asambleistas Provinciales - Guayas', lista: ["Candidato 1", "Candidato 2", "Candidato 3"] },
+    { id: 4, nombre: 'Consulta Popular', lista: ["Opción 1", "Opción 2", "Opción 3"] },
+  ];
 
   tipo = "";
 

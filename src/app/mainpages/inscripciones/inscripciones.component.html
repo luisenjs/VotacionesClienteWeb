@@ -4,6 +4,8 @@
         [filters]="inscripcionfilter" [actions]="inscripcionacciones"></app-tabla>
 </div>
 
+<app-masinformacion [id]="'info'" [element]="pendingElement"></app-masinformacion>
+
 <app-confirmation [id]="'agregar'" [tipo]="'agregar'" (confirm)="confirmation($event)"></app-confirmation>
 
 <app-confirmation [id]="'rechazar'" [tipo]="'rechazar'" (confirm)="delete($event)"></app-confirmation>
