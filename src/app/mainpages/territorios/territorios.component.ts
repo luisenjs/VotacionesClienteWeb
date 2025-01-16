@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { ModalService } from '../../services/modal/modal.service';
 import { DataService } from '../../services/data/data.service';
 import { TablaComponent } from "../../component/tabla/tabla.component";
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-territorios',
@@ -19,7 +20,7 @@ export class TerritoriosComponent {
 
   isDataLoaded: boolean = false;
 
-  constructor(private modal: ModalService, private data: DataService) { }
+  constructor(private modal: ModalService, private data: DataService, private router: Router) { }
 
   ngOnInit(): void {
     this.data.getData<any[]>('assets/data/juntas.json').subscribe((data) => {
@@ -32,6 +33,10 @@ export class TerritoriosComponent {
     if (this.juntas.length > 0) {
       this.isDataLoaded = true;
     }
+  }
+
+  cargarTerritorios() {
+    this.router.navigate(['/territorios/carga-territorial']);
   }
 
 }

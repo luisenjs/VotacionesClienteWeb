@@ -30,7 +30,7 @@ export class TablaComponent implements OnInit {
   filteredData = [...this.originalData];
   pagedData: any[] = []; // Datos mostrados en la tabla paginada
 
-  pageSize = 10; // Tamaño inicial de la página
+  pageSize = 5; // Tamaño inicial de la página
   currentPage = 0; // Página actual
   selectedField: string | null = "";
 

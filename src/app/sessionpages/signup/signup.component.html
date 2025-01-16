@@ -21,12 +21,12 @@
         </div>
 
         <div>
-            <label for="gender">Selecciona tú género</label>
+            <label for="gender">Selecciona tu género</label>
             <select id="gender" formControlName="gender">
                 <option value="">--Seleccione una opción--</option>
-                <option value="femenino">Femenino</option>
-                <option value="masculino">Masculino</option>
-                <option value="otros">Otros</option>
+                <option value="Femenino">Femenino</option>
+                <option value="Masculino">Masculino</option>
+                <option value="Otros">Otros</option>
             </select>
             <div class="error-message" *ngIf="signupForm.get('gender')?.invalid && signupForm.get('gender')?.touched">
                 <small>Seleccione una opción</small>
@@ -34,35 +34,47 @@
         </div>
 
         <div>
-            <label for="provincia">Provincia:</label>
+            <label for="provincia">Provincia</label>
             <select id="provincia" formControlName="provincia">
                 <option value="">--Seleccione una provincia--</option>
                 <option *ngFor="let provincia of provincias" [value]="provincia.nombre">{{ provincia.nombre }}</option>
             </select>
+            <div class="error-message" *ngIf="signupForm.get('provincia')?.invalid && signupForm.get('provincia')?.touched">
+                <small>Seleccione una opción</small>
+            </div>
         </div>
 
-        <div *ngIf="cantones.length > 0">
-            <label for="canton">Cantón:</label>
+        <div>
+            <label for="canton">Cantón</label>
             <select id="canton" formControlName="canton">
                 <option value="">--Seleccione un cantón--</option>
                 <option *ngFor="let canton of cantones" [value]="canton.nombre">{{ canton.nombre }}</option>
             </select>
+            <div class="error-message" *ngIf="signupForm.get('canton')?.invalid && signupForm.get('canton')?.touched">
+                <small>Seleccione una opción</small>
+            </div>
         </div>
 
-        <div *ngIf="ciudades.length > 0">
-            <label for="ciudad">Ciudad:</label>
-            <select id="ciudad" formControlName="ciudad">
-                <option value="">--Seleccione una ciudad--</option>
-                <option *ngFor="let ciudad of ciudades" [value]="ciudad.nombre">{{ ciudad.nombre }}</option>
+        <div>
+            <label for="parroquia">Parroquia</label>
+            <select id="parroquia" formControlName="parroquia">
+                <option value="">--Seleccione una parroquia--</option>
+                <option *ngFor="let parroquia of parroquias" [value]="parroquia.nombre">{{ parroquia.nombre }}</option>
             </select>
+            <div class="error-message" *ngIf="signupForm.get('parroquia')?.invalid && signupForm.get('parroquia')?.touched">
+                <small>Seleccione una opción</small>
+            </div>
         </div>
 
-        <div *ngIf="recintos.length > 0">
-            <label for="recinto">Recinto:</label>
+        <div>
+            <label for="recinto">Recinto</label>
             <select id="recinto" formControlName="recinto">
                 <option value="">--Seleccione un recinto--</option>
                 <option *ngFor="let recinto of recintos" [value]="recinto">{{ recinto }}</option>
             </select>
+            <div class="error-message" *ngIf="signupForm.get('recinto')?.invalid && signupForm.get('recinto')?.touched">
+                <small>Seleccione una opción</small>
+            </div>
         </div>
 
         <div>

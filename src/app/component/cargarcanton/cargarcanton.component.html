@@ -1,0 +1,27 @@
+<div class="container">
+
+    <div class="content">
+        <div class="existing-provincias">
+            <h3>Cantones Existentes</h3>
+            <app-tabla *ngIf="isDataLoaded" [displayedColumns]="cantonescampo" [originalData]="cantones"
+                [filters]="cantonesfilter" [actions]="cantonesacciones"></app-tabla>
+        </div>
+
+        <div class="provincias-container">
+            <h3>Agregar Cantón de {{provincia.nombre | titlecase}}</h3>
+            <form [formGroup]="cantonForm" (ngSubmit)="submitCantones()">
+                <div class="input-group">
+                    <input type="text" class="input" placeholder="Nombre de la provincia" formControlName="nombre"
+                        required />
+                    <button type="submit" class="add-btn" [disabled]="!cantonForm.valid">
+                        Agregar Cantón
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<app-cargarparroquia *ngIf="showParroquia" [canton]="pendingElement"></app-cargarparroquia>
+
+<app-confirmation [id]="'eliminar'" [tipo]="'eliminar'" (confirm)="confirmDelete($event)"></app-confirmation>

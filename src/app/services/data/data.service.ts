@@ -9,9 +9,8 @@ export class DataService {
 
   constructor(private http: HttpClient) { }
 
-  getData<T>(archivo: string): Observable<T> {
-    const filepath = 'assets/data/${archivo}.json'
-    return this.http.get<T>(archivo);
+  getData<T>(url: string): Observable<T> {
+    return this.http.get<T>(url);
   }
 
   getElementos(tipo: string): Observable<any[]> {
@@ -30,6 +29,26 @@ export class DataService {
     }
 
     return this.http.get<any[]>(url);
+  }
+
+  createData<T>(url: string, data: T): Observable<T> {
+    return this.http.post<T>(url, data);
+  }
+
+  readData<T>(url: string): Observable<T> {
+    return this.http.get<T>(url);
+  }
+
+  readDataById<T>(url: string, id: string): Observable<T> {
+    return this.http.get<T>(`${url}/${id}`);
+  }
+
+  updateDataById<T>(url: string, id: string, data: T): Observable<T> {
+    return this.http.put<T>(`${url}/${id}`, data);
+  }
+
+  deleteDataById(url: string, id: string): Observable<void> {
+    return this.http.delete<void>(`${url}/${id}`);
   }
 
 }

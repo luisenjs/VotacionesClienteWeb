@@ -11,11 +11,11 @@ import { LandingComponent } from './sessionpages/landing/landing.component';
 import { SignupComponent } from './sessionpages/signup/signup.component';
 import { DignidadesConsultasComponent } from './mainpages/dignidades-consultas/dignidades-consultas.component';
 import { PapeletasComponent } from './mainpages/papeletas/papeletas.component';
-import { CrearPapeletaComponent } from './component/crear-papeleta/crear-papeleta.component';
 import { ActasComponent } from './mainpages/actas/actas.component';
 import { InscripcionesComponent } from './mainpages/inscripciones/inscripciones.component';
 import { UsuariosComponent } from './mainpages/usuarios/usuarios.component';
 import { TerritoriosComponent } from './mainpages/territorios/territorios.component';
+import { CargarterritorioComponent } from './mainpages/cargarterritorio/cargarterritorio.component';
 
 export const routes: Routes = [
     { path: '', component: LandingComponent },
@@ -29,12 +29,12 @@ export const routes: Routes = [
         children: [
             { path: 'controlelectoral', component: ControlelectoralComponent },
             { path: 'dashboard', component: DashboardComponent },
-            { path: 'actas', component: ActasComponent},
-            { path: 'inscripciones', component: InscripcionesComponent},
-            { path: 'usuarios', component: UsuariosComponent},
-            { path: 'territorios', component: TerritoriosComponent},
+            { path: 'actas', component: ActasComponent },
+            { path: 'inscripciones', component: InscripcionesComponent },
+            { path: 'usuarios', component: UsuariosComponent },
+            { path: 'territorios', component: TerritoriosComponent },
+            { path: 'territorios/carga-territorial', component: CargarterritorioComponent },
             { path: 'papeletas', component: PapeletasComponent },
-            { path: 'papeletas/agregar', component: CrearPapeletaComponent },
             { path: 'dignidades-consultas', component: DignidadesConsultasComponent },
             { path: 'bajomantenimiento', component: UndermaintenanceComponent },
             { path: '', redirectTo: '/controlelectoral', pathMatch: 'full' }

@@ -1,0 +1,25 @@
+<div class="container">
+
+    <div class="content">
+        <div class="existing-provincias">
+            <h3>Recinto Existentes</h3>
+            <app-tabla *ngIf="isDataLoaded" [displayedColumns]="recintoscampo" [originalData]="recintos"
+                [filters]="recintosfilter" [actions]="recintosacciones"></app-tabla>
+        </div>
+
+        <div class="provincias-container">
+            <h3>Agregar Recinto de {{parroquia.nombre | titlecase}}</h3>
+            <form [formGroup]="recintoForm" (ngSubmit)="submitRecintos()">
+                <div class="input-group">
+                    <input type="text" class="input" placeholder="Nombre de la provincia" formControlName="nombre"
+                        required />
+                    <button type="submit" class="add-btn" [disabled]="!recintoForm.valid">
+                        Agregar Reconto
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<app-confirmation [id]="'eliminar'" [tipo]="'eliminar'" (confirm)="confirmDelete($event)"></app-confirmation>

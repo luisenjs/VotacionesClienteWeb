@@ -1,7 +1,7 @@
 <div class="content">
     <div class="header">
         <h3>Gestionnado Juntas</h3>
-        <a class="archive-button">Cargar disposición geográfica</a>
+        <a class="archive-button" (click)="cargarTerritorios()">Cargar disposición geográfica</a>
     </div>
     <app-tabla *ngIf="isDataLoaded" [displayedColumns]="juntascampo" [originalData]="juntas" [filters]="juntasfilter"></app-tabla>
 </div>

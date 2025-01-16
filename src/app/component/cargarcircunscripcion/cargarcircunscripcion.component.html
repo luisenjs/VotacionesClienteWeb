@@ -1,0 +1,27 @@
+<div class="container">
+
+    <div class="content">
+        <div class="existing-provincias">
+            <h3>Circunscripciones Existentes</h3>
+            <app-tabla *ngIf="isDataLoaded" [displayedColumns]="circunscripcioncampo" [originalData]="circunscripcion"
+                [filters]="circunscripcionfilter" [actions]="circunscripcionacciones"></app-tabla>
+        </div>
+
+        <div class="provincias-container">
+            <h3>Agregar Circunscripcion de {{provincia.nombre | titlecase}}</h3>
+            <form [formGroup]="cantonForm" (ngSubmit)="submitCircunscripcion()">
+                <div class="input-group">
+                    <input type="text" class="input" placeholder="Nombre de la provincia" formControlName="nombre"
+                        required />
+                    <button type="submit" class="add-btn" [disabled]="!cantonForm.valid">
+                        Agregar Cantón
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<app-cargarcanton *ngIf="showCanton" [circunscripcion]="pendingElement" [provincia]="provincia"></app-cargarcanton>
+
+<app-confirmation [id]="'eliminar'" [tipo]="'eliminar'" (confirm)="confirmDelete($event)"></app-confirmation>

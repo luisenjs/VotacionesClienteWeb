@@ -1,0 +1,30 @@
+<div class="container">
+    <h2>Carga Territorial</h2>
+
+    <div class="content">
+        <div class="existing-provincias">
+            <h3>Provincias Existentes</h3>
+            <app-tabla *ngIf="isDataLoaded" [displayedColumns]="provinciascampo" [originalData]="provincias"
+                [filters]="provinciasfilter" [actions]="provinciasacciones"></app-tabla>
+        </div>
+
+        <div class="provincias-container">
+            <h3>Agregar Provincia</h3>
+            <form [formGroup]="provinciaForm" (ngSubmit)="submitProvincias()">
+                <div class="input-group">
+                    <input type="text" class="input" placeholder="Nombre de la provincia" formControlName="nombre"
+                        required />
+                    <button type="submit" class="add-btn" [disabled]="!provinciaForm.valid">
+                        Agregar Provincia
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<app-cargarcanton *ngIf="showCantones" [provincia]="pendingElement"></app-cargarcanton>
+
+<app-cargarcircunscripcion *ngIf="showCircunscripcion" [provincia]="pendingElement"></app-cargarcircunscripcion>
+
+<app-confirmation [id]="'eliminar'" [tipo]="'eliminar'" (confirm)="confirmDelete($event)"></app-confirmation>
