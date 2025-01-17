@@ -26,3 +26,13 @@
 .fa-solid.fa-circle-user {
     color: #f43195;
 }
+
+.notificaciones {
+    width: 250px;
+    height: auto;
+    text-align: center;
+
+    span.none{
+        margin: auto;
+    }
+}
