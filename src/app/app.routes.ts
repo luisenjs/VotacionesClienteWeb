@@ -16,6 +16,7 @@ import { InscripcionesComponent } from './mainpages/inscripciones/inscripciones.
 import { UsuariosComponent } from './mainpages/usuarios/usuarios.component';
 import { TerritoriosComponent } from './mainpages/territorios/territorios.component';
 import { CargarterritorioComponent } from './mainpages/cargarterritorio/cargarterritorio.component';
+import { AdminGuard } from './shared/adminguard';
 
 export const routes: Routes = [
     { path: '', component: LandingComponent },
@@ -25,7 +26,7 @@ export const routes: Routes = [
     { path: 'recoverycode', component: RecoverycodeComponent },
     { path: 'changepassword', component: ChangepasswordComponent },
     {
-        path: '', component: MainpageComponent,
+        path: '', component: MainpageComponent, canActivate: [AdminGuard],
         children: [
             { path: 'controlelectoral', component: ControlelectoralComponent },
             { path: 'dashboard', component: DashboardComponent },
