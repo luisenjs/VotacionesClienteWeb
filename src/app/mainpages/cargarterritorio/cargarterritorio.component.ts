@@ -12,11 +12,12 @@ import { ModalService } from '../../services/modal/modal.service';
 import { ConfirmationComponent } from '../../component/confirmation/confirmation.component';
 import { CargarcantonComponent } from '../../component/cargarcanton/cargarcanton.component';
 import { CargarcircunscripcionComponent } from "../../component/cargarcircunscripcion/cargarcircunscripcion.component";
+import { ModificarterritorioComponent } from '../../component/modificarterritorio/modificarterritorio.component';
 
 @Component({
   selector: 'app-cargarterritorio',
   standalone: true,
-  imports: [CommonModule, ReactiveFormsModule, MatFormFieldModule, MatInputModule, MatButtonModule, MatIconModule, TablaComponent, ConfirmationComponent, CargarcantonComponent, CargarcircunscripcionComponent],
+  imports: [CommonModule, ReactiveFormsModule, MatFormFieldModule, MatInputModule, MatButtonModule, MatIconModule, TablaComponent, ConfirmationComponent, CargarcantonComponent, CargarcircunscripcionComponent, ModificarterritorioComponent],
   templateUrl: './cargarterritorio.component.html',
   styleUrl: './cargarterritorio.component.css'
 })
@@ -26,8 +27,8 @@ export class CargarterritorioComponent implements OnInit {
   provinciasacciones: any[] = [
     { icon: "fa fa-edit", callback: (row: any) => this.onEdit(row) },
     { icon: "fa fa-trash", callback: (row: any) => this.onDelete(row) },
-    { icon: "fa-solid fa-square-plus", callback: (row: any) => this.agregarCanton(row)},
-    { icon: "fa-solid fa-square-plus", callback: (row: any) => this.agregarCircunscripcion(row)}
+    { icon: "fa-solid fa-square-plus", callback: (row: any) => this.agregarCanton(row) },
+    { icon: "fa-solid fa-square-plus", callback: (row: any) => this.agregarCircunscripcion(row) }
   ];
   provincias: any[] = [];
   provinciasfilter: any = { nombre: '' };
@@ -63,7 +64,8 @@ export class CargarterritorioComponent implements OnInit {
   }
 
   onEdit(row: any) {
-
+    this.pendingElement = row;
+    this.modal.open("modificar");
   }
 
   onDelete(row: any) {
@@ -108,7 +110,7 @@ export class CargarterritorioComponent implements OnInit {
     this.showCircunscripcion = false;
     this.pendingElement = provincia;
   }
-  
+
   agregarCircunscripcion(provincia: any) {
     this.showCircunscripcion = true;
     this.showCantones = false;

@@ -49,10 +49,12 @@ export class CargarparroquiaComponent {
   }
 
   loadData() {
-    this.data.readData<any[]>("https://api-observacion-electoral.frative.com/api/parroquias").subscribe((data) => {
+    this.data.readData<any[]>("https://api-observacion-electoral.frative.com/api/parroquias/canton/"+this.canton.id).subscribe((data) => {
+      console.log(data);
       this.parroquias = data;
       this.checkDataLoaded();
     });
+    console.log(this.parroquias)
   }
 
   checkDataLoaded() {
@@ -85,6 +87,7 @@ export class CargarparroquiaComponent {
       const data = {
         id: this.parroquias.length + 1,
         nombre: this.parroquiaForm.value.nombre,
+        canton_id: this.canton.id,
         estado: 'Activo',
         fecha_ingreso: currentDateTime,
         fecha_modificacion: currentDateTime,

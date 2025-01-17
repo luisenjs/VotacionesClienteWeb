@@ -11,12 +11,22 @@
         </div>
 
         <div>
-            <label for="fullname">Nombre completo</label>
-            <input id="fullname" formControlName="fullname" type="fullname" placeholder="Ingresa tu contraseña"
-                [class.invalid]="signupForm.get('fullname')?.invalid && signupForm.get('fullname')?.touched" />
+            <label for="nombres">Nombres</label>
+            <input id="nombres" formControlName="nombres" type="nombres" placeholder="Ingresa tu nombre"
+                [class.invalid]="signupForm.get('nombres')?.invalid && signupForm.get('nombres')?.touched" />
             <div class="error-message"
-                *ngIf="signupForm.get('fullname')?.invalid && signupForm.get('fullname')?.touched">
-                <small>Debes ingresar tu nombre completo</small>
+                *ngIf="signupForm.get('nombres')?.invalid && signupForm.get('nombres')?.touched">
+                <small>Debes ingresar tus nombres</small>
+            </div>
+        </div>
+
+        <div>
+            <label for="apellidos">Apellidos</label>
+            <input id="apellidos" formControlName="apellidos" type="apellidos" placeholder="Ingresa tu apellido"
+                [class.invalid]="signupForm.get('apellidos')?.invalid && signupForm.get('apellidos')?.touched" />
+            <div class="error-message"
+                *ngIf="signupForm.get('apellidos')?.invalid && signupForm.get('apellidos')?.touched">
+                <small>Debes ingresar tus apellidos</small>
             </div>
         </div>
 
@@ -34,10 +44,20 @@
         </div>
 
         <div>
+            <label for="direccion">Dirección</label>
+            <input id="direccion" formControlName="direccion" type="direccion" placeholder="Ingresa tu direccion de domicilio"
+                [class.invalid]="signupForm.get('direccion')?.invalid && signupForm.get('direccion')?.touched" />
+            <div class="error-message"
+                *ngIf="signupForm.get('direccion')?.invalid && signupForm.get('direccion')?.touched">
+                <small>Debes ingresar tu direccion de domicilio</small>
+            </div>
+        </div>
+
+        <div>
             <label for="provincia">Provincia</label>
             <select id="provincia" formControlName="provincia">
                 <option value="">--Seleccione una provincia--</option>
-                <option *ngFor="let provincia of provincias" [value]="provincia.nombre">{{ provincia.nombre }}</option>
+                <option *ngFor="let provincia of provincias" [value]="provincia.id">{{ provincia.nombre }}</option>
             </select>
             <div class="error-message" *ngIf="signupForm.get('provincia')?.invalid && signupForm.get('provincia')?.touched">
                 <small>Seleccione una opción</small>
@@ -48,7 +68,7 @@
             <label for="canton">Cantón</label>
             <select id="canton" formControlName="canton">
                 <option value="">--Seleccione un cantón--</option>
-                <option *ngFor="let canton of cantones" [value]="canton.nombre">{{ canton.nombre }}</option>
+                <option *ngFor="let canton of cantones" [value]="canton.id">{{ canton.nombre }}</option>
             </select>
             <div class="error-message" *ngIf="signupForm.get('canton')?.invalid && signupForm.get('canton')?.touched">
                 <small>Seleccione una opción</small>
@@ -59,7 +79,7 @@
             <label for="parroquia">Parroquia</label>
             <select id="parroquia" formControlName="parroquia">
                 <option value="">--Seleccione una parroquia--</option>
-                <option *ngFor="let parroquia of parroquias" [value]="parroquia.nombre">{{ parroquia.nombre }}</option>
+                <option *ngFor="let parroquia of parroquias" [value]="parroquia.id">{{ parroquia.nombre }}</option>
             </select>
             <div class="error-message" *ngIf="signupForm.get('parroquia')?.invalid && signupForm.get('parroquia')?.touched">
                 <small>Seleccione una opción</small>
@@ -70,7 +90,7 @@
             <label for="recinto">Recinto</label>
             <select id="recinto" formControlName="recinto">
                 <option value="">--Seleccione un recinto--</option>
-                <option *ngFor="let recinto of recintos" [value]="recinto">{{ recinto }}</option>
+                <option *ngFor="let recinto of recintos" [value]="recinto.id">{{ recinto.nombre }}</option>
             </select>
             <div class="error-message" *ngIf="signupForm.get('recinto')?.invalid && signupForm.get('recinto')?.touched">
                 <small>Seleccione una opción</small>
@@ -93,6 +113,16 @@
         </div>
 
         <div>
+            <label for="correo">Correo electrónico</label>
+            <input id="correo" formControlName="correo" type="correo" placeholder="Ingresa tu correo electrónico"
+                [class.invalid]="signupForm.get('correo')?.invalid && signupForm.get('correo')?.touched" />
+            <div class="error-message"
+                *ngIf="signupForm.get('correo')?.invalid && signupForm.get('correo')?.touched">
+                <small>Debes ingresar tu correo electrónico</small>
+            </div>
+        </div>
+
+        <div>
             <label class="acceptTerms">
                 <input class="check" type="checkbox" formControlName="acceptTerms" />
                 <p>Acepto las <a href="#" (click)="showPolices($event)">políticas de privacidad</a></p>
@@ -104,3 +134,5 @@
 </div>
 
 <app-policies [id]="'polices'"></app-policies>
+
+<app-enviousuario [id]="'inscripción'"></app-enviousuario>

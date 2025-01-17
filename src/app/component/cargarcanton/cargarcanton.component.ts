@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, SimpleChanges } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Router } from '@angular/router';
 import { FormBuilder, FormGroup, Validators, ReactiveFormsModule } from '@angular/forms';
@@ -33,8 +33,8 @@ export class CargarcantonComponent {
 
   isDataLoaded: boolean = false;
   showParroquia: boolean = false;
-  
-  @Input() provincia: any;
+
+  @Input() provincia!: any;
   @Input() circunscripcion: any;
 
   pendingElement: any;
@@ -49,8 +49,15 @@ export class CargarcantonComponent {
     this.loadData();
   }
 
+  /*ngOnChanges(changes: SimpleChanges): void {
+    if (changes.['provincia'] && changes.['provincia'].currentValue) {
+      this.loadData();
+    }
+  }*/
+
+  //TODO: Replace our link with the product owner's link
   loadData() {
-    this.data.readData<any[]>("https://api-observacion-electoral.frative.com/api/cantones").subscribe((data) => {
+    this.data.readData<any[]>("https://api-observacion-electoral.frative.com/api/cantones/provincia/" + this.provincia.id).subscribe((data) => {
       this.cantones = data;
       this.checkDataLoaded();
     });
@@ -86,7 +93,7 @@ export class CargarcantonComponent {
       const data = {
         id: this.cantones.length + 1,
         nombre: this.cantonForm.value.nombre,
-        circunscripcion_id: this.circunscripcion.id,
+        circunscripcion_id: (this.circunscripcion == null ? 1 : this.circunscripcion.id),
         provincia_id: this.provincia.id,
         estado: 'Activo',
         fecha_ingreso: currentDateTime,

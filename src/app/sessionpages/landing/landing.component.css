@@ -2,6 +2,7 @@
     background-image: url('/assets/images/fondo3.jpg');
     background-size: contain;
     background-repeat: repeat;
+    background-attachment: fixed;
 }
 
 .navbar {

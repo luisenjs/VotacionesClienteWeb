@@ -21,83 +21,84 @@ import { ConfirmationComponent } from '../../component/confirmation/confirmation
 export class CargarrecintoComponent {
 
   recintoscampo: any[] = ["nombre", "acciones"];
-    recintosacciones: any[] = [
-      { icon: "fa fa-edit", callback: (row: any) => this.onEdit(row) },
-      { icon: "fa fa-trash", callback: (row: any) => this.onDelete(row) }
-    ];
-    recintos: any[] = [];
-    recintosfilter: any = { nombre: '' };
-    recintoForm: FormGroup;
-  
-    isDataLoaded: boolean = false;
-  
-    @Input() parroquia: any;
-  
-    pendingElement: any;
-  
-    constructor(private router: Router, private data: DataService, private fb: FormBuilder, private modal: ModalService) {
-      this.recintoForm = this.fb.group({
-        nombre: ['', [Validators.required, Validators.pattern(/^[a-zA-Z\u00C0-\u00FF ]*$/)]]
+  recintosacciones: any[] = [
+    { icon: "fa fa-edit", callback: (row: any) => this.onEdit(row) },
+    { icon: "fa fa-trash", callback: (row: any) => this.onDelete(row) }
+  ];
+  recintos: any[] = [];
+  recintosfilter: any = { nombre: '' };
+  recintoForm: FormGroup;
+
+  isDataLoaded: boolean = false;
+
+  @Input() parroquia: any;
+
+  pendingElement: any;
+
+  constructor(private router: Router, private data: DataService, private fb: FormBuilder, private modal: ModalService) {
+    this.recintoForm = this.fb.group({
+      nombre: ['', [Validators.required, Validators.pattern(/^[a-zA-Z\u00C0-\u00FF ]*$/)]]
+    });
+  }
+
+  ngOnInit() {
+    this.loadData();
+  }
+
+  //TODO: Replace our link with the product owner's link
+  loadData() {
+    this.data.readData<any[]>("https://api-observacion-electoral.frative.com/api/recintos-electorales/parroquia/"+this.parroquia.id).subscribe((data) => {
+      this.recintos = data;
+      this.checkDataLoaded();
+    });
+  }
+
+  checkDataLoaded() {
+    if (this.recintos.length > 0) {
+      this.isDataLoaded = true;
+    }
+  }
+
+  onEdit(row: any) {
+
+  }
+
+  onDelete(row: any) {
+    this.pendingElement = row;
+    this.modal.open("eliminar");
+  }
+
+  confirmDelete(confirm: boolean) {
+    if (confirm) {
+      this.data.deleteDataById("https://api-observacion-electoral.frative.com/api/recintos-electorales", this.pendingElement.id).subscribe((data) => {
+        console.log(this.pendingElement)
+        window.location.reload();
       });
     }
-  
-    ngOnInit() {
-      this.loadData();
-    }
-  
-    loadData() {
-      this.data.readData<any[]>("https://api-observacion-electoral.frative.com/api/recintos-electorales").subscribe((data) => {
-        this.recintos = data;
-        this.checkDataLoaded();
+  }
+
+  submitRecintos() {
+    if (this.recintoForm.valid) {
+      const currentDateTime = new Date().toISOString();
+      const data = {
+        id: this.recintos.length + 1,
+        nombre: this.recintoForm.value.nombre,
+        parroquia_id: this.parroquia.id,
+        estado: 'Activo',
+        fecha_ingreso: currentDateTime,
+        fecha_modificacion: currentDateTime,
+        observacion: 'Primer ingreso',
+        usuario_ingreso: 1,
+        usuario_modificacion: 1
+      }
+      console.log(data);
+      this.data.createData<any>("https://api-observacion-electoral.frative.com/api/recintos-electorales", data).subscribe(() => {
+        this.recintoForm.reset();
+        window.location.reload();
+      }, (error) => {
+        console.log(error);
       });
     }
-  
-    checkDataLoaded() {
-      if (this.recintos.length > 0) {
-        this.isDataLoaded = true;
-      }
-    }
-  
-    onEdit(row: any) {
-  
-    }
-  
-    onDelete(row: any) {
-      this.pendingElement = row;
-      this.modal.open("eliminar");
-    }
-  
-    confirmDelete(confirm: boolean) {
-      if (confirm) {
-        this.data.deleteDataById("https://api-observacion-electoral.frative.com/api/recintos-electorales", this.pendingElement.id).subscribe((data) => {
-          console.log(this.pendingElement)
-          window.location.reload();
-        });
-      }
-    }
-  
-    submitRecintos() {
-      if (this.recintoForm.valid) {
-        const currentDateTime = new Date().toISOString();
-        const data = {
-          id: this.recintos.length + 1,
-          nombre: this.recintoForm.value.nombre,
-          parroquia_id: this.parroquia.id,
-          estado: 'Activo',
-          fecha_ingreso: currentDateTime,
-          fecha_modificacion: currentDateTime,
-          observacion: 'Primer ingreso',
-          usuario_ingreso: 1,
-          usuario_modificacion: 1
-        }
-        console.log(data);
-        this.data.createData<any>("https://api-observacion-electoral.frative.com/api/recintos-electorales", data).subscribe(() => {
-          this.recintoForm.reset();
-          window.location.reload();
-        }, (error) => {
-          console.log(error);
-        });
-      }
-    }
+  }
 
 }

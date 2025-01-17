@@ -81,6 +81,10 @@ export class ConfirmationComponent implements OnInit, OnChanges {
           this.pregunta = "¿Estás seguro que deseas archivar este elemento?";
           this.descripcion = "Este elemento se archivará y no se presentará para las elecciones.";
           break;
+        case "provinciaMod":
+          this.pregunta = "Estás a punto de modificar el nombre de una provincia";
+          this.descripcion = "El cambio se realizará inmediatamente, puedes volerlo a cambiar en cualquier momento";
+          break;
       }
     }
   }

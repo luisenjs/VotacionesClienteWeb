@@ -40,7 +40,7 @@ export class CargarcircunscripcionComponent {
 
   constructor(private router: Router, private data: DataService, private fb: FormBuilder, private modal: ModalService) {
     this.cantonForm = this.fb.group({
-      nombre: ['', [Validators.required, Validators.pattern(/^[a-zA-Z\u00C0-\u00FF ]*$/)]]
+      nombre: ['', [Validators.required, Validators.pattern(/^Circunscripción [1-9](?: - [\w\s]+)?(?: - [\w\s-]+)?$/)]]
     });
   }
 
@@ -48,8 +48,9 @@ export class CargarcircunscripcionComponent {
     this.loadData();
   }
 
+  //TODO: Replace our link with the product owner's link
   loadData() {
-    this.data.readData<any[]>("https://api-observacion-electoral.frative.com/api/circunscripciones").subscribe((data) => {
+    this.data.readData<any[]>("https://api-observacion-electoral.frative.com/api/circunscripciones/provincia/"+this.provincia.id).subscribe((data) => {
       this.circunscripcion = data;
       this.checkDataLoaded();
     });
@@ -85,7 +86,6 @@ export class CargarcircunscripcionComponent {
       const data = {
         id: this.circunscripcion.length + 1,
         nombre: this.cantonForm.value.nombre,
-        circunscripcion_id: 1,
         provincia_id: this.provincia.id,
         estado: 'Activo',
         fecha_ingreso: currentDateTime,
@@ -95,7 +95,7 @@ export class CargarcircunscripcionComponent {
         usuario_modificacion: 1
       }
       console.log(data);
-      this.data.createData<any>("https://api-observacion-electoral.frative.com/api/circunscripciones", data).subscribe(() => {
+      this.data.createData<any>("https://sistema-electoral-cc1y.onrender.com/api/circunscripciones", data).subscribe(() => {
         this.cantonForm.reset();
         window.location.reload();
       }, (error) => {

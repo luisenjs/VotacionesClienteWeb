@@ -27,4 +27,6 @@
 
 <app-cargarcircunscripcion *ngIf="showCircunscripcion" [provincia]="pendingElement"></app-cargarcircunscripcion>
 
+<app-modificarterritorio [id]="'modificar'" [tipoterritorio]="'provinciaMod'" [elemento]="pendingElement"></app-modificarterritorio>
+
 <app-confirmation [id]="'eliminar'" [tipo]="'eliminar'" (confirm)="confirmDelete($event)"></app-confirmation>

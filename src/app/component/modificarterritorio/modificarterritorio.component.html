@@ -1,0 +1,22 @@
+<div class="add" *ngIf="isVisible">
+    <div class="content">
+        <span class="close" (click)="close()" tabindex="0">&times;</span>
+        <h2>Modificando</h2>
+        <form [formGroup]="elementoForm" (ngSubmit)="onSubmit($event)">
+            <div class="form-group">
+                <label for="nombre">Nombre</label>
+                <input id="nombre" type="text" formControlName="nombre" />
+                <div *ngIf="elementoForm.get('nombre')?.invalid && elementoForm.get('nombre')?.touched">
+                    <small class="error">Este campo es requerido.</small>
+                </div>
+            </div>
+
+            <div class="actions">
+                <button class="cancelar" (click)="close()">Cancelar</button>
+                <button class="guardar" type="submit" [disabled]="elementoForm.invalid">Guardar</button>
+            </div>
+        </form>
+    </div>
+</div>
+
+<app-confirmation [id]="'confirmar'" [tipo]="tipoterritorio" (confirm)="confirmation($event)"></app-confirmation>
