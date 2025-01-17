@@ -1,7 +1,7 @@
 <div class="informacion-container" *ngIf="isVisible">
     <div class="content">
         <span class="close" (click)="close()" (keydown.enter)="close()" tabindex="0">&times;</span>
-        <h2>Mostrando más información de {{element.nombre}}</h2>
+        <h2>Mostrando más información de {{element.nombres}} {{element.apellidos}}</h2>
         <div class="datos">
             <ng-container *ngFor="let key of objectKeys(element)"> 
                 <mat-form-field appearance="outline" class="form-field">
