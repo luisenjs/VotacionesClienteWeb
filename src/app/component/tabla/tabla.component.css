@@ -53,7 +53,7 @@ mat-paginator {
 .action-container {
     display: flex;
     flex-direction: row;
-    gap: 8px;
+    gap: 10px;
 }
 
 i {

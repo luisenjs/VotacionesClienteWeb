@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, SimpleChanges } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { MatTableModule } from '@angular/material/table';
 import { MatSelectModule } from '@angular/material/select';
@@ -27,15 +27,47 @@ export class TablaComponent implements OnInit {
   @Input() isFilterable = true;
   @Input() actions: any[] = [];
 
+  columnTitles: { [key: string]: string } = {
+    nombre: 'Nombre',
+    nombres: 'Nombres',
+    apellidos: 'Apellidos',
+    genero: 'Género',
+    rol: 'Rol',
+    rol_id: 'Rol',
+    provincia: 'Provincia',
+    provincia_id: 'Provincia',
+    circunscripcion: 'Circunscripción',
+    circunscripcion_id: 'Circunscripción',
+    canton: 'Canton',
+    canton_id: 'Cantón',
+    parroquia: 'Parroquia',
+    parroquia_id: 'Parroquia',
+    recinto: 'Recinto',
+    recinto_id: 'Recinto',
+    junta: 'Junta',
+    junta_id: 'Junta',
+    acciones: 'Acciones',
+    papeleta: 'Papeleta',
+    fecha: 'Fecha',
+    zona: 'Zona',
+  };
+  
+
   filteredData = [...this.originalData];
   pagedData: any[] = []; // Datos mostrados en la tabla paginada
 
   pageSize = 5; // Tamaño inicial de la página
   currentPage = 0; // Página actual
-  selectedField: string | null = "";
+  selectedField: string = "nombres";
 
   ngOnInit() {
     this.applyFilters();
+  }
+
+  ngOnChanges(changes: SimpleChanges) {
+    if(changes['originalData']){
+      this.applyFilters();
+    }
   }
 
   applyFilters() {

@@ -43,7 +43,7 @@ export class UsuariosComponent {
       this.cantones = result.cantones;
       this.parroquias = result.parroquias;
       this.recintos = result.recintos;
-      this.usuarios = result.usuarios.map(user => {
+      this.usuarios = result.usuarios.filter(user => user.rol_id !== 4).map(user => {
         const role = this.roles.find(r => r.id === user.rol_id);
         const canton = this.cantones.find(c => c.id === user.canton_id);
         const parroquia = this.parroquias.find(p => p.id === user.parroquia_id);

@@ -22,6 +22,8 @@
     </div>
 </div>
 
+<app-modificarterritorio [id]="'modificarCanton'" [tipoterritorio]="'cantones'" [elemento]="pendingElement" ></app-modificarterritorio>
+
 <app-cargarparroquia *ngIf="showParroquia" [canton]="pendingElement"></app-cargarparroquia>
 
-<app-confirmation [id]="'eliminar'" [tipo]="'eliminar'" (confirm)="confirmDelete($event)"></app-confirmation>
+<app-confirmation [id]="'eliminarCanton'" [tipo]="'eliminar'" (confirm)="confirmDelete($event)"></app-confirmation>

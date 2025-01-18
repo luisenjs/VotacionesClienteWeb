@@ -12,7 +12,7 @@
             </div>
 
             <div class="actions">
-                <button class="cancelar" (click)="close()">Cancelar</button>
+                <button class="cancelar" (click)="close($event)">Cancelar</button>
                 <button class="guardar" type="submit" [disabled]="elementoForm.invalid">Guardar</button>
             </div>
         </form>

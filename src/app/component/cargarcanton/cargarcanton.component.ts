@@ -11,11 +11,12 @@ import { TablaComponent } from '../../component/tabla/tabla.component';
 import { ModalService } from '../../services/modal/modal.service';
 import { ConfirmationComponent } from '../../component/confirmation/confirmation.component';
 import { CargarparroquiaComponent } from '../cargarparroquia/cargarparroquia.component';
+import { ModificarterritorioComponent } from "../modificarterritorio/modificarterritorio.component";
 
 @Component({
   selector: 'app-cargarcanton',
   standalone: true,
-  imports: [CommonModule, ReactiveFormsModule, MatButtonModule, MatFormFieldModule, MatInputModule, MatIconModule, TablaComponent, ConfirmationComponent, CargarparroquiaComponent],
+  imports: [CommonModule, ReactiveFormsModule, MatButtonModule, MatFormFieldModule, MatInputModule, MatIconModule, TablaComponent, ConfirmationComponent, CargarparroquiaComponent, ModificarterritorioComponent],
   templateUrl: './cargarcanton.component.html',
   styleUrl: './cargarcanton.component.css'
 })
@@ -43,19 +44,13 @@ export class CargarcantonComponent {
     this.cantonForm = this.fb.group({
       nombre: ['', [Validators.required, Validators.pattern(/^[a-zA-Z\u00C0-\u00FF ]*$/)]]
     });
+    setInterval(() => {this.loadData()}, 5000)
   }
 
   ngOnInit() {
     this.loadData();
   }
 
-  /*ngOnChanges(changes: SimpleChanges): void {
-    if (changes.['provincia'] && changes.['provincia'].currentValue) {
-      this.loadData();
-    }
-  }*/
-
-  //TODO: Replace our link with the product owner's link
   loadData() {
     this.data.readData<any[]>("https://api-observacion-electoral.frative.com/api/cantones/provincia/" + this.provincia.id).subscribe((data) => {
       this.cantones = data;
@@ -70,19 +65,19 @@ export class CargarcantonComponent {
   }
 
   onEdit(row: any) {
-
+    this.pendingElement = row;
+    this.modal.open("modificarCanton");
   }
 
   onDelete(row: any) {
     this.pendingElement = row;
-    this.modal.open("eliminar");
+    this.modal.open("eliminarCanton");
   }
 
   confirmDelete(confirm: boolean) {
     if (confirm) {
       this.data.deleteDataById("https://api-observacion-electoral.frative.com/api/cantones", this.pendingElement.id).subscribe((data) => {
-        console.log(this.pendingElement)
-        window.location.reload();
+        console.log(this.pendingElement);
       });
     }
   }
@@ -105,7 +100,6 @@ export class CargarcantonComponent {
       console.log(data);
       this.data.createData<any>("https://api-observacion-electoral.frative.com/api/cantones", data).subscribe(() => {
         this.cantonForm.reset();
-        window.location.reload();
       }, (error) => {
         console.log(error);
       });

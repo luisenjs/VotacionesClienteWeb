@@ -44,6 +44,7 @@ export class CargarterritorioComponent implements OnInit {
     this.provinciaForm = this.fb.group({
       nombre: ['', [Validators.required, Validators.pattern(/^[a-zA-Z\u00C0-\u00FF ]*$/)]]
     });
+    setInterval(() => {this.loadData()}, 3000);
   }
 
   ngOnInit() {
@@ -65,21 +66,21 @@ export class CargarterritorioComponent implements OnInit {
 
   onEdit(row: any) {
     this.pendingElement = row;
-    this.modal.open("modificar");
+    this.modal.open("modificarProvincia");
   }
 
   onDelete(row: any) {
     this.pendingElement = row;
-    this.modal.open("eliminar");
+    this.modal.open("eliminarProvincia");
   }
 
   confirmDelete(confirm: boolean) {
     if (confirm) {
       this.data.deleteDataById("https://api-observacion-electoral.frative.com/api/provincias", this.pendingElement.id).subscribe((data) => {
         console.log(this.pendingElement)
-        window.location.reload();
       });
     }
+    this.loadData();
   }
 
   submitProvincias() {
@@ -98,11 +99,11 @@ export class CargarterritorioComponent implements OnInit {
       console.log(data);
       this.data.createData<any>("https://api-observacion-electoral.frative.com/api/provincias", data).subscribe(() => {
         this.provinciaForm.reset();
-        window.location.reload();
       }, (error) => {
         console.log(error);
       });
     }
+    this.loadData();
   }
 
   agregarCanton(provincia: any) {
