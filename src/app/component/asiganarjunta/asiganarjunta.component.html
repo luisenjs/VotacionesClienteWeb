@@ -1,0 +1,18 @@
+<div class="modal-juntas" *ngIf="isVisible">
+    <div class="content">
+        <span class="close" (click)="close()" (keydown.enter)="close()" tabindex="0">&times;</span>
+        <h2>Mostrando las juntas más cercas para {{element.nombres}} {{element.apellidos}}</h2>
+        <div class="juntas">
+            <form [formGroup]="juntasForm" (ngSubmit)="asignarJuntas()">
+                <div class="juntas">
+                    <div *ngFor="let junta of juntas">
+                        <label>
+                            <input type="checkbox" [formControlName]="junta.id"> {{junta.nombre}}
+                        </label>
+                    </div>
+                </div>
+                <button type="submit">Asignar</button>
+            </form>
+        </div>
+    </div>
+</div>

@@ -31,14 +31,10 @@ table {
 th,
 td {
     border-bottom: 1px solid #18599d;
-    padding: 0 10px;
+    padding: 5px 10px;
     font-size: 18px !important;
     text-align: left;
     color: #9ab4d1 !important;
-}
-
-td {
-    padding: 20px 10px;
 }
 
 th {

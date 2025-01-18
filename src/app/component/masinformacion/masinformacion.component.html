@@ -5,7 +5,7 @@
         <div class="datos">
             <ng-container *ngFor="let key of objectKeys(element)"> 
                 <mat-form-field appearance="outline" class="form-field">
-                    <mat-label>{{key | titlecase }}</mat-label>
+                    <mat-label>{{columnTitles[key] }}</mat-label>
                     <input matInput [value]="element[key]" readonly />
                 </mat-form-field>
             </ng-container>

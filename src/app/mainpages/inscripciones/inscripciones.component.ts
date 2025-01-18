@@ -6,6 +6,7 @@ import { TablaComponent } from "../../component/tabla/tabla.component";
 import { ConfirmationComponent } from '../../component/confirmation/confirmation.component';
 import { MasinformacionComponent } from '../../component/masinformacion/masinformacion.component';
 import { forkJoin } from 'rxjs';
+import { AuthService } from '../../services/auth/auth.service';
 
 @Component({
   selector: 'app-inscripciones',
@@ -29,7 +30,7 @@ export class InscripcionesComponent {
   parroquias: any[] = [];
   recintos: any[] = [];
 
-  constructor(private modal: ModalService, private data: DataService) {
+  constructor(private modal: ModalService, private data: DataService, private auth: AuthService) {
     setInterval(() => {this.ngOnInit()}, 3000)
   }
 
@@ -53,7 +54,7 @@ export class InscripcionesComponent {
           parroquia_id: parroquia ? parroquia.nombre : 'Desconocido',
           recinto_id: recinto ? recinto.nombre : 'Desconocido'
         };
-      });
+      }).reverse();
       this.checkDataLoaded();
     });
   }
@@ -84,7 +85,9 @@ export class InscripcionesComponent {
       const data = {
         rol_id: 3,
         fecha_modificacion: currentDateTime,
-        observacion: "Inscripción aceptada"
+        observacion: "Inscripción aceptada",
+        usuario_ingreso: this.auth.getCurrentUser().id,
+        usuario_modificacion: this.auth.getCurrentUser().id
       };
       console.log(data);
       this.data.updateDataById<any>("https://api-observacion-electoral.frative.com/api/usuarios", this.pendingElement.id, data).subscribe((response) => {

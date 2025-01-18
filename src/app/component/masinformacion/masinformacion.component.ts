@@ -15,6 +15,44 @@ export class MasinformacionComponent {
 
   isVisible = false;
 
+  columnTitles: { [key: string]: string } = {
+    id: 'Identificación única del sistema',
+    identificacion: 'Cédula de identidad',
+    nombre: 'Nombre',
+    nombres: 'Nombres',
+    apellidos: 'Apellidos',
+    genero: 'Género',
+    rol: 'Rol',
+    rol_id: 'Rol',
+    provincia: 'Provincia',
+    provincia_id: 'Provincia',
+    circunscripcion: 'Circunscripción',
+    circunscripcion_id: 'Circunscripción',
+    canton: 'Canton',
+    canton_id: 'Cantón',
+    parroquia: 'Parroquia',
+    parroquia_id: 'Parroquia',
+    recinto: 'Recinto',
+    recinto_id: 'Recinto',
+    junta: 'Junta',
+    junta_id: 'Junta',
+    acciones: 'Acciones',
+    papeleta: 'Papeleta',
+    fecha: 'Fecha',
+    zona: 'Zona',
+    telefono: 'Teléfono',
+    telefono_aux: 'Teléfono auxiliar',
+    fecha_ingreso: 'Fecha de ingreso',
+    fecha_modificacion: 'Fecha de modificación',
+    estado: 'Estado',
+    observacion: 'Observaciones',
+    direccion: ' Dirección de domicilio',
+    partido_id: 'Partido suscrito',
+    correo_electronico: 'Correo electrónico',
+    usuario_ingreso: 'ID del usuario que lo ingresó',
+    usuario_modificacion: 'ID del usuario de lo modificó'
+  };
+
   @Input() id!: string;
   @Input() element!: any;
 

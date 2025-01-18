@@ -6,18 +6,23 @@ import { TablaComponent } from "../../component/tabla/tabla.component";
 import { ConfirmationComponent } from '../../component/confirmation/confirmation.component';
 import { MasinformacionComponent } from '../../component/masinformacion/masinformacion.component';
 import { forkJoin } from 'rxjs';
+import { AsiganarjuntaComponent } from "../../component/asiganarjunta/asiganarjunta.component";
 
 @Component({
   selector: 'app-usuarios',
   standalone: true,
-  imports: [CommonModule, TablaComponent, ConfirmationComponent, MasinformacionComponent],
+  imports: [CommonModule, TablaComponent, ConfirmationComponent, MasinformacionComponent, AsiganarjuntaComponent],
   templateUrl: './usuarios.component.html',
   styleUrl: './usuarios.component.css'
 })
 export class UsuariosComponent {
 
   usuarioscampo: any[] = ["nombres", "apellidos", "genero", "rol_id", "canton_id", "parroquia_id", "recinto_id", "acciones"];
-  usuariosacciones: any[] = [{ icon: "fa-solid fa-eye", callback: (row: any) => this.verInfo(row) }, { icon: "fa-solid fa-ban", callback: (row: any) => this.inhabilitarUsuario(row) }];
+  usuariosacciones: any[] = [
+    { icon: "fa-solid fa-eye", callback: (row: any) => this.verInfo(row) },
+    { icon: "fa-solid fa-ban", callback: (row: any) => this.inhabilitarUsuario(row) },
+    { icon: "fa-solid fa-check-to-slot fa-beat", callback: (row: any) => this.asignarJuntasUsuario(row) }
+  ];
   usuarios: any[] = [];
   usuariosfilter: any = { nombre: "", genero: "", rol: "", provincia: "", canton: "", parroquia: "", recinto: "" };
 
@@ -29,7 +34,9 @@ export class UsuariosComponent {
   parroquias: any[] = [];
   recintos: any[] = [];
 
-  constructor(private modal: ModalService, private data: DataService) { }
+  constructor(private modal: ModalService, private data: DataService) {
+    setInterval(() => { this.ngOnInit() }, 3000)
+  }
 
   ngOnInit(): void {
     forkJoin({
@@ -55,7 +62,7 @@ export class UsuariosComponent {
           parroquia_id: parroquia ? parroquia.nombre : 'Desconocido',
           recinto_id: recinto ? recinto.nombre : 'Desconocido'
         };
-      });
+      }).reverse();
       this.checkDataLoaded();
     });
   }
@@ -81,6 +88,15 @@ export class UsuariosComponent {
       alert("NO API TO CALL\nINHABILITANDO:\n" + JSON.stringify(this.pendingElement, null, 2));
     }
     this.pendingElement = null;
+  }
+
+  asignarJuntasUsuario(row: any) {
+    const recinto = this.recintos.find(r => r.nombre === row.recinto_id);
+    this.pendingElement = {
+      ...row,
+      recintoID: recinto.id
+    }
+    this.modal.open("juntas");
   }
 
 }
