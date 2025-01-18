@@ -39,7 +39,7 @@ export class SignupComponent {
       recinto: ['', Validators.required],
       telephone1: ['', [Validators.required, Validators.pattern(/^\d{10}$/)]],
       telephone2: ['', Validators.pattern(/^\d{10}$/)],
-      correo: ['', Validators.required],
+      correo: ['', [Validators.required, Validators.pattern('^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,4}$')]],
       acceptTerms: [false, Validators.requiredTrue]
     });
   }
@@ -74,7 +74,7 @@ export class SignupComponent {
     if (this.signupForm.valid) {
       const currentDateTime = new Date().toISOString();
       const data = {
-        
+
         identificacion: this.signupForm.value.id,
         rol_id: 4,
         nombres: this.signupForm.value.nombres,
@@ -97,6 +97,12 @@ export class SignupComponent {
       }
       console.log(data);
       this.data.createData<any>("https://api-observacion-electoral.frative.com/api/usuarios", data).subscribe(() => {
+        const email = {
+          to: this.signupForm.value.correo,
+          subject: "Gracias por postularte",
+          html: "<html><body><h1>¡Gracias por postularte al sistema de control electoral!</h1><p>Este correo es para indicale que su solicitud fue aplicada, mantente a tanto a este correo para futuras actualizaciones.<br>Cuando te hayan aceptado o rechazado te lo haremos saber.</p><footer><p>Saludos,<br>Votaciones 2025</br></p></footer></body></html>"
+        }
+        this.data.sendEmail<any>("https://sistema-electoral-cc1y.onrender.com/api/enviar-correo", email).subscribe(() => {}, (error) => console.log(error))
         this.signupForm.reset();
         this.modal.open("inscripción");
       });
@@ -107,4 +113,10 @@ export class SignupComponent {
     event.preventDefault();
     this.modal.open("polices");
   }
+
+  gotoLogin(event: Event){
+    event.preventDefault();
+    this.route.navigate(['/login']);
+  }
+
 }

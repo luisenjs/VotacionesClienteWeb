@@ -114,7 +114,7 @@
 
         <div>
             <label for="correo">Correo electrónico</label>
-            <input id="correo" formControlName="correo" type="correo" placeholder="Ingresa tu correo electrónico"
+            <input id="correo" formControlName="correo" type="email" placeholder="Ingresa tu correo electrónico"
                 [class.invalid]="signupForm.get('correo')?.invalid && signupForm.get('correo')?.touched" />
             <div class="error-message"
                 *ngIf="signupForm.get('correo')?.invalid && signupForm.get('correo')?.touched">
@@ -131,6 +131,7 @@
 
         <button type="submit" [disabled]="signupForm.invalid">Enviar solicitud de registro</button>
     </form>
+    <p>¿Eres un administrador? Inicia sesión <a href="#" (click)="gotoLogin($event)">aquí</a></p>
 </div>
 
 <app-policies [id]="'polices'"></app-policies>

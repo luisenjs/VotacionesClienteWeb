@@ -51,4 +51,8 @@ export class DataService {
     return this.http.delete<void>(`${url}/${id}`);
   }
 
+  sendEmail<T>(url: string, data: T): Observable<T> {
+    return this.http.post<T>(url, data);
+  }
+
 }

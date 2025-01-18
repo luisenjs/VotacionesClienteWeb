@@ -38,4 +38,10 @@ export class LoginComponent {
     event.preventDefault();
     this.route.navigate(['/forgotpassword']);
   }
+
+  gotoSignup(event: Event){
+    event.preventDefault();
+    this.route.navigate(['/signup']);
+  }
+
 }
