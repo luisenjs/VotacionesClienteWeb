@@ -4,6 +4,7 @@ import { FormBuilder, FormGroup, Validators, ReactiveFormsModule } from '@angula
 import { CommonModule } from '@angular/common';
 import { ConfirmationComponent } from '../confirmation/confirmation.component';
 import { DataService } from '../../services/data/data.service';
+import { AuthService } from '../../services/auth/auth.service';
 
 @Component({
   selector: 'app-modificarterritorio',
@@ -24,7 +25,7 @@ export class ModificarterritorioComponent {
 
   pendingElement: any;
 
-  constructor(private modal: ModalService, private fb: FormBuilder, private data: DataService) {
+  constructor(private modal: ModalService, private fb: FormBuilder, private data: DataService, private auth: AuthService) {
     this.elementoForm = this.fb.group({
       nombre: ["", Validators.required],
     })
@@ -50,8 +51,8 @@ export class ModificarterritorioComponent {
     this.isVisible = true;
   }
 
-  close(event?:Event) {
-    if(event){
+  close(event?: Event) {
+    if (event) {
       event.stopPropagation();
       event.preventDefault();
     }
@@ -61,29 +62,19 @@ export class ModificarterritorioComponent {
   onSubmit(event: Event) {
     event.preventDefault();
     if (this.elementoForm.valid) {
-      console.log("Antes de confirmar");
-      console.log(this.elementoForm.value);
-      console.log(this.elemento)
       this.pendingElement = this.elementoForm.value;
-      this.modal.open("confirmar");
+      this.modal.open("confirmar"+this.tipoterritorio);
     }
   }
 
   confirmation(confirmacion: boolean) {
-    console.log("viendo si dijo si o no"); 
-    console.log(this.pendingElement); 
-    console.log(this.elementoForm.value); 
     if (confirmacion) {
       const currentDateTime = new Date().toISOString();
       const data = {
-        id: this.elemento.id,
         nombre: this.elementoForm.value.nombre,
-        estado: 'Activo',
-        fecha_ingreso: currentDateTime,
         fecha_modificacion: currentDateTime,
         observacion: 'Modificación del nombre',
-        usuario_ingreso: 1,
-        usuario_modificacion: 1
+        usuario_modificacion: this.auth.getCurrentUser().id
       }
       this.data.updateDataById(`https://api-observacion-electoral.frative.com/api/${this.tipoterritorio}`, this.elemento.id, data).subscribe(() => {
         console.log("Modificación del objeto:");

@@ -11,11 +11,12 @@ import { TablaComponent } from '../../component/tabla/tabla.component';
 import { ModalService } from '../../services/modal/modal.service';
 import { ConfirmationComponent } from '../../component/confirmation/confirmation.component';
 import { CargarrecintoComponent } from '../cargarrecinto/cargarrecinto.component';
+import { ModificarterritorioComponent } from "../modificarterritorio/modificarterritorio.component";
 
 @Component({
   selector: 'app-cargarparroquia',
   standalone: true,
-  imports: [CommonModule, ReactiveFormsModule, MatButtonModule, MatFormFieldModule, MatInputModule, MatIconModule, TablaComponent, ConfirmationComponent, CargarrecintoComponent],
+  imports: [CommonModule, ReactiveFormsModule, MatButtonModule, MatFormFieldModule, MatInputModule, MatIconModule, TablaComponent, ConfirmationComponent, CargarrecintoComponent, ModificarterritorioComponent],
   templateUrl: './cargarparroquia.component.html',
   styleUrl: './cargarparroquia.component.css'
 })
@@ -42,6 +43,7 @@ export class CargarparroquiaComponent {
     this.parroquiaForm = this.fb.group({
       nombre: ['', [Validators.required, Validators.pattern(/^[a-zA-Z\u00C0-\u00FF ]*$/)]]
     });
+    setInterval(() => { this.loadData() }, 5000);
   }
 
   ngOnInit() {
@@ -49,12 +51,10 @@ export class CargarparroquiaComponent {
   }
 
   loadData() {
-    this.data.readData<any[]>("https://api-observacion-electoral.frative.com/api/parroquias/canton/"+this.canton.id).subscribe((data) => {
-      console.log(data);
+    this.data.readData<any[]>("https://api-observacion-electoral.frative.com/api/parroquias/canton/" + this.canton.id).subscribe((data) => {
       this.parroquias = data;
       this.checkDataLoaded();
     });
-    console.log(this.parroquias)
   }
 
   checkDataLoaded() {
@@ -64,19 +64,19 @@ export class CargarparroquiaComponent {
   }
 
   onEdit(row: any) {
-
+    this.pendingElement = row;
+    this.modal.open("modificarParroquia");
   }
 
   onDelete(row: any) {
     this.pendingElement = row;
-    this.modal.open("eliminar");
+    this.modal.open("eliminarParroquia");
   }
 
   confirmDelete(confirm: boolean) {
     if (confirm) {
       this.data.deleteDataById("https://api-observacion-electoral.frative.com/api/parroquias", this.pendingElement.id).subscribe((data) => {
-        console.log(this.pendingElement)
-        window.location.reload();
+        console.log(this.pendingElement);
       });
     }
   }
@@ -98,7 +98,6 @@ export class CargarparroquiaComponent {
       console.log(data);
       this.data.createData<any>("https://api-observacion-electoral.frative.com/api/parroquias", data).subscribe(() => {
         this.parroquiaForm.reset();
-        window.location.reload();
       }, (error) => {
         console.log(error);
       });
@@ -107,7 +106,7 @@ export class CargarparroquiaComponent {
 
   agregarRecinto(parroquia: any) {
     this.showRecinto = true;
-    this.pendingElement = parroquia
+    this.pendingElement = parroquia;
   }
 
 }

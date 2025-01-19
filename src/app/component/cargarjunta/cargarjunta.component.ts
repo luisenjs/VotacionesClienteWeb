@@ -1,6 +1,5 @@
 import { Component, Input } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { Router } from '@angular/router';
 import { FormBuilder, FormGroup, Validators, ReactiveFormsModule } from '@angular/forms';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
@@ -10,38 +9,35 @@ import { DataService } from '../../services/data/data.service';
 import { TablaComponent } from '../../component/tabla/tabla.component';
 import { ModalService } from '../../services/modal/modal.service';
 import { ConfirmationComponent } from '../../component/confirmation/confirmation.component';
-import { CargarjuntaComponent } from "../cargarjunta/cargarjunta.component";
 import { ModificarterritorioComponent } from "../modificarterritorio/modificarterritorio.component";
 
 @Component({
-  selector: 'app-cargarrecinto',
+  selector: 'app-cargarjunta',
   standalone: true,
-  imports: [CommonModule, ReactiveFormsModule, MatButtonModule, MatFormFieldModule, MatInputModule, MatIconModule, TablaComponent, ConfirmationComponent, CargarjuntaComponent, ModificarterritorioComponent],
-  templateUrl: './cargarrecinto.component.html',
-  styleUrl: './cargarrecinto.component.css'
+  imports: [CommonModule, ReactiveFormsModule, MatFormFieldModule, MatInputModule, MatButtonModule, MatIconModule, TablaComponent, ConfirmationComponent, ModificarterritorioComponent],
+  templateUrl: './cargarjunta.component.html',
+  styleUrl: './cargarjunta.component.css'
 })
-export class CargarrecintoComponent {
+export class CargarjuntaComponent {
 
-  recintoscampo: any[] = ["nombre", "acciones"];
-  recintosacciones: any[] = [
+  juntascampo: any[] = ["nombre", "acciones"];
+  juntasacciones: any[] = [
     { icon: "fa fa-edit", callback: (row: any) => this.onEdit(row) },
-    { icon: "fa fa-trash", callback: (row: any) => this.onDelete(row) },
-    { icon: "fa fa-square-plus", callback: (row: any) => this.agregarJunta(row) }
+    { icon: "fa fa-trash", callback: (row: any) => this.onDelete(row) }
   ];
-  recintos: any[] = [];
-  recintosfilter: any = { nombre: '' };
-  recintoForm: FormGroup;
+  juntas: any[] = [];
+  juntasfilter: any = { nombre: '' };
+
+  juntaForm: FormGroup;
 
   isDataLoaded: boolean = false;
 
-  showJunta = false;
-
-  @Input() parroquia: any;
+  @Input() recinto: any;
 
   pendingElement: any;
 
-  constructor(private router: Router, private data: DataService, private fb: FormBuilder, private modal: ModalService) {
-    this.recintoForm = this.fb.group({
+  constructor(private modal: ModalService, private data: DataService, private fb: FormBuilder) {
+    this.juntaForm = this.fb.group({
       nombre: ['', [Validators.required, Validators.pattern(/^[a-zA-Z\u00C0-\u00FF ]*$/)]]
     });
     setInterval(() => { this.loadData() }, 5000);
@@ -52,43 +48,44 @@ export class CargarrecintoComponent {
   }
 
   loadData() {
-    this.data.readData<any[]>("https://api-observacion-electoral.frative.com/api/recintos-electorales/parroquia/" + this.parroquia.id).subscribe((data) => {
-      this.recintos = data;
+    this.data.readData<any[]>("https://api-observacion-electoral.frative.com/api/juntas/recinto/" + this.recinto.id).subscribe((data) => {
+      this.juntas = data;
       this.checkDataLoaded();
     });
   }
 
   checkDataLoaded() {
-    if (this.recintos.length > 0) {
+    if (this.juntas.length > 0) {
       this.isDataLoaded = true;
     }
   }
 
   onEdit(row: any) {
     this.pendingElement = row;
-    this.modal.open("modificarRecinto");
+    this.modal.open("modificarJunta");
   }
 
   onDelete(row: any) {
     this.pendingElement = row;
-    this.modal.open("eliminarRecinto");
+    this.modal.open("eliminarJunta");
   }
 
   confirmDelete(confirm: boolean) {
     if (confirm) {
-      this.data.deleteDataById("https://api-observacion-electoral.frative.com/api/recintos-electorales", this.pendingElement.id).subscribe((data) => {
+      console.log(this.pendingElement)
+      this.data.deleteDataById("https://api-observacion-electoral.frative.com/api/juntas", this.pendingElement.id).subscribe((data) => {
         console.log(this.pendingElement);
       });
     }
   }
 
   submitRecintos() {
-    if (this.recintoForm.valid) {
+    if (this.juntaForm.valid) {
       const currentDateTime = new Date().toISOString();
       const data = {
-        id: this.recintos.length + 1,
-        nombre: this.recintoForm.value.nombre,
-        parroquia_id: this.parroquia.id,
+        id: this.juntas.length + 1,
+        nombre: this.juntaForm.value.nombre,
+        recinto_id: this.recinto.id,
         estado: 'Activo',
         fecha_ingreso: currentDateTime,
         fecha_modificacion: currentDateTime,
@@ -97,17 +94,12 @@ export class CargarrecintoComponent {
         usuario_modificacion: 1
       }
       console.log(data);
-      this.data.createData<any>("https://api-observacion-electoral.frative.com/api/recintos-electorales", data).subscribe(() => {
-        this.recintoForm.reset();
+      this.data.createData<any>("https://api-observacion-electoral.frative.com/api/juntas", data).subscribe(() => {
+        this.juntaForm.reset();
       }, (error) => {
         console.log(error);
       });
     }
-  }
-
-  agregarJunta(row: any) {
-    this.showJunta = true;
-    this.pendingElement = row;
   }
 
 }

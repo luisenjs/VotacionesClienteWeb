@@ -24,4 +24,6 @@
 
 <app-cargarcanton *ngIf="showCanton" [circunscripcion]="pendingElement" [provincia]="provincia"></app-cargarcanton>
 
-<app-confirmation [id]="'eliminar'" [tipo]="'eliminar'" (confirm)="confirmDelete($event)"></app-confirmation>
+<app-modificarterritorio [id]="'modificarCircunscripcion'" [tipoterritorio]="'circunscripciones'" [elemento]="pendingElement"></app-modificarterritorio>
+
+<app-confirmation [id]="'eliminarCircunscripcion'" [tipo]="'eliminar'" (confirm)="confirmDelete($event)"></app-confirmation>

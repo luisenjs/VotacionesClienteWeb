@@ -1,0 +1,27 @@
+<div class="container">
+
+    <div class="content">
+        <div class="existing-provincias">
+            <h3>Juntas Existentes</h3>
+            <app-tabla *ngIf="isDataLoaded" [displayedColumns]="juntascampo" [originalData]="juntas"
+                [filters]="juntasfilter" [actions]="juntasacciones"></app-tabla>
+        </div>
+
+        <div class="provincias-container">
+            <h3>Agregar Recinto de {{recinto.nombre | titlecase}}</h3>
+            <form [formGroup]="juntaForm" (ngSubmit)="submitRecintos()">
+                <div class="input-group">
+                    <input type="text" class="input" placeholder="Nombre de la provincia" formControlName="nombre"
+                        required />
+                    <button type="submit" class="add-btn" [disabled]="!juntaForm.valid">
+                        Agregar Reconto
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<app-modificarterritorio [id]="'modificarJunta'" [tipoterritorio]="'juntas'" [elemento]="pendingElement"></app-modificarterritorio>
+
+<app-confirmation [id]="'eliminarJunta'" [tipo]="'eliminar'" (confirm)="confirmDelete($event)"></app-confirmation>

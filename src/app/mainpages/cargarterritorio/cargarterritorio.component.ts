@@ -38,7 +38,7 @@ export class CargarterritorioComponent implements OnInit {
   showCantones: boolean = false;
   showCircunscripcion: boolean = false;
 
-  pendingElement: any;
+  provincia: any;
 
   constructor(private router: Router, private data: DataService, private fb: FormBuilder, private modal: ModalService) {
     this.provinciaForm = this.fb.group({
@@ -65,19 +65,19 @@ export class CargarterritorioComponent implements OnInit {
   }
 
   onEdit(row: any) {
-    this.pendingElement = row;
+    this.provincia = row;
     this.modal.open("modificarProvincia");
   }
 
   onDelete(row: any) {
-    this.pendingElement = row;
+    this.provincia = row;
     this.modal.open("eliminarProvincia");
   }
 
   confirmDelete(confirm: boolean) {
     if (confirm) {
-      this.data.deleteDataById("https://api-observacion-electoral.frative.com/api/provincias", this.pendingElement.id).subscribe((data) => {
-        console.log(this.pendingElement)
+      this.data.deleteDataById("https://api-observacion-electoral.frative.com/api/provincias", this.provincia.id).subscribe((data) => {
+        console.log(this.provincia)
       });
     }
     this.loadData();
@@ -109,13 +109,13 @@ export class CargarterritorioComponent implements OnInit {
   agregarCanton(provincia: any) {
     this.showCantones = true;
     this.showCircunscripcion = false;
-    this.pendingElement = provincia;
+    this.provincia = provincia;
   }
 
   agregarCircunscripcion(provincia: any) {
     this.showCircunscripcion = true;
     this.showCantones = false;
-    this.pendingElement = provincia;
+    this.provincia = provincia;
   }
 
 }

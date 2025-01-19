@@ -2,7 +2,7 @@
 
     <div class="content">
         <div class="existing-provincias">
-            <h3>Recinto Existentes</h3>
+            <h3>Recintos Existentes</h3>
             <app-tabla *ngIf="isDataLoaded" [displayedColumns]="recintoscampo" [originalData]="recintos"
                 [filters]="recintosfilter" [actions]="recintosacciones"></app-tabla>
         </div>
@@ -22,4 +22,8 @@
     </div>
 </div>
 
-<app-confirmation [id]="'eliminar'" [tipo]="'eliminar'" (confirm)="confirmDelete($event)"></app-confirmation>
+<app-cargarjunta *ngIf="showJunta" [recinto]="pendingElement"></app-cargarjunta>
+
+<app-modificarterritorio [id]="'modificarRecinto'" [tipoterritorio]="'recintos-electorales'" [elemento]="pendingElement"></app-modificarterritorio>
+
+<app-confirmation [id]="'eliminarRecinto'" [tipo]="'eliminar'" (confirm)="confirmDelete($event)"></app-confirmation>

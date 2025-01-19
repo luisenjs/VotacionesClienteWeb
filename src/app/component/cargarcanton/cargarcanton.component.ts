@@ -44,7 +44,7 @@ export class CargarcantonComponent {
     this.cantonForm = this.fb.group({
       nombre: ['', [Validators.required, Validators.pattern(/^[a-zA-Z\u00C0-\u00FF ]*$/)]]
     });
-    setInterval(() => {this.loadData()}, 5000)
+    setInterval(() => { this.loadData() }, 5000);
   }
 
   ngOnInit() {

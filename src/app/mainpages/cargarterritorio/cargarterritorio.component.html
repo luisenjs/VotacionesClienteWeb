@@ -23,10 +23,10 @@
     </div>
 </div>
 
-<app-cargarcanton *ngIf="showCantones" [provincia]="pendingElement"></app-cargarcanton>
+<app-cargarcanton *ngIf="showCantones" [provincia]="provincia"></app-cargarcanton>
 
-<app-cargarcircunscripcion *ngIf="showCircunscripcion" [provincia]="pendingElement"></app-cargarcircunscripcion>
+<app-cargarcircunscripcion *ngIf="showCircunscripcion" [provincia]="provincia"></app-cargarcircunscripcion>
 
-<app-modificarterritorio [id]="'modificarProvincia'" [tipoterritorio]="'provincias'" [elemento]="pendingElement" ></app-modificarterritorio>
+<app-modificarterritorio [id]="'modificarProvincia'" [tipoterritorio]="'provincias'" [elemento]="provincia" ></app-modificarterritorio>
 
 <app-confirmation [id]="'eliminarProvincia'" [tipo]="'eliminar'" (confirm)="confirmDelete($event)"></app-confirmation>

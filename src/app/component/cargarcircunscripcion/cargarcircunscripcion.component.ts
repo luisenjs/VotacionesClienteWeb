@@ -11,11 +11,12 @@ import { TablaComponent } from '../../component/tabla/tabla.component';
 import { ModalService } from '../../services/modal/modal.service';
 import { ConfirmationComponent } from '../../component/confirmation/confirmation.component';
 import { CargarcantonComponent } from '../cargarcanton/cargarcanton.component';
+import { ModificarterritorioComponent } from "../modificarterritorio/modificarterritorio.component";
 
 @Component({
   selector: 'app-cargarcircunscripcion',
   standalone: true,
-  imports: [CommonModule, ReactiveFormsModule, MatButtonModule, MatFormFieldModule, MatInputModule, MatIconModule, TablaComponent, ConfirmationComponent, CargarcantonComponent],
+  imports: [CommonModule, ReactiveFormsModule, MatButtonModule, MatFormFieldModule, MatInputModule, MatIconModule, TablaComponent, ConfirmationComponent, CargarcantonComponent, ModificarterritorioComponent],
   templateUrl: './cargarcircunscripcion.component.html',
   styleUrl: './cargarcircunscripcion.component.css'
 })
@@ -42,15 +43,15 @@ export class CargarcircunscripcionComponent {
     this.cantonForm = this.fb.group({
       nombre: ['', [Validators.required, Validators.pattern(/^Circunscripción [1-9](?: - [\w\s]+)?(?: - [\w\s-]+)?$/)]]
     });
+    setInterval(() => { this.loadData() }, 5000);
   }
 
   ngOnInit() {
     this.loadData();
   }
 
-  //TODO: Replace our link with the product owner's link
   loadData() {
-    this.data.readData<any[]>("https://api-observacion-electoral.frative.com/api/circunscripciones/provincia/"+this.provincia.id).subscribe((data) => {
+    this.data.readData<any[]>("https://api-observacion-electoral.frative.com/api/circunscripciones/provincia/" + this.provincia.id).subscribe((data) => {
       this.circunscripcion = data;
       this.checkDataLoaded();
     });
@@ -63,19 +64,19 @@ export class CargarcircunscripcionComponent {
   }
 
   onEdit(row: any) {
-
+    this.pendingElement = row;
+    this.modal.open("modificarCircunscripcion");
   }
 
   onDelete(row: any) {
     this.pendingElement = row;
-    this.modal.open("eliminar");
+    this.modal.open("eliminarCircunscripcion");
   }
 
   confirmDelete(confirm: boolean) {
     if (confirm) {
       this.data.deleteDataById("https://api-observacion-electoral.frative.com/api/circunscripciones", this.pendingElement.id).subscribe((data) => {
-        console.log(this.pendingElement)
-        window.location.reload();
+        console.log(this.pendingElement);
       });
     }
   }
@@ -97,7 +98,6 @@ export class CargarcircunscripcionComponent {
       console.log(data);
       this.data.createData<any>("https://sistema-electoral-cc1y.onrender.com/api/circunscripciones", data).subscribe(() => {
         this.cantonForm.reset();
-        window.location.reload();
       }, (error) => {
         console.log(error);
       });

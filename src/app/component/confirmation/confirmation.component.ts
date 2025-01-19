@@ -101,6 +101,10 @@ export class ConfirmationComponent implements OnInit, OnChanges {
           this.pregunta = "Estás a punto de modificar el nombre de una recinto";
           this.descripcion = "El cambio se realizará inmediatamente, puedes volerlo a cambiar en cualquier momento";
           break;
+        case "juntas":
+          this.pregunta = "Estás a punto de modificar el nombre de una junta";
+          this.descripcion = "El cambio se realizará inmediatamente, puedes volerlo a cambiar en cualquier momento";
+          break;
       }
     }
   }
