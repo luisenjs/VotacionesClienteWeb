@@ -37,7 +37,7 @@ export class AsiganarjuntaComponent {
   }
 
   loadJuntas() {
-    this.data.readData<any[]>("https://sistema-electoral-cc1y.onrender.com/api/juntas/recinto/" + this.element.recintoID).subscribe((data) => {
+    this.data.readData<any[]>("https://api-observacion-electoral.frative.com/api/juntas/recinto/" + this.element.recintoID).subscribe((data) => {
       this.juntas = data;
       console.log(this.juntas);
       this.juntas.forEach(junta => {
@@ -77,7 +77,7 @@ export class AsiganarjuntaComponent {
         usuario_ingreso: this.auth.getCurrentUser().id,
         usuario_modificacion: this.auth.getCurrentUser().id
       }
-      this.data.createData<any>("https://sistema-electoral-cc1y.onrender.com/api/juntas-usuario", payload).subscribe(() => {
+      this.data.createData<any>("https://api-observacion-electoral.frative.com/api/juntas-usuario", payload).subscribe(() => {
         alert("Se asignó la junta correspondiente");
       }, (error) => {
         alert("No se aregó la junta");

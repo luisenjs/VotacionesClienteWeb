@@ -96,7 +96,7 @@ export class CargarcircunscripcionComponent {
         usuario_modificacion: 1
       }
       console.log(data);
-      this.data.createData<any>("https://sistema-electoral-cc1y.onrender.com/api/circunscripciones", data).subscribe(() => {
+      this.data.createData<any>("https://api-observacion-electoral.frative.com/api/circunscripciones", data).subscribe(() => {
         this.cantonForm.reset();
       }, (error) => {
         console.log(error);

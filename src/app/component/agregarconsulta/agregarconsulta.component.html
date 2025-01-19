@@ -1,0 +1,24 @@
+<div class="add" *ngIf="isVisible">
+    <div class="content">
+        <span class="close" (click)="close()" tabindex="0">&times;</span>
+        <h2>{{titulo}}</h2>
+        <form [formGroup]="consultaForm" (ngSubmit)="onSubmit($event)">
+            <div class="form-group">
+                <label for="pregunta">Pregunta</label>
+                <input id="pregunta" type="text" formControlName="pregunta" />
+                <div *ngIf="consultaForm.get('pregunta')?.invalid && consultaForm.get('pregunta')?.touched">
+                    <small class="error">Este campo es requerido.</small>
+                </div>
+            </div>
+
+            <div class="actions">
+                <button class="cancelar" (click)="close()">Cancelar</button>
+                <button class="guardar" type="submit" [disabled]="consultaForm.invalid">Guardar</button>
+            </div>
+        </form>
+    </div>
+</div>
+
+<app-confirmation [id]="'agregarConsulta'" [tipo]="'consulta'" (confirm)="confirmation($event)"></app-confirmation>
+
+<app-confirmation [id]="'modificarConsulta'" [tipo]="'modificar'" (confirm)="confirmation($event)"></app-confirmation>

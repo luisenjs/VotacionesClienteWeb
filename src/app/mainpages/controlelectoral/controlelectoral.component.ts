@@ -36,7 +36,7 @@ export class ControlelectoralComponent {
       this.checkDataLoaded();
     });
     forkJoin({
-      roles: this.data.getData<any[]>('https://sistema-electoral-cc1y.onrender.com/api/roles'),
+      roles: this.data.getData<any[]>('https://api-observacion-electoral.frative.com/api/roles'),
       cantones: this.data.getData<any[]>('https://api-observacion-electoral.frative.com/api/cantones'),
       parroquias: this.data.getData<any[]>('https://api-observacion-electoral.frative.com/api/parroquias'),
       recintos: this.data.getData<any[]>('https://api-observacion-electoral.frative.com/api/recintos-electorales'),

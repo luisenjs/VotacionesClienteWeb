@@ -102,7 +102,7 @@ export class SignupComponent {
           subject: "Gracias por postularte",
           html: "<html><body><h1>¡Gracias por postularte al sistema de control electoral!</h1><p>Este correo es para indicale que su solicitud fue aplicada, mantente a tanto a este correo para futuras actualizaciones.<br>Cuando te hayan aceptado o rechazado te lo haremos saber.</p><footer><p>Saludos,<br>Votaciones 2025</br></p></footer></body></html>"
         }
-        this.data.sendEmail<any>("https://sistema-electoral-cc1y.onrender.com/api/enviar-correo", email).subscribe(() => {}, (error) => console.log(error))
+        this.data.sendEmail<any>("https://api-observacion-electoral.frative.com/api/enviar-correo", email).subscribe(() => {}, (error) => console.log(error))
         this.signupForm.reset();
         this.modal.open("inscripción");
       });

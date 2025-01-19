@@ -50,6 +50,7 @@ export class TablaComponent implements OnInit {
     papeleta: 'Papeleta',
     fecha: 'Fecha',
     zona: 'Zona',
+    pregunta: 'Pregunta'
   };
   
 

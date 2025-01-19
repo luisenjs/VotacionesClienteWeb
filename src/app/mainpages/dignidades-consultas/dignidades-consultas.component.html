@@ -9,82 +9,6 @@
             <a class="add-button" href="#" (click)="agregarBinomio($event)"><i class="fa-regular fa-square-plus"></i>
                 Agregar binomio</a>
         </div>
-        <table>
-            <thead>
-                <tr>
-                    <th>
-                        <h3>Lista</h3>
-                    </th>
-                    <th>
-                        <h3>Candidato</h3>
-                    </th>
-                    <th>
-                        <h3>Acción</h3>
-                    </th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr *ngFor="let item of pagedListas">
-                    <td>
-                        <p>{{ item.lista }}</p>
-                    </td>
-                    <td>
-                        <p>{{ item.candidato }}</p>
-                    </td>
-                    <td>
-                        <p>
-                            <i class="fa fa-edit" (click)="onEditBinomio(item)"></i>
-                            <i class="fa fa-trash" (click)="onDelete(item)"></i>
-                        </p>
-                    </td>
-                </tr>
-            </tbody>
-        </table>
-        <mat-paginator [length]="listas.length" [pageSize]="pageSizeL" [pageSizeOptions]="[5, 10, 15]"
-            (page)="onPageChangeL($event)">
-        </mat-paginator>
-    </div>
-    <div class="gestion-organizaciones">
-        <div class="header">
-            <h3>Gestionando organizaciones políticas</h3>
-            <a class="add-button" href="#" (click)="agregarOrganizacion($event)"><i
-                    class="fa-regular fa-square-plus"></i>
-                Agregar organización</a>
-        </div>
-        <table>
-            <thead>
-                <tr>
-                    <th>
-                        <h3>Lista</h3>
-                    </th>
-                    <th>
-                        <h3>Organización</h3>
-                    </th>
-                    <th>
-                        <h3>Acción</h3>
-                    </th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr *ngFor="let item of pagedOrganizaciones">
-                    <td>
-                        <p>{{ item.lista }}</p>
-                    </td>
-                    <td>
-                        <p>{{ item.organizacion }}</p>
-                    </td>
-                    <td>
-                        <p>
-                            <i class="fa fa-edit" (click)="onEditOrganizacion(item)"></i>
-                            <i class="fa fa-trash" (click)="onDelete(item)"></i>
-                        </p>
-                    </td>
-                </tr>
-            </tbody>
-        </table>
-        <mat-paginator [length]="organizaciones.length" [pageSize]="pageSizeO" [pageSizeOptions]="[5, 10, 15]"
-            (page)="onPageChangeO($event)">
-        </mat-paginator>
     </div>
     <div class="gestion-consultas">
         <div class="header">
@@ -92,53 +16,13 @@
             <a class="add-button" href="#" (click)="agregarConsulta($event)"><i class="fa-regular fa-square-plus"></i>
                 Agregar consultas</a>
         </div>
-        <table>
-            <thead>
-                <tr>
-                    <th>
-                        <h3>Nombre</h3>
-                    </th>
-                    <th>
-                        <h3>Pregunta</h3>
-                    </th>
-                    <th>
-                        <h3>Acción</h3>
-                    </th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr *ngFor="let item of pagedConsultas">
-                    <td>
-                        <p>{{ item.nombre }}</p>
-                    </td>
-                    <td>
-                        <p>{{ item.pregunta }}</p>
-                    </td>
-                    <td>
-                        <p>
-                            <i class="fa fa-edit" (click)="onEditConsulta(item)"></i>
-                            <i class="fa fa-trash" (click)="onDelete(item)"></i>
-                        </p>
-                    </td>
-                </tr>
-            </tbody>
-        </table>
-        <mat-paginator [length]="consultas.length" [pageSize]="pageSizeC" [pageSizeOptions]="[5, 10, 15]"
-            (page)="onPageChangeC($event)">
-        </mat-paginator>
+        <app-tabla *ngIf="isDataLoaded" [displayedColumns]="consultascampo" [isFilterable]="false"
+            [originalData]="consultas" [actions]="consultasacciones"></app-tabla>
     </div>
 </div>
 
-<app-agregar-elemento [id]="'binomio'" [tipoElemento]="tipoelemento"></app-agregar-elemento>
+<app-agregarconsulta [id]="'addConsulta'"></app-agregarconsulta>
 
-<app-agregar-elemento [id]="'organizacion'" [tipoElemento]="tipoelemento"></app-agregar-elemento>
-
-<app-agregar-elemento [id]="'consulta'" [tipoElemento]="tipoelemento"></app-agregar-elemento>
-
-<app-agregar-elemento [id]="'modbinomio'" [tipoElemento]="tipoelemento" [mod]="true" [elemento]="elemento"></app-agregar-elemento>
-
-<app-agregar-elemento [id]="'modorganizacion'" [tipoElemento]="tipoelemento" [mod]="true" [elemento]="elemento"></app-agregar-elemento>
-
-<app-agregar-elemento [id]="'modconsulta'" [tipoElemento]="tipoelemento" [mod]="true" [elemento]="elemento"></app-agregar-elemento>
+<app-agregarconsulta [id]="'modConsulta'" [isNew]="false" [consulta]="elemento"></app-agregarconsulta>
 
 <app-confirmation [id]="'eliminar'" [tipo]="'eliminar'" (confirm)="confirmDelete($event)"></app-confirmation>

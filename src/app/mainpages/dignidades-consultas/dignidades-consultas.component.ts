@@ -5,15 +5,15 @@ import { ModalService } from '../../services/modal/modal.service';
 import { AgregarElementoComponent } from '../../component/agregar-elemento/agregar-elemento.component';
 import { ConfirmationComponent } from '../../component/confirmation/confirmation.component';
 import { DataService } from '../../services/data/data.service';
-import { Lista, Organizacion, Consulta } from '../../interface/data';
-import { MatPaginator } from '@angular/material/paginator';
 import { MatPaginatorIntl } from '@angular/material/paginator';
 import { getSpanishPaginatorIntl } from '../../shared/custom-paginator-intl';
+import { TablaComponent } from "../../component/tabla/tabla.component";
+import { AgregarconsultaComponent } from "../../component/agregarconsulta/agregarconsulta.component";
 
 @Component({
   selector: 'app-dignidades-consultas',
   standalone: true,
-  imports: [CommonModule, RouterModule, AgregarElementoComponent, ConfirmationComponent, MatPaginator],
+  imports: [CommonModule, RouterModule, ConfirmationComponent, TablaComponent, AgregarconsultaComponent],
   providers: [
     { provide: MatPaginatorIntl, useValue: getSpanishPaginatorIntl() }
   ],
@@ -24,92 +24,33 @@ export class DignidadesConsultasComponent implements OnInit {
 
   tipoelemento: string = "";
 
-  listas: Lista[] = [];
+  consultascampo: any[] = ["pregunta", "acciones"];
+  consultasacciones: any[] = [
+    { icon: "fa fa-edit", callback: (row: any) => this.onEditConsulta(row) },
+    { icon: "fa fa-trash", callback: (row: any) => this.onDeleteConsulta(row) }
+  ];
+  consultas: any[] = [];
+  consultasfilter: any = { pregunta: '' };
 
-  organizaciones: Organizacion[] = [];
-
-  consultas: Consulta[] = [];
-
-  pageSizeL = 5; // Número de elementos por página
-  currentPageL = 0; // Página actual
-  pagedListas = this.listas.slice(0, this.pageSizeL);
-
-  pageSizeO = 5; // Número de elementos por página
-  currentPageO = 0; // Página actual
-  pagedOrganizaciones = this.organizaciones.slice(0, this.pageSizeO);
-  
-  pageSizeC = 5; // Número de elementos por página
-  currentPageC = 0; // Página actual
-  pagedConsultas = this.consultas.slice(0, this.pageSizeC);
+  isDataLoaded = false;
 
   elemento: any = null;
 
-  constructor(private modal: ModalService, private data: DataService) { }
+  constructor(private modal: ModalService, private data: DataService) {
+    setInterval(() => {this.ngOnInit()}, 5000);
+  }
 
   ngOnInit(): void {
-    this.data.getData<Lista[]>('assets/data/binomio.json').subscribe((data) => {
-      this.listas = data;
-      this.checkDataLoaded();
-    });
-    this.data.getData<Organizacion[]>('assets/data/organizacion.json').subscribe((data) => {
-      this.organizaciones = data;
-      this.checkDataLoaded();
-    });
-    this.data.getData<Consulta[]>('assets/data/consulta.json').subscribe((data) => {
+    this.data.readData<any[]>("https://api-observacion-electoral.frative.com/api/preguntas-consulta-popular").subscribe((data) => {
       this.consultas = data;
       this.checkDataLoaded();
     });
-    this.updatePagedData();
   }
 
   checkDataLoaded() {
-    if (this.listas.length > 0 && this.organizaciones.length > 0 && this.consultas.length > 0) {
-      this.updatePagedData();
+    if (this.consultas.length > 0) {
+      this.isDataLoaded = true;
     }
-  }
-
-  // Actualiza los datos mostrados según la página seleccionada
-  updatePagedData() {
-    this.updatePagedListas();
-    this.updatePagedOrganizaciones();
-    this.updatePagedConsultas();
-  }
-
-  updatePagedListas() {
-    const startIndex = this.currentPageL * this.pageSizeL;
-    const endIndex = startIndex + this.pageSizeL;
-    this.pagedListas = this.listas.slice(startIndex, endIndex);
-  }
-
-  updatePagedOrganizaciones() {
-    const startIndex = this.currentPageO * this.pageSizeO;
-    const endIndex = startIndex + this.pageSizeO;
-    this.pagedOrganizaciones = this.organizaciones.slice(startIndex, endIndex);
-  }
-
-  updatePagedConsultas() {
-    const startIndex = this.currentPageC * this.pageSizeC;
-    const endIndex = startIndex + this.pageSizeC;
-    this.pagedConsultas = this.consultas.slice(startIndex, endIndex);
-  }
-
-  // Cambia de página
-  onPageChangeL(event: any) {
-    this.currentPageL = event.pageIndex;
-    this.pageSizeL = event.pageSize;
-    this.updatePagedListas();
-  }
-
-  onPageChangeO(event: any) {
-    this.currentPageO = event.pageIndex;
-    this.pageSizeO = event.pageSize;
-    this.updatePagedOrganizaciones();
-  }
-
-  onPageChangeC(event: any) {
-    this.currentPageC = event.pageIndex;
-    this.pageSizeC = event.pageSize;
-    this.updatePagedConsultas();
   }
 
   agregarBinomio(event: Event) {
@@ -118,16 +59,9 @@ export class DignidadesConsultasComponent implements OnInit {
     this.modal.open("binomio");
   }
 
-  agregarOrganizacion(event: Event) {
-    event.preventDefault();
-    this.tipoelemento = "organizacion";
-    this.modal.open("organizacion");
-  }
-
   agregarConsulta(event: Event) {
     event.preventDefault();
-    this.tipoelemento = "consulta";
-    this.modal.open("consulta");
+    this.modal.open("addConsulta");
   }
 
   onEditBinomio(item: any) {
@@ -136,22 +70,13 @@ export class DignidadesConsultasComponent implements OnInit {
     this.modal.open("modbinomio");
   }
 
-  onEditOrganizacion(item: any) {
-    this.elemento = item;
-    this.tipoelemento = "modorganizacion";
-    this.modal.open("modorganizacion");
+  onEditConsulta(row: any) {
+    this.elemento = row;
+    //this.modal.open("modConsulta");
   }
 
-  onEditConsulta(item: any) {
-    this.elemento = item;
-    this.tipoelemento = "modconsulta";
-    this.modal.open("modconsulta");
-  }
-
-  onDelete(item: any) {
-    this.elemento = item;
-    this.tipoelemento = "eliminar";
-    this.modal.open("eliminar");
+  onDeleteConsulta(row: any) {
+    this.elemento = row;
   }
 
   confirmDelete(confirm: boolean) {

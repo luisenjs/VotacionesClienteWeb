@@ -85,7 +85,7 @@ export class InscripcionesComponent {
         subject: "Bienvenido al sistema de control electoral",
         html: "<html><body><h1>¡Felicidades has sido aceptado!</h1><p>Ahora formas parte del sistema de control electoral como delegado de la junta receptora del voto. No olvides realizar la capacitación obligatoria para que puedas desempeñar un buen trabajo el día de las elecciones. Confiamos en ti, sabemos que eres capar de realizar un trabajo expectacular.<br><br>Ahora descarga la aplicación <a href='https://votaciones-cliente-web.vercel.app'>aquí</a> para que puedes ayudarnos a combatir la alteración de los votos y que todo sea transparente.<br>¡Por un Ecuador libre de mentiras!</p><footer><p>Saludos,<br>Votaciones 2025</br></p></footer></body></html>"
       }
-      this.data.sendEmail("https://sistema-electoral-cc1y.onrender.com/api/enviar-correo", email).subscribe(() => { }, (error) => console.log(error));
+      this.data.sendEmail("https://api-observacion-electoral.frative.com/api/enviar-correo", email).subscribe(() => { }, (error) => console.log(error));
       const currentDateTime = new Date().toISOString();
       const data = {
         rol_id: 3,
@@ -94,7 +94,7 @@ export class InscripcionesComponent {
         usuario_ingreso: this.auth.getCurrentUser().id,
         usuario_modificacion: this.auth.getCurrentUser().id
       };
-      this.data.updateDataById<any>("https://sistema-electoral-cc1y.onrender.com/api/usuarios", this.pendingElement.id, data).subscribe((response) => {
+      this.data.updateDataById<any>("https://api-observacion-electoral.frative.com/api/usuarios", this.pendingElement.id, data).subscribe((response) => {
       }, (error) => {
         console.log(error);
       });
@@ -110,8 +110,8 @@ export class InscripcionesComponent {
         html: "<html><body><h1>Mejor suerte la próxima</h1><p>No has sido aceptado para formar parte del sistema de control electoral. No te desanimes puedes volver a intentarlo para las próximas elecciones. Confiamos en ti, sabemos que eres capar de realizar un trabajo expectacular.<br><br></p><footer><p>Saludos,<br>Votaciones 2025</br></p></footer></body></html>"
       }
       console.log(email)
-      this.data.sendEmail("https://sistema-electoral-cc1y.onrender.com/api/enviar-correo", email).subscribe(() => {}, (error) => console.log(error));
-      this.data.deleteDataById("https://sistema-electoral-cc1y.onrender.com/api/usuarios", this.pendingElement.id).subscribe((response) => {
+      this.data.sendEmail("https://api-observacion-electoral.frative.com/api/enviar-correo", email).subscribe(() => {}, (error) => console.log(error));
+      this.data.deleteDataById("https://api-observacion-electoral.frative.com/api/usuarios", this.pendingElement.id).subscribe((response) => {
       }, (error) => {
         console.log(error);
       });
