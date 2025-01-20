@@ -33,13 +33,9 @@ export class ConfirmationComponent implements OnInit, OnChanges {
   ngOnChanges(changes: SimpleChanges): void {
     if (changes['tipo'] && changes['tipo'].currentValue) {
       switch (this.tipo) {
-        case "binomio":
-          this.pregunta = "¿Estás seguro que deseas agregar este binomio?";
-          this.descripcion = "Este binomio se presentará en las papeletas para la selección del binomio presidencial.";
-          break;
-        case "organizacion":
-          this.pregunta = "¿Estás seguro que deseas agregar esta organización política?";
-          this.descripcion = "Esta organización se presentará en las papeletas para la selección de asambleístas nacionales y/o provinciales.";
+        case "dignidad":
+          this.pregunta = "¿Estás seguro que deseas agregar esta dignidad?";
+          this.descripcion = "Esta dignidad se presentará en las papeletas corespondientes posteriormente.";
           break;
         case "consulta":
           this.pregunta = "¿Estás seguro que deseas agregar esta consulta?";

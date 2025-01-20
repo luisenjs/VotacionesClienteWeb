@@ -21,4 +21,4 @@
 
 <app-confirmation [id]="'agregarConsulta'" [tipo]="'consulta'" (confirm)="confirmation($event)"></app-confirmation>
 
-<app-confirmation [id]="'modificarConsulta'" [tipo]="'modificar'" (confirm)="confirmation($event)"></app-confirmation>
+<app-confirmation [id]="'modificarConsulta'+isNew" [tipo]="'modificar'" (confirm)="confirmation($event)"></app-confirmation>

@@ -1,0 +1,32 @@
+<div class="add" *ngIf="isVisible">
+    <div class="content">
+        <span class="close" (click)="close()" tabindex="0">&times;</span>
+        <h2>{{titulo}}</h2>
+        <form [formGroup]="dignidadForm" (ngSubmit)="onSubmit($event)">
+            <div class="form-group">
+                <label for="nombre">Nombre</label>
+                <input id="nombre" type="text" formControlName="nombre" />
+                <div *ngIf="dignidadForm.get('nombre')?.invalid && dignidadForm.get('nombre')?.touched">
+                    <small class="error">Este campo es requerido.</small>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="lista">Lista</label>
+                <input id="lista" type="text" formControlName="lista" />
+                <div *ngIf="dignidadForm.get('lista')?.invalid && dignidadForm.get('lista')?.touched">
+                    <small class="error">Este campo es requerido.</small>
+                </div>
+            </div>
+
+            <div class="actions">
+                <button class="cancelar" (click)="close()">Cancelar</button>
+                <button class="guardar" type="submit" [disabled]="dignidadForm.invalid">Guardar</button>
+            </div>
+        </form>
+    </div>
+</div>
+
+<app-confirmation [id]="'agregarDignidad'" [tipo]="'dignidad'" (confirm)="confirmation($event)"></app-confirmation>
+
+<app-confirmation [id]="'modificarDignidad'+isNew" [tipo]="'modificar'" (confirm)="confirmation($event)"></app-confirmation>

@@ -6,9 +6,11 @@
     <div class="gestion-binomio">
         <div class="header">
             <h3>Gestionando binomio presidencial</h3>
-            <a class="add-button" href="#" (click)="agregarBinomio($event)"><i class="fa-regular fa-square-plus"></i>
+            <a class="add-button" href="#" (click)="agregarDignidad($event)"><i class="fa-regular fa-square-plus"></i>
                 Agregar binomio</a>
         </div>
+        <app-tabla *ngIf="isDataLoaded" [displayedColumns]="dignidadescampo"
+            [originalData]="dignidades" [actions]="dignidadesacciones"></app-tabla>
     </div>
     <div class="gestion-consultas">
         <div class="header">
@@ -16,13 +18,19 @@
             <a class="add-button" href="#" (click)="agregarConsulta($event)"><i class="fa-regular fa-square-plus"></i>
                 Agregar consultas</a>
         </div>
-        <app-tabla *ngIf="isDataLoaded" [displayedColumns]="consultascampo" [isFilterable]="false"
+        <app-tabla *ngIf="isDataLoaded" [displayedColumns]="consultascampo"
             [originalData]="consultas" [actions]="consultasacciones"></app-tabla>
     </div>
 </div>
 
-<app-agregarconsulta [id]="'addConsulta'"></app-agregarconsulta>
+<app-agregarconsulta [id]="'addConsulta'" [isNew]="true"></app-agregarconsulta>
+
+<app-agregardignidad [id]="'addDignidad'" [isNew]="true"></app-agregardignidad>
 
 <app-agregarconsulta [id]="'modConsulta'" [isNew]="false" [consulta]="elemento"></app-agregarconsulta>
 
-<app-confirmation [id]="'eliminar'" [tipo]="'eliminar'" (confirm)="confirmDelete($event)"></app-confirmation>
+<app-agregardignidad [id]="'modDignidad'" [isNew]="false" [dignidad]="elemento"></app-agregardignidad>
+
+<app-confirmation [id]="'eliminarDignidad'" [tipo]="'eliminar'" (confirm)="confirmDeleteDignidad($event)"></app-confirmation><div class="content">
+    
+<app-confirmation [id]="'eliminarConsulta'" [tipo]="'eliminar'" (confirm)="confirmDeleteConsulta($event)"></app-confirmation><div class="content">

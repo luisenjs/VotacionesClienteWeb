@@ -29,6 +29,7 @@ export class TablaComponent implements OnInit {
 
   columnTitles: { [key: string]: string } = {
     nombre: 'Nombre',
+    identificacion: 'Lista',
     nombres: 'Nombres',
     apellidos: 'Apellidos',
     genero: 'Género',
